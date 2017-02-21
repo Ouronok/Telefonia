@@ -12,4 +12,8 @@ public class Tarifa {
         this.precio=precio;
         this.fecha=fecha;
     }
+
+    public double getPrecio(){
+        return precio;
+    }
 }
