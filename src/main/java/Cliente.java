@@ -37,4 +37,24 @@ public abstract class Cliente {
     public void swpTarifa(Tarifa nTarifa) {
         this.tarifa = nTarifa;
     }
+
+    public boolean addLlamada(Llamada llamada){
+        if(listall.contains(llamada)){
+            return false;
+        }
+        listall.add(llamada);
+        return true;
+    }
+
+    public LinkedList<Llamada> getListall(){
+        return listall;
+    }
+
+    public String getNif(){
+        return nif;
+    }
+
+    public Tarifa getTarifa(){
+        return tarifa;
+    }
 }
