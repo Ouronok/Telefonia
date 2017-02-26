@@ -9,7 +9,7 @@ public class Particular extends Cliente {
     private String apellidos;
 
     public Particular(String nombre, String nif, Direccion dir, LocalDateTime fecha, Tarifa tarifa, String apellidos, LinkedList<Llamada> listall) {
-        super(nombre, nif, dir, fecha, tarifa, listall);
+        super(nombre, nif, dir, fecha, tarifa);
         this.apellidos=apellidos;
     }
 }

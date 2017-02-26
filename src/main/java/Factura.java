@@ -33,4 +33,8 @@ public class Factura {
             importe += llact.getDuracion() * tarifa.getPrecio();
         }
     }
+
+    public int getFID(){
+        return FID;
+    }
 }

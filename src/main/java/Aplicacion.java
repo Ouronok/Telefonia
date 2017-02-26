@@ -55,12 +55,28 @@ public class Aplicacion {
         }
         return null;
     }
-    public Factura emitirFactura(Cliente cliente, LocalDateTime[] intervalo){
+
+    public boolean emitirFactura(Cliente cliente, LocalDateTime[] intervalo){
         if(!clientes.contains(cliente) || intervalo[0].isAfter(intervalo[2])){
-            return null;
+            return false;
         }
         LinkedList<Llamada> llamadas = cliente.getLlamadaPeriodo(intervalo);
-        return new Factura(fact, intervalo[0],intervalo[1],cliente,cliente.getTarifa());
+        cliente.addFactura(new Factura(fact, intervalo[0],intervalo[1],cliente,cliente.getTarifa()));
+        return true;
+    }
 
+    public Factura getFactura(int cod){
+        for(Cliente cliac:clientes){
+            for(Factura faac:cliac.getListafac()){
+                if(faac.getFID()==cod){
+                    return faac;
+                }
+            }
+        }
+        return null;
+    }
+
+    public LinkedList<Factura> getFacturas(Cliente cliente){
+        return cliente.getListafac();
     }
 }

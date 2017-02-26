@@ -1,3 +1,5 @@
+import sun.awt.image.ImageWatched;
+
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 
@@ -10,15 +12,15 @@ public abstract class Cliente {
     private Direccion dir;
     private LocalDateTime fecha;
     private Tarifa tarifa;
-    private LinkedList<Llamada> listall;
+    private LinkedList<Llamada> listall = new LinkedList<Llamada>();
+    private LinkedList<Factura> listafac = new LinkedList<Factura>();
 
-    public Cliente(String nombre, String nif, Direccion dir, LocalDateTime fecha, Tarifa tarifa , LinkedList<Llamada> listall){
+    public Cliente(String nombre, String nif, Direccion dir, LocalDateTime fecha, Tarifa tarifa){
         this.nombre=nombre;
         this.nif=nif;
         this.dir=dir;
         this.fecha=fecha;
         this.tarifa=tarifa;
-        this.listall=listall;
     }
 
     public LocalDateTime getFecha(){
@@ -56,5 +58,16 @@ public abstract class Cliente {
 
     public Tarifa getTarifa(){
         return tarifa;
+    }
+
+    public boolean addFactura(Factura factura){
+        if(listafac.contains(factura)){
+            return false;
+        }
+        listafac.add(factura);
+        return true;
+    }
+    public LinkedList<Factura> getListafac(){
+        return listafac;
     }
 }
