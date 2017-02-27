@@ -8,13 +8,28 @@ public class Aplicacion {
     LinkedList<Cliente> clientes;
     LocalDateTime fact;
 
-    public boolean addCliente(Cliente cliente) {
-        if (!clientes.contains(cliente)) {
-            clientes.add(cliente);
-            return true;
-        }
-        return false;
+    public boolean addCliente(String nombre, String nif, Direccion dir, Double precio) {
+        Tarifa tarifa = new Tarifa(precio);
+        Empresa cliente = new Empresa(nombre, nif, dir, fact, tarifa);
+        return addCliente(cliente);
     }
+
+    public boolean addCliente(String nombre, String apellidos, String nif, Direccion dir, Double precio) {
+        Tarifa tarifa = new Tarifa(precio);
+        Particular cliente = new Particular(nombre, apellidos, nif, dir, fact, tarifa);
+        return addCliente(cliente);
+    }
+
+    private boolean addCliente(Cliente cliente){
+        for(Cliente cliac:clientes){
+            if(cliac.getNif().equals(cliente.getNif())){
+                return false;
+            }
+        }
+        clientes.add(cliente);
+        return true;
+    }
+
     public boolean delCliente(Cliente cliente) {
         if (clientes.contains(cliente)){
             clientes.remove(cliente);
@@ -22,7 +37,8 @@ public class Aplicacion {
         }
         return false;
     }
-    public boolean swpTarifa(Cliente cliente, Tarifa tarifa) {
+    public boolean swpTarifa(Cliente cliente, double precio) {
+        Tarifa tarifa = new Tarifa(precio);
         if(clientes.contains(cliente)){
             cliente.swpTarifa(tarifa);
             return true;

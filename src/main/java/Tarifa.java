@@ -6,11 +6,9 @@ import java.time.LocalDateTime;
 public class Tarifa {
 
     double precio;
-    LocalDateTime fecha;
 
-    public Tarifa(double precio, LocalDateTime fecha){
+    public Tarifa(double precio){
         this.precio=precio;
-        this.fecha=fecha;
     }
 
     public double getPrecio(){
