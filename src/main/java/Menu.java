@@ -3,6 +3,7 @@
  */
 
 import java.time.LocalDateTime;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Menu {
@@ -20,6 +21,7 @@ public class Menu {
     private void menu() {
         wrtMenu();
         int op = scanner.nextInt();
+        scanner.nextLine();
         while( op!=11 ) {
             switch (op) {
                 case 1:
@@ -35,17 +37,47 @@ public class Menu {
                     recCliente();
                     break;
                 case 5:
-
+                    recClientes();
                     break;
                 case 6:
                     addLlamada();
                     break;
-
+                case 7:
+                    getLlamadas();
+                    break;
+                case 8:
+                    addFactura();
                 default:
 
             }
             wrtMenu();
             op = scanner.nextInt();
+            scanner.nextLine();
+        }
+    }
+
+    private boolean addFactura() {
+        cliente = getCliente();
+        LocalDateTime[] intervalo = new LocalDateTime[2];
+        intervalo[1]= LocalDateTime.now();
+        intervalo[0]= LocalDateTime.now().minusMonths(1);
+        return app.emitirFactura(cliente,intervalo);
+    }
+
+    private boolean getLlamadas() {
+        Cliente cliente = getCliente();
+        if(cliente!=null){
+            return false;
+        }
+        for(Llamada llact: cliente.getListall()){
+            System.out.println(llact.toString());
+        }
+        return true;
+    }
+
+    private void recClientes() {
+        for (Cliente clact: app.getClientes()){
+            System.out.println(clact.toString());
         }
     }
 
@@ -61,7 +93,7 @@ public class Menu {
     private boolean addLlamada() {
         cliente = getCliente();
         System.out.println("Escribe el telefono llamado");
-        String tlf = scanner.next();
+        String tlf = scanner.nextLine();
         LocalDateTime fecha = LocalDateTime.now();
         System.out.println("Escribe la duracion de la llamada");
         int duracion = scanner.nextInt();
@@ -71,35 +103,37 @@ public class Menu {
 
     private Cliente getCliente() {
         System.out.println("Escriba el nif del cliente a recuperar");
-        String nif = scanner.next();
+        String nif = scanner.nextLine();
         return app.getCliente(nif);
     }
 
     private boolean addCliente() {
         System.out.println("Desea añadir una empresa o particular? e/p");
-        String op = scanner.next();
+        String op = scanner.nextLine();
         String nif;
         String nombre;
         Direccion dir;
         String apellidos=null;
         double precio;
 
-        while(!op.equals("e") || !op.equals("p")){
+
+        while(!(op.equals("e") || op.equals("p"))){
             System.out.println("Vuelva a escribir una opcion correcta");
-            op = scanner.next();
+            op = scanner.nextLine();
         }
         if(op.equals("p")){
             System.out.println("Escriba sus apellidos");
-            apellidos = scanner.next();
+            apellidos = scanner.nextLine();
         }
         System.out.println("Escriba su nombre");
-        nombre = scanner.next();
+        nombre = scanner.nextLine();
         System.out.println("Escriba su nif");
-        nif = scanner.next();
+        nif = scanner.nextLine();
         System.out.println("Escriba su direccion");
         dir = crearDir();
         System.out.println("Escriba el precio de su tarifa");
         precio = scanner.nextDouble();
+        scanner.nextLine();
         if(apellidos.equals(null)) {
             return app.addCliente(nombre, nif, dir, precio);
         }
@@ -111,11 +145,11 @@ public class Menu {
         String provincia;
         String poblacion;
         System.out.println("Escriba el codigo postal");
-        cp=scanner.next();
+        cp=scanner.nextLine();
         System.out.println("Escriba la provincia");
-        provincia=scanner.next();
+        provincia=scanner.nextLine();
         System.out.println("Escriba la poblacion");
-        poblacion=scanner.next();
+        poblacion=scanner.nextLine();
         return new Direccion(cp,provincia,poblacion);
     }
 
@@ -143,7 +177,7 @@ public class Menu {
         System.out.println("    4-Recuperar cliente");
         System.out.println("    5-Recuperar todos los clientes");
         System.out.println("    6-Dar de alta llamada");
-        System.out.println("    7-Listar llamadas clientes");
+        System.out.println("    7-Listar llamadas cliente");
         System.out.println("    8-Emitir factura");
         System.out.println("    9-Recuperar factura");
         System.out.println("    10-Recuperar facturas cliente");
