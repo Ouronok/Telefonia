@@ -14,4 +14,9 @@ public class Tarifa {
     public double getPrecio(){
         return precio;
     }
+
+    @Override
+    public String toString(){
+        return precio+"€";
+    }
 }

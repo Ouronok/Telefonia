@@ -6,7 +6,7 @@ import java.util.LinkedList;
  */
 public class Aplicacion {
     LinkedList<Cliente> clientes;
-    LocalDateTime fact;
+    LocalDateTime fact = LocalDateTime.now();
 
     public boolean addCliente(String nombre, String nif, Direccion dir, Double precio) {
         Tarifa tarifa = new Tarifa(precio);

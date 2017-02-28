@@ -70,4 +70,9 @@ public abstract class Cliente {
     public LinkedList<Factura> getListafac(){
         return listafac;
     }
+
+    @Override
+    public String toString(){
+        return nombre+","+nif+"\n"+dir.getCp()+","+dir.getProvincia()+","+dir.getPoblacion()+"\n"+fecha.toString()+"\n"+tarifa.toString();
+    }
 }
