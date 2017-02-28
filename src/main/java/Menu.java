@@ -7,8 +7,6 @@ import java.util.Scanner;
 public class Menu {
 
 
-
-
     public static void main(String[] args) {
         Cliente cliente;
         Scanner scanner = new Scanner(System.in);
@@ -18,20 +16,13 @@ public class Menu {
         while( op!=11 ) {
             switch (op) {
                 case 1:
-
-
+                    addCliente(scanner, app);
                     break;
                 case 2:
-                    System.out.println("Escriba el nif del cliente a eliminar");
-                    cliente = app.getCliente(scanner.next());
-                    app.delCliente(cliente);
+                    delCliente(scanner, app);
                     break;
                 case 3:
-                    System.out.println("Escriba el nif del cliente a cambiar");
-                    cliente = app.getCliente(scanner.next());
-                    System.out.println("Escriba el nuevo precio de la tarifa");
-                    double precio = scanner.nextDouble();
-                    app.swpTarifa(cliente, precio);
+                    swpTarifa(scanner, app);
                     break;
                 case 4:
 
@@ -46,6 +37,48 @@ public class Menu {
 
     }
 
+    private static boolean addCliente(Scanner scanner, Aplicacion app) {
+        System.out.println("Desea añadir una empresa o particular? e/p");
+        String op = scanner.next();
+        String nif;
+        String nombre;
+        Direccion dir;
+        String apellidos=null;
+        double precio;
+
+        while(op!="e" || op!="p"){
+            System.out.println("Vuelva a escribir una opcion correcta");
+            op = scanner.next();
+        }
+        if(scanner.next().equals("p")){
+            System.out.println("Escriba sus apellidos");
+            apellidos = scanner.next();
+        }
+        System.out.println("Escriba su nombre");
+        nombre = scanner.next();
+        System.out.println("Escriba su direccion");
+        //Crear direccion
+        System.out.println("Escriba el precio de su tarifa");
+        precio = scanner.nextDouble();
+        if(apellidos.equals(null)){
+            return app.addCliente(nombre,nif,dir,app.getTime(),precio);
+    }
+
+    private static boolean swpTarifa(Scanner scanner, Aplicacion app) {
+        Cliente cliente;
+        System.out.println("Escriba el nif del cliente a cambiar");
+        cliente = app.getCliente(scanner.next());
+        System.out.println("Escriba el nuevo precio de la tarifa");
+        double precio = scanner.nextDouble();
+        return app.swpTarifa(cliente, precio);;
+    }
+
+    private static boolean delCliente(Scanner scanner, Aplicacion app) {
+        Cliente cliente;
+        System.out.println("Escriba el nif del cliente a eliminar");
+        cliente = app.getCliente(scanner.next());
+        return app.delCliente(cliente);
+    }
 
 
     private static void menu() {

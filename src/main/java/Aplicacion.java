@@ -20,7 +20,7 @@ public class Aplicacion {
         return addCliente(cliente);
     }
 
-    private boolean addCliente(Cliente cliente){
+    public boolean addCliente(Cliente cliente){
         for(Cliente cliac:clientes){
             if(cliac.getNif().equals(cliente.getNif())){
                 return false;
@@ -94,5 +94,9 @@ public class Aplicacion {
 
     public LinkedList<Factura> getFacturas(Cliente cliente){
         return cliente.getListafac();
+    }
+
+    public LocalDateTime getTime(){
+        return fact;
     }
 }
