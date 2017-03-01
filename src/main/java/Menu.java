@@ -1,11 +1,8 @@
-/**
- * Created by al342052 on 21/02/2017.
- */
-
 import java.time.LocalDateTime;
+import java.util.LinkedList;
 import java.util.Scanner;
 
-public class Menu {
+class Menu {
 
     private Scanner scanner = new Scanner(System.in);
     private Aplicacion app = new Aplicacion();
@@ -21,46 +18,49 @@ public class Menu {
         wrtMenu();
         int op = scanner.nextInt();
         scanner.nextLine();
-        while (op != 11) {
+        boolean exit=false;
+        while (!exit) {
             switch (op) {
                 case 1:
-                    addCliente();
+                    resultado(addCliente());
                     break;
                 case 2:
-                    delCliente();
+                    resultado(delCliente());
                     break;
                 case 3:
-                    swpTarifa();
+                    resultado(swpTarifa());
                     break;
                 case 4:
-                    recCliente();
+                    resultado(recCliente());
                     break;
                 case 5:
-                    recClientes();
+                    resultado(recClientes());
                     break;
                 case 6:
-                    addLlamada();
+                    resultado(addLlamada());
                     break;
                 case 7:
-                    getLlamadas();
+                    resultado(getLlamadas());
                     break;
                 case 8:
-                    addFactura();
+                    resultado(addFactura());
                     break;
                 case 9:
-                    getFactura();
+                    resultado(getFactura());
                     break;
                 case 10:
-                    getFacturas();
+                    resultado(getFacturas());
                     break;
                 case 11:
                     System.out.println("Saliendo del programa");
+                    exit=true;
                     break;
                 default:
                     clearScreen();
                     System.out.println("Introduzca una opcion valida");
 
             }
+            if (exit) break;
             wrtMenu();
             op = scanner.nextInt();
             scanner.nextLine();
@@ -73,27 +73,24 @@ public class Menu {
         if (cliente != null) {
             return false;
         }
-        for (Factura fact : cliente.getListafac()) {
+        LinkedList<Factura> list = cliente.getListafac();
+        if(list.isEmpty()) return false;
+        for (Factura fact : list ) {
             System.out.println(fact.toString());
         }
         return true;
     }
 
     private boolean getFactura() {
-        cliente = getCliente();
-        if (cliente == null) {
-            return false;
-        }
         System.out.println("Escriba el codigo de factura");
         int cod = scanner.nextInt();
         scanner.nextLine();
-        for (Factura fact : cliente.getListafac()) {
-            if (fact.getFID() == cod) {
-                fact.toString();
-                return true;
-            }
+        Factura factura = app.getFactura(cod);
+        if(factura==null){
+            return false;
         }
-        return false;
+        System.out.println(factura.toString());
+        return true;
     }
 
     private boolean addFactura() {
@@ -109,16 +106,21 @@ public class Menu {
         if (cliente != null) {
             return false;
         }
-        for (Llamada llact : cliente.getListall()) {
+        for (Llamada llact : app.getLlamadas(cliente)) {
             System.out.println(llact.toString());
         }
         return true;
     }
 
-    private void recClientes() {
-        for (Cliente clact : app.getClientes()) {
+    private boolean recClientes() {
+        LinkedList<Cliente> list= app.getClientes();
+        if(list.isEmpty()){
+            return false;
+        }
+        for (Cliente clact : list) {
             System.out.println(clact.toString());
         }
+        return true;
     }
 
     private boolean recCliente() {
@@ -171,7 +173,7 @@ public class Menu {
         System.out.println("Escriba el precio de su tarifa");
         precio = scanner.nextDouble();
         scanner.nextLine();
-        if (apellidos.equals(null)) {
+        if (apellidos==null) {
             return app.addCliente(nombre, nif, dir, precio);
         }
         return app.addCliente(nombre, apellidos, nif, dir, precio);
@@ -227,6 +229,15 @@ public class Menu {
         System.out.print("\033[H\033[2J");
         System.out.flush();
 
+    }
+
+    private void resultado(Boolean res){
+        if(res){
+            System.out.println("Se ha realizado con exito la tarea");
+        } else {
+            System.out.println("Ha ocurrido un error, vuelva a intentarlo");
+        }
+        System.out.println("Elija la siguiente opcion: ");
     }
 
 

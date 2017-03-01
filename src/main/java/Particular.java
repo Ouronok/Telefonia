@@ -1,10 +1,9 @@
 import java.time.LocalDateTime;
-import java.util.LinkedList;
 
 /**
  * Created by al342052 on 21/02/2017.
  */
-public class Particular extends Cliente {
+class Particular extends Cliente {
 
     private String apellidos;
 

@@ -3,7 +3,7 @@ import java.time.LocalDateTime;
 /**
  * Created by al342052 on 21/02/2017.
  */
-public class Llamada {
+class Llamada {
     // teléfono al que se llamó, la fecha y hora de la llamada y la duración.
     private String tlf;
     private LocalDateTime fecha;

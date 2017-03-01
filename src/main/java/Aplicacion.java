@@ -4,23 +4,23 @@ import java.util.LinkedList;
 /**
  * Created by al342052 on 21/02/2017.
  */
-public class Aplicacion {
-    LinkedList<Cliente> clientes;
-    LocalDateTime fact = LocalDateTime.now();
+class Aplicacion {
+    private LinkedList<Cliente> clientes = new LinkedList<>();
+    private final LocalDateTime fact = LocalDateTime.now();
 
-    public boolean addCliente(String nombre, String nif, Direccion dir, Double precio) {
+    boolean addCliente(String nombre, String nif, Direccion dir, Double precio) {
         Tarifa tarifa = new Tarifa(precio);
         Empresa cliente = new Empresa(nombre, nif, dir, fact, tarifa);
         return addCliente(cliente);
     }
 
-    public boolean addCliente(String nombre, String apellidos, String nif, Direccion dir, Double precio) {
+    boolean addCliente(String nombre, String apellidos, String nif, Direccion dir, Double precio) {
         Tarifa tarifa = new Tarifa(precio);
         Particular cliente = new Particular(nombre, apellidos, nif, dir, fact, tarifa);
         return addCliente(cliente);
     }
 
-    public boolean addCliente(Cliente cliente) {
+    boolean addCliente(Cliente cliente) {
         for (Cliente cliac : clientes) {
             if (cliac.getNif().equals(cliente.getNif())) {
                 return false;
@@ -30,7 +30,7 @@ public class Aplicacion {
         return true;
     }
 
-    public boolean delCliente(Cliente cliente) {
+    boolean delCliente(Cliente cliente) {
         if (clientes.contains(cliente)) {
             clientes.remove(cliente);
             return true;
@@ -38,7 +38,7 @@ public class Aplicacion {
         return false;
     }
 
-    public boolean swpTarifa(Cliente cliente, double precio) {
+    boolean swpTarifa(Cliente cliente, double precio) {
         Tarifa tarifa = new Tarifa(precio);
         if (clientes.contains(cliente)) {
             cliente.swpTarifa(tarifa);
@@ -47,7 +47,7 @@ public class Aplicacion {
         return false;
     }
 
-    public Cliente getCliente(String nif) {
+    Cliente getCliente(String nif) {
         for (Cliente cAct : clientes) {
             if (cAct.getNif().equals(nif)) {
                 return cAct;
@@ -56,25 +56,22 @@ public class Aplicacion {
         return null;
     }
 
-    public LinkedList<Cliente> getClientes() {
+    LinkedList<Cliente> getClientes() {
         return clientes;
     }
 
-    public boolean addLlamada(Llamada llamada, Cliente cliente) {
-        if (clientes.contains(cliente) && cliente.addLlamada(llamada)) {
-            return true;
-        }
-        return false;
+    boolean addLlamada(Llamada llamada, Cliente cliente) {
+        return clientes.contains(cliente) && cliente.addLlamada(llamada);
     }
 
-    public LinkedList<Llamada> getLlamadas(Cliente cliente) {
+    LinkedList<Llamada> getLlamadas(Cliente cliente) {
         if (clientes.contains(cliente)) {
             return cliente.getListall();
         }
         return null;
     }
 
-    public boolean emitirFactura(Cliente cliente, LocalDateTime[] intervalo) {
+    boolean emitirFactura(Cliente cliente, LocalDateTime[] intervalo) {
         if (!clientes.contains(cliente) || intervalo[0].isAfter(intervalo[2])) {
             return false;
         }

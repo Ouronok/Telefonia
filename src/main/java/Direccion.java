@@ -1,7 +1,7 @@
 /**
  * Created by al342052 on 21/02/2017.
  */
-public class Direccion {
+class Direccion {
     private String cp;
     private String provincia;
     private String poblacion;

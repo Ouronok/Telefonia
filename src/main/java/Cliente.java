@@ -1,5 +1,3 @@
-import sun.awt.image.ImageWatched;
-
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 
@@ -12,10 +10,10 @@ public abstract class Cliente {
     private Direccion dir;
     private LocalDateTime fecha;
     private Tarifa tarifa;
-    private LinkedList<Llamada> listall = new LinkedList<Llamada>();
-    private LinkedList<Factura> listafac = new LinkedList<Factura>();
+    private LinkedList<Llamada> listall = new LinkedList<>();
+    private LinkedList<Factura> listafac = new LinkedList<>();
 
-    public Cliente(String nombre, String nif, Direccion dir, LocalDateTime fecha, Tarifa tarifa) {
+    Cliente(String nombre, String nif, Direccion dir, LocalDateTime fecha, Tarifa tarifa) {
         this.nombre = nombre;
         this.nif = nif;
         this.dir = dir;
@@ -23,12 +21,12 @@ public abstract class Cliente {
         this.tarifa = tarifa;
     }
 
-    public LocalDateTime getFecha() {
+    LocalDateTime getFecha() {
         return fecha;
     }
 
-    public LinkedList<Llamada> getLlamadaPeriodo(LocalDateTime[] periodo) {
-        LinkedList<Llamada> retList = new LinkedList<Llamada>();
+    LinkedList<Llamada> getLlamadaPeriodo(LocalDateTime[] periodo) {
+        LinkedList<Llamada> retList = new LinkedList<>();
         for (Llamada llact : listall) {
             if (llact.getFecha().isAfter(periodo[1]) && llact.getFecha().isBefore(periodo[0])) {
                 retList.add(llact);
@@ -37,11 +35,11 @@ public abstract class Cliente {
         return retList;
     }
 
-    public void swpTarifa(Tarifa nTarifa) {
+    void swpTarifa(Tarifa nTarifa) {
         this.tarifa = nTarifa;
     }
 
-    public boolean addLlamada(Llamada llamada) {
+    boolean addLlamada(Llamada llamada) {
         if (listall.contains(llamada)) {
             return false;
         }
@@ -49,19 +47,19 @@ public abstract class Cliente {
         return true;
     }
 
-    public LinkedList<Llamada> getListall() {
+    LinkedList<Llamada> getListall() {
         return listall;
     }
 
-    public String getNif() {
+    String getNif() {
         return nif;
     }
 
-    public Tarifa getTarifa() {
+    Tarifa getTarifa() {
         return tarifa;
     }
 
-    public boolean addFactura(Factura factura) {
+    boolean addFactura(Factura factura) {
         if (listafac.contains(factura)) {
             return false;
         }
@@ -69,7 +67,7 @@ public abstract class Cliente {
         return true;
     }
 
-    public LinkedList<Factura> getListafac() {
+    LinkedList<Factura> getListafac() {
         return listafac;
     }
 
