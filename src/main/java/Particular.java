@@ -10,6 +10,6 @@ public class Particular extends Cliente {
 
     public Particular(String nombre, String apellidos, String nif, Direccion dir, LocalDateTime fecha, Tarifa tarifa) {
         super(nombre, nif, dir, fecha, tarifa);
-        this.apellidos=apellidos;
+        this.apellidos = apellidos;
     }
 }

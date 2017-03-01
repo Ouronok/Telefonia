@@ -9,16 +9,17 @@ public class Llamada {
     private LocalDateTime fecha;
     private int duracion;
 
-    public Llamada(String tlf, int duracion, LocalDateTime fecha){
-        this.tlf=tlf;
-        this.duracion=duracion;
-        this.fecha=fecha;
+    public Llamada(String tlf, int duracion, LocalDateTime fecha) {
+        this.tlf = tlf;
+        this.duracion = duracion;
+        this.fecha = fecha;
     }
 
     public LocalDateTime getFecha() {
         return fecha;
     }
-    public int getDuracion(){
+
+    public int getDuracion() {
         return duracion;
     }
 }

@@ -7,16 +7,16 @@ public class Tarifa {
 
     double precio;
 
-    public Tarifa(double precio){
-        this.precio=precio;
+    public Tarifa(double precio) {
+        this.precio = precio;
     }
 
-    public double getPrecio(){
+    public double getPrecio() {
         return precio;
     }
 
     @Override
-    public String toString(){
-        return precio+"€";
+    public String toString() {
+        return precio + "€";
     }
 }

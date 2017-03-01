@@ -6,7 +6,7 @@ import java.util.LinkedList;
  */
 public class Empresa extends Cliente {
 
-    public Empresa(String nombre, String nif, Direccion dir, LocalDateTime fecha, Tarifa tarifa){
-        super(nombre,nif,dir,fecha,tarifa);
+    public Empresa(String nombre, String nif, Direccion dir, LocalDateTime fecha, Tarifa tarifa) {
+        super(nombre, nif, dir, fecha, tarifa);
     }
 }

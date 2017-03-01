@@ -20,9 +20,9 @@ public class Aplicacion {
         return addCliente(cliente);
     }
 
-    public boolean addCliente(Cliente cliente){
-        for(Cliente cliac:clientes){
-            if(cliac.getNif().equals(cliente.getNif())){
+    public boolean addCliente(Cliente cliente) {
+        for (Cliente cliac : clientes) {
+            if (cliac.getNif().equals(cliente.getNif())) {
                 return false;
             }
         }
@@ -31,60 +31,62 @@ public class Aplicacion {
     }
 
     public boolean delCliente(Cliente cliente) {
-        if (clientes.contains(cliente)){
+        if (clientes.contains(cliente)) {
             clientes.remove(cliente);
             return true;
         }
         return false;
     }
+
     public boolean swpTarifa(Cliente cliente, double precio) {
         Tarifa tarifa = new Tarifa(precio);
-        if(clientes.contains(cliente)){
+        if (clientes.contains(cliente)) {
             cliente.swpTarifa(tarifa);
             return true;
         }
         return false;
     }
 
-    public Cliente getCliente(String nif){
-        for(Cliente cAct : clientes){
-            if(cAct.getNif().equals(nif)) {
+    public Cliente getCliente(String nif) {
+        for (Cliente cAct : clientes) {
+            if (cAct.getNif().equals(nif)) {
                 return cAct;
             }
         }
         return null;
     }
-    public LinkedList<Cliente> getClientes(){
+
+    public LinkedList<Cliente> getClientes() {
         return clientes;
     }
 
-    public boolean addLlamada(Llamada llamada, Cliente cliente){
-        if( clientes.contains(cliente) && cliente.addLlamada(llamada)) {
+    public boolean addLlamada(Llamada llamada, Cliente cliente) {
+        if (clientes.contains(cliente) && cliente.addLlamada(llamada)) {
             return true;
         }
         return false;
     }
 
-    public LinkedList<Llamada> getLlamadas(Cliente cliente){
-        if(clientes.contains(cliente)){
+    public LinkedList<Llamada> getLlamadas(Cliente cliente) {
+        if (clientes.contains(cliente)) {
             return cliente.getListall();
         }
         return null;
     }
 
-    public boolean emitirFactura(Cliente cliente, LocalDateTime[] intervalo){
-        if(!clientes.contains(cliente) || intervalo[0].isAfter(intervalo[2])){
+    public boolean emitirFactura(Cliente cliente, LocalDateTime[] intervalo) {
+        if (!clientes.contains(cliente) || intervalo[0].isAfter(intervalo[2])) {
             return false;
         }
         LinkedList<Llamada> llamadas = cliente.getLlamadaPeriodo(intervalo);
-        cliente.addFactura(new Factura(fact, intervalo[0],intervalo[1],cliente,cliente.getTarifa()));
+        cliente.addFactura(new Factura(fact, intervalo[0], intervalo[1], cliente, cliente.getTarifa()));
         return true;
     }
 
-    public Factura getFactura(int cod){
-        for(Cliente cliac:clientes){
-            for(Factura faac:cliac.getListafac()){
-                if(faac.getFID()==cod){
+    public Factura getFactura(int cod) {
+        for (Cliente cliac : clientes) {
+            for (Factura faac : cliac.getListafac()) {
+                if (faac.getFID() == cod) {
                     return faac;
                 }
             }
@@ -92,11 +94,11 @@ public class Aplicacion {
         return null;
     }
 
-    public LinkedList<Factura> getFacturas(Cliente cliente){
+    public LinkedList<Factura> getFacturas(Cliente cliente) {
         return cliente.getListafac();
     }
 
-    public LocalDateTime getTime(){
+    public LocalDateTime getTime() {
         return fact;
     }
 }

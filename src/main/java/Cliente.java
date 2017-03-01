@@ -15,15 +15,15 @@ public abstract class Cliente {
     private LinkedList<Llamada> listall = new LinkedList<Llamada>();
     private LinkedList<Factura> listafac = new LinkedList<Factura>();
 
-    public Cliente(String nombre, String nif, Direccion dir, LocalDateTime fecha, Tarifa tarifa){
-        this.nombre=nombre;
-        this.nif=nif;
-        this.dir=dir;
-        this.fecha=fecha;
-        this.tarifa=tarifa;
+    public Cliente(String nombre, String nif, Direccion dir, LocalDateTime fecha, Tarifa tarifa) {
+        this.nombre = nombre;
+        this.nif = nif;
+        this.dir = dir;
+        this.fecha = fecha;
+        this.tarifa = tarifa;
     }
 
-    public LocalDateTime getFecha(){
+    public LocalDateTime getFecha() {
         return fecha;
     }
 
@@ -36,43 +36,45 @@ public abstract class Cliente {
         }
         return retList;
     }
+
     public void swpTarifa(Tarifa nTarifa) {
         this.tarifa = nTarifa;
     }
 
-    public boolean addLlamada(Llamada llamada){
-        if(listall.contains(llamada)){
+    public boolean addLlamada(Llamada llamada) {
+        if (listall.contains(llamada)) {
             return false;
         }
         listall.add(llamada);
         return true;
     }
 
-    public LinkedList<Llamada> getListall(){
+    public LinkedList<Llamada> getListall() {
         return listall;
     }
 
-    public String getNif(){
+    public String getNif() {
         return nif;
     }
 
-    public Tarifa getTarifa(){
+    public Tarifa getTarifa() {
         return tarifa;
     }
 
-    public boolean addFactura(Factura factura){
-        if(listafac.contains(factura)){
+    public boolean addFactura(Factura factura) {
+        if (listafac.contains(factura)) {
             return false;
         }
         listafac.add(factura);
         return true;
     }
-    public LinkedList<Factura> getListafac(){
+
+    public LinkedList<Factura> getListafac() {
         return listafac;
     }
 
     @Override
-    public String toString(){
-        return nombre+","+nif+"\n"+dir.getCp()+","+dir.getProvincia()+","+dir.getPoblacion()+"\n"+fecha.toString()+"\n"+tarifa.toString();
+    public String toString() {
+        return nombre + "," + nif + "\n" + dir.getCp() + "," + dir.getProvincia() + "," + dir.getPoblacion() + "\n" + fecha.toString() + "\n" + tarifa.toString();
     }
 }
