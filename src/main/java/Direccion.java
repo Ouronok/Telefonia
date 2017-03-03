@@ -1,12 +1,9 @@
-/**
- * Created by al342052 on 21/02/2017.
- */
 class Direccion {
     private String cp;
     private String provincia;
     private String poblacion;
 
-    public Direccion(String cp, String provincia, String poblacion) {
+    Direccion(String cp, String provincia, String poblacion) {
         this.cp = cp;
         this.provincia = provincia;
         this.poblacion = poblacion;
@@ -22,5 +19,9 @@ class Direccion {
 
     public String getPoblacion() {
         return poblacion;
+    }
+
+    public String toString() {
+        return provincia + ", " + poblacion + ", " + cp;
     }
 }

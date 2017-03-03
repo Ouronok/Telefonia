@@ -18,7 +18,7 @@ class Menu {
         wrtMenu();
         int op = scanner.nextInt();
         scanner.nextLine();
-        boolean exit=false;
+        boolean exit = false;
         while (!exit) {
             switch (op) {
                 case 1:
@@ -53,7 +53,7 @@ class Menu {
                     break;
                 case 11:
                     System.out.println("Saliendo del programa");
-                    exit=true;
+                    exit = true;
                     break;
                 default:
                     clearScreen();
@@ -70,12 +70,15 @@ class Menu {
 
     private boolean getFacturas() {
         Cliente cliente = getCliente();
-        if (cliente != null) {
+        if (cliente == null) {
             return false;
         }
-        LinkedList<Factura> list = cliente.getListafac();
-        if(list.isEmpty()) return false;
-        for (Factura fact : list ) {
+        LinkedList<Factura> list = app.getFacturas(cliente);
+        if (list.isEmpty()) {
+            System.out.println("El cliente no posee facturas");
+            return false;
+        }
+        for (Factura fact : list) {
             System.out.println(fact.toString());
         }
         return true;
@@ -86,7 +89,8 @@ class Menu {
         int cod = scanner.nextInt();
         scanner.nextLine();
         Factura factura = app.getFactura(cod);
-        if(factura==null){
+        if (factura == null) {
+            System.out.println("No existe una factura con dicho codigo");
             return false;
         }
         System.out.println(factura.toString());
@@ -106,15 +110,21 @@ class Menu {
         if (cliente != null) {
             return false;
         }
-        for (Llamada llact : app.getLlamadas(cliente)) {
+        LinkedList<Llamada> llamadas = app.getLlamadas(cliente);
+        if (llamadas.isEmpty()) {
+            System.out.println("El cliente no posee llamadas");
+            return false;
+        }
+        for (Llamada llact : llamadas) {
             System.out.println(llact.toString());
         }
         return true;
     }
 
     private boolean recClientes() {
-        LinkedList<Cliente> list= app.getClientes();
-        if(list.isEmpty()){
+        LinkedList<Cliente> list = app.getClientes();
+        if (list.isEmpty()) {
+            System.out.println("No existen clientes");
             return false;
         }
         for (Cliente clact : list) {
@@ -125,7 +135,7 @@ class Menu {
 
     private boolean recCliente() {
         cliente = getCliente();
-        if (cliente==null) return false;
+        if (cliente == null) return false;
         System.out.println(cliente.toString());
         return true;
     }
@@ -142,9 +152,14 @@ class Menu {
 
 
     private Cliente getCliente() {
-        System.out.println("Escriba el nif del cliente a recuperar");
+        System.out.println("Escriba el nif del cliente a realizar la operacion");
         String nif = scanner.nextLine();
-        return app.getCliente(nif);
+        cliente = app.getCliente(nif);
+        if (cliente == null) {
+            System.out.println("No existe dicho cliente");
+            return null;
+        }
+        return cliente;
     }
 
     private boolean addCliente() {
@@ -173,7 +188,7 @@ class Menu {
         System.out.println("Escriba el precio de su tarifa");
         precio = scanner.nextDouble();
         scanner.nextLine();
-        if (apellidos==null) {
+        if (apellidos == null) {
             return app.addCliente(nombre, nif, dir, precio);
         }
         return app.addCliente(nombre, apellidos, nif, dir, precio);
@@ -193,16 +208,14 @@ class Menu {
     }
 
     private boolean swpTarifa() {
-        System.out.println("Escriba el nif del cliente a cambiar");
-        cliente = app.getCliente(scanner.next());
+        cliente = getCliente();
         System.out.println("Escriba el nuevo precio de la tarifa");
         double precio = scanner.nextDouble();
         return app.swpTarifa(cliente, precio);
     }
 
     private boolean delCliente() {
-        System.out.println("Escriba el nif del cliente a eliminar");
-        cliente = app.getCliente(scanner.next());
+        cliente = getCliente();
         return app.delCliente(cliente);
     }
 
@@ -231,8 +244,8 @@ class Menu {
 
     }
 
-    private void resultado(Boolean res){
-        if(res){
+    private void resultado(Boolean res) {
+        if (res) {
             System.out.println("Se ha realizado con exito la tarea");
         } else {
             System.out.println("Ha ocurrido un error, vuelva a intentarlo");

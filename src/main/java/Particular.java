@@ -11,4 +11,10 @@ class Particular extends Cliente {
         super(nombre, nif, dir, fecha, tarifa);
         this.apellidos = apellidos;
     }
+
+    @Override
+    public String toString() {
+        return apellidos + "," + super.toString();
+    }
+
 }

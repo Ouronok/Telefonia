@@ -1,9 +1,7 @@
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 
-/**
- * Created by al342052 on 21/02/2017.
- */
+
 public abstract class Cliente {
     private String nombre;
     private String nif;
@@ -73,6 +71,6 @@ public abstract class Cliente {
 
     @Override
     public String toString() {
-        return nombre + "," + nif + "\n" + dir.getCp() + "," + dir.getProvincia() + "," + dir.getPoblacion() + "\n" + fecha.toString() + "\n" + tarifa.toString();
+        return nombre + "," + nif + "\n" + dir.toString() + "\n" + fecha.toString() + "\n" + tarifa.toString();
     }
 }

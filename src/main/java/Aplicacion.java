@@ -1,12 +1,9 @@
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 
-/**
- * Created by al342052 on 21/02/2017.
- */
 class Aplicacion {
-    private LinkedList<Cliente> clientes = new LinkedList<>();
     private final LocalDateTime fact = LocalDateTime.now();
+    private LinkedList<Cliente> clientes = new LinkedList<>();
 
     boolean addCliente(String nombre, String nif, Direccion dir, Double precio) {
         Tarifa tarifa = new Tarifa(precio);
@@ -75,12 +72,11 @@ class Aplicacion {
         if (!clientes.contains(cliente) || intervalo[0].isAfter(intervalo[2])) {
             return false;
         }
-        LinkedList<Llamada> llamadas = cliente.getLlamadaPeriodo(intervalo);
         cliente.addFactura(new Factura(fact, intervalo[0], intervalo[1], cliente, cliente.getTarifa()));
         return true;
     }
 
-    public Factura getFactura(int cod) {
+    Factura getFactura(int cod) {
         for (Cliente cliac : clientes) {
             for (Factura faac : cliac.getListafac()) {
                 if (faac.getFID() == cod) {
@@ -91,7 +87,7 @@ class Aplicacion {
         return null;
     }
 
-    public LinkedList<Factura> getFacturas(Cliente cliente) {
+    LinkedList<Factura> getFacturas(Cliente cliente) {
         return cliente.getListafac();
     }
 

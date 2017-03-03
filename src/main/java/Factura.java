@@ -1,9 +1,6 @@
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 
-/**
- * Created by al342052 on 21/02/2017.
- */
 public class Factura {
 
     private static int GlobalFID = 0;
@@ -14,7 +11,7 @@ public class Factura {
     private double importe;
     private Cliente cliente;
 
-    public Factura(LocalDateTime ffac, LocalDateTime f1, LocalDateTime f2, Cliente cliente, Tarifa tarifa) {
+    Factura(LocalDateTime ffac, LocalDateTime f1, LocalDateTime f2, Cliente cliente, Tarifa tarifa) {
         GlobalFID++;
         FID = GlobalFID;
         CalcularImporte(cliente);
@@ -35,7 +32,12 @@ public class Factura {
         }
     }
 
-    public int getFID() {
+    int getFID() {
         return FID;
+    }
+
+    @Override
+    public String toString() {
+        return FID + "\n" + tarifa + "\n" + ffac + "\n Periodo: " + periodo[0] + "-" + periodo[1] + "\nTarifa: " + tarifa.toString();
     }
 }
