@@ -125,8 +125,9 @@ class Menu {
 
     private boolean recCliente() {
         cliente = getCliente();
+        if (cliente==null) return false;
         System.out.println(cliente.toString());
-        return cliente != null;
+        return true;
     }
 
     private boolean addLlamada() {
@@ -168,7 +169,6 @@ class Menu {
         nombre = scanner.nextLine();
         System.out.println("Escriba su nif");
         nif = scanner.nextLine();
-        System.out.println("Escriba su direccion");
         dir = crearDir();
         System.out.println("Escriba el precio de su tarifa");
         precio = scanner.nextDouble();
