@@ -18,6 +18,7 @@ class Menu {
         wrtMenu();
         int op = scanner.nextInt();
         scanner.nextLine();
+        printBar();
         boolean exit = false;
         while (!exit) {
             switch (op) {
@@ -80,6 +81,7 @@ class Menu {
         }
         for (Factura fact : list) {
             System.out.println(fact.toString());
+            printBar();
         }
         return true;
     }
@@ -99,6 +101,10 @@ class Menu {
 
     private boolean addFactura() {
         cliente = getCliente();
+        if(cliente==null){
+            System.out.println("El cliente no existe");
+            return false;
+        }
         LocalDateTime[] intervalo = new LocalDateTime[2];
         intervalo[1] = LocalDateTime.now();
         intervalo[0] = LocalDateTime.now().minusMonths(1);
@@ -129,19 +135,30 @@ class Menu {
         }
         for (Cliente clact : list) {
             System.out.println(clact.toString());
+            printBar();
         }
         return true;
     }
 
+    private void printBar() {
+        System.out.println("------------------------");
+    }
+
     private boolean recCliente() {
         cliente = getCliente();
-        if (cliente == null) return false;
+        if (cliente == null){
+            System.out.println("No existe dicho cliente");
+            return false;
+        }
         System.out.println(cliente.toString());
         return true;
     }
 
     private boolean addLlamada() {
         cliente = getCliente();
+        if(cliente==null){
+            return false;
+        }
         System.out.println("Escribe el telefono llamado");
         String tlf = scanner.nextLine();
         LocalDateTime fecha = LocalDateTime.now();
@@ -234,6 +251,7 @@ class Menu {
         System.out.println("    9-Recuperar factura");
         System.out.println("    10-Recuperar facturas cliente");
         System.out.println("    11-Salir");
+        System.out.print("Opcion: ");
 
     }
 
