@@ -6,7 +6,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Created by Pau on 05/03/2017.
+ * Created by al341845 on 05/03/2017.
  */
 public class DireccionTest {
 
