@@ -29,6 +29,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>es.uji.belfern</groupId>
+            <artifactId>GeneradorDatosINE</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
