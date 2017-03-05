@@ -3,12 +3,13 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
 import static org.junit.Assert.assertEquals;
 
 /**
  * Created by al341845 on 05/03/2017.
  */
-public class DireccionTest {
+public class DireccionTest{
 
     public static String provincia;
     public static String cp;
@@ -26,18 +27,13 @@ public class DireccionTest {
     }
 
     @Test
-    public void testGetCp()
-
-    {
-
+    public void testGetCp(){
         assertEquals(direccionTest.getCp(),cp);
-
     }
 
     @Test
-    public void testGetProvincia()
+    public void testGetProvincia(){
 
-    {
         assertEquals(direccionTest.getProvincia(),provincia);
     }
 

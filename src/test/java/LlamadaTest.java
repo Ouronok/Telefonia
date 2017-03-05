@@ -9,7 +9,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * Created by Pau on 05/03/2017.
  */
-public class LlamadaTest {
+public class LlamadaTest{
 
     public static String tlf;
     public static LocalDateTime fecha;
@@ -32,6 +32,12 @@ public class LlamadaTest {
 
     public void TestGetFecha(){
         assertEquals(llamadaTest.getFecha(),fecha);
+    }
+
+    @Test
+
+    public void TestGetDuracion(){
+        assertEquals(llamadaTest.getDuracion(),duracion);
     }
 
 
