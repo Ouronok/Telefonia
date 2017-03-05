@@ -4,7 +4,9 @@ import org.junit.Test;
 
 /**
  * Created by Pau on 05/03/2017.
+ * Este Test comprueba los métodos publicos de la clase Cliente.
  */
+
 public class ClienteTest {
 
 

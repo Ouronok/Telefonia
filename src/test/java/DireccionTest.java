@@ -8,13 +8,14 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * Created by al341845 on 05/03/2017.
+ * Este Test comprueba los métodos publicos de la clase Direccion.COMPLETO
  */
 public class DireccionTest{
 
-    public static String provincia;
-    public static String cp;
-    public static String poblacion;
-    public static Direccion direccionTest;
+    private static String provincia;
+    private static String cp;
+    private static String poblacion;
+    private static Direccion direccionTest;
 
     @BeforeClass
     public static void init(){

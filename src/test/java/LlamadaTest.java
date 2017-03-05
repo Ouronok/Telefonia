@@ -8,20 +8,17 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * Created by Pau on 05/03/2017.
+ * Este Test comprueba los métodos publicos de la clase llamada. COMPLETO
  */
 public class LlamadaTest{
-
-    public static String tlf;
-    public static LocalDateTime fecha;
-    public static int duracion;
-    public static Llamada llamadaTest;
+    private static LocalDateTime fecha;
+    private static int duracion;
+    private static Llamada llamadaTest;
 
     @BeforeClass
 
     public static void init(){
-
-        GeneradorDatosINE gen = new GeneradorDatosINE();
-        tlf = "964045938";
+        String tlf = "964045938";
         duracion = 20;
         fecha = LocalDateTime.now();
         llamadaTest = new Llamada(tlf,duracion,fecha);

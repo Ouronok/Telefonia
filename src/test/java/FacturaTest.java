@@ -9,14 +9,13 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * Created by al341845 on 28/02/2017.
+ * Este Test comprueba los métodos publicos de la clase Factura.
  */
 public class FacturaTest{
 
-    public static LocalDateTime fecha;
-    private static Tarifa tarifa;
+    private static LocalDateTime fecha;
+    private static Tarifa tarifa = new Tarifa(20);
     private static int FID;
-    private static LocalDateTime ffac;
-    private static double importe;
     private static Cliente cliente;
     private static Cliente empresa;
     private static Factura facturaCli;
@@ -32,7 +31,6 @@ public class FacturaTest{
         String poblacion = generador.getPoblacion(provincia);
         Direccion direccion = new Direccion("12006",provincia,poblacion);
         fecha = LocalDateTime.now();
-        tarifa = new Tarifa(20);
         cliente = new Particular(nombre,apellido,NIF,direccion,fecha,tarifa);
         empresa = new Empresa(nombre,NIF,direccion,fecha,tarifa);
         FID = 0;
@@ -42,15 +40,15 @@ public class FacturaTest{
                 fecha.minusMinutes(10),empresa,tarifa);
 
         System.out.println(FID);
-        System.out.println(facturaCli.getFID() -1 );
+        System.out.println(facturaCli.getFID() - 1);
 
     }
 
     @Test
 
     public void testGetFID(){
-        assertEquals(facturaCli.getFID() ,FID +1); //Se incrementa en 1 porque es la primera factura
-        assertEquals(facturaEmp.getFID() ,FID +2); //Se incrementa en 2 porque es la segunda factura
+        assertEquals(facturaCli.getFID(),FID + 1); //Se incrementa en 1 porque es la primera factura
+        assertEquals(facturaEmp.getFID(),FID + 2); //Se incrementa en 2 porque es la segunda factura
 
     }
 
@@ -60,7 +58,5 @@ public class FacturaTest{
         assertEquals(facturaCli.getFecha(),fecha);
         assertEquals(facturaEmp.getFecha(),fecha);
     }
-
-
 
 }
