@@ -19,6 +19,7 @@ public class FacturaTest{
     private static Factura facturaPart;
     private static Factura facturaEmp;
 
+
     @BeforeClass
     public static void init(){
         GeneradorDatosINE generador = new GeneradorDatosINE();
@@ -56,5 +57,6 @@ public class FacturaTest{
         assertEquals(facturaPart.getFecha(),fecha);
         assertEquals(facturaEmp.getFecha(),fecha);
     }
+
 
 }
