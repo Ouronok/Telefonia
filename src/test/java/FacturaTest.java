@@ -16,9 +16,7 @@ public class FacturaTest{
     private static LocalDateTime fecha;
     private static Tarifa tarifa = new Tarifa(20);
     private static int FID;
-    private static Cliente cliente;
-    private static Cliente empresa;
-    private static Factura facturaCli;
+    private static Factura facturaPart;
     private static Factura facturaEmp;
 
     @BeforeClass
@@ -31,23 +29,23 @@ public class FacturaTest{
         String poblacion = generador.getPoblacion(provincia);
         Direccion direccion = new Direccion("12006",provincia,poblacion);
         fecha = LocalDateTime.now();
-        cliente = new Particular(nombre,apellido,NIF,direccion,fecha,tarifa);
-        empresa = new Empresa(nombre,NIF,direccion,fecha,tarifa);
+        Cliente particular = new Particular(nombre,apellido,NIF,direccion,fecha,tarifa);
+        Cliente empresa = new Empresa(nombre,NIF,direccion,fecha,tarifa);
         FID = 0;
-        facturaCli = new Factura(fecha,fecha.minusMinutes(30),
-                fecha.minusMinutes(10),cliente,tarifa);
+        facturaPart = new Factura(fecha,fecha.minusMinutes(30),
+                fecha.minusMinutes(10),particular,tarifa);
         facturaEmp = new Factura(fecha,fecha.minusMinutes(30),
                 fecha.minusMinutes(10),empresa,tarifa);
 
         System.out.println(FID);
-        System.out.println(facturaCli.getFID() - 1);
+        System.out.println(facturaPart.getFID() - 1);
 
     }
 
     @Test
 
     public void testGetFID(){
-        assertEquals(facturaCli.getFID(),FID + 1); //Se incrementa en 1 porque es la primera factura
+        assertEquals(facturaPart.getFID(),FID + 1); //Se incrementa en 1 porque es la primera factura
         assertEquals(facturaEmp.getFID(),FID + 2); //Se incrementa en 2 porque es la segunda factura
 
     }
@@ -55,7 +53,7 @@ public class FacturaTest{
     @Test
     public void testGetFecha(){
 
-        assertEquals(facturaCli.getFecha(),fecha);
+        assertEquals(facturaPart.getFecha(),fecha);
         assertEquals(facturaEmp.getFecha(),fecha);
     }
 
