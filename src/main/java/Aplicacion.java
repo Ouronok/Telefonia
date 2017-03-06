@@ -8,6 +8,7 @@ class Aplicacion {
     boolean addCliente(String nombre, String nif, String email, Direccion dir, Double precio) {
         Tarifa tarifa = new Tarifa(precio);
         Empresa cliente = new Empresa(nombre, nif, email, dir, fact, tarifa);
+
         return addCliente(cliente);
     }
 
@@ -58,7 +59,7 @@ class Aplicacion {
     }
 
     boolean addLlamada(Llamada llamada, Cliente cliente) {
-        return clientes.contains(cliente) && cliente.addLlamada(llamada);
+        return cliente.contains(cliente) && cliente.addLlamada(llamada);
     }
 
     LinkedList<Llamada> getLlamadas(Cliente cliente) {
@@ -91,7 +92,4 @@ class Aplicacion {
         return cliente.getListafac();
     }
 
-    public LocalDateTime getTime() {
-        return fact;
-    }
 }
