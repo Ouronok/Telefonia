@@ -22,6 +22,7 @@ public class ClienteTest {
     private static Llamada llam1;
     private static Llamada llam2;
     private static Factura factura1;
+    private static String email;
     @BeforeClass
     public static void init() {
 
@@ -29,11 +30,12 @@ public class ClienteTest {
         nombre = gen.getNombre ();
         apellido = gen.getApellido ();
         NIF = gen.getNIF ();
+        email = "pepe@gmail.com";
         provincia = gen.getProvincia ();
         poblacion = gen.getPoblacion (provincia);
         direccion = new Direccion ("12006", provincia, poblacion);
-        particular = new Particular (nombre, apellido, NIF, direccion, fecha, tarifa);
-        empresa = new Empresa (nombre, NIF, direccion, fecha, tarifa);
+        particular = new Particular (nombre, apellido, NIF, email,direccion, fecha, tarifa);
+        empresa = new Empresa (nombre, NIF,email, direccion, fecha, tarifa);
         fecha = fecha.now ();
         llam1 = new Llamada ("964048351", 20, fecha.minusHours (1));
         llam2 = new Llamada ("943882182", 15, fecha.minusDays (1));

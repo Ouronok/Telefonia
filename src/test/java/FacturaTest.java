@@ -26,12 +26,14 @@ public class FacturaTest{
         String nombre = generador.getNombre();
         String apellido = generador.getApellido();
         String NIF = generador.getNIF();
+        String email = "pepe@gmail.com";
         String provincia = generador.getProvincia();
         String poblacion = generador.getPoblacion(provincia);
         Direccion direccion = new Direccion("12006",provincia,poblacion);
+
         fecha = LocalDateTime.now();
-        Cliente particular = new Particular(nombre,apellido,NIF,direccion,fecha,tarifa);
-        Cliente empresa = new Empresa(nombre,NIF,direccion,fecha,tarifa);
+        Cliente particular = new Particular(nombre,apellido,NIF,email,direccion,fecha,tarifa);
+        Cliente empresa = new Empresa(nombre,NIF,email,direccion,fecha,tarifa);
         FID = 0;
         facturaPart = new Factura(fecha,fecha.minusMinutes(30),
                 fecha.minusMinutes(10),particular,tarifa);

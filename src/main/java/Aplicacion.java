@@ -58,7 +58,7 @@ class Aplicacion {
     }
 
     boolean addLlamada(Llamada llamada, Cliente cliente) {
-        return clientes.contains(cliente) && cliente.addLlamada(llamada);
+        return cliente.contains(cliente) && cliente.addLlamada(llamada);
     }
 
     LinkedList<Llamada> getLlamadas(Cliente cliente) {
@@ -91,7 +91,4 @@ class Aplicacion {
         return cliente.getListafac();
     }
 
-    public LocalDateTime getTime() {
-        return fact;
-    }
 }
