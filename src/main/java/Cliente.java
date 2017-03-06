@@ -19,10 +19,6 @@ public abstract class Cliente {
         this.tarifa = tarifa;
     }
 
-    LocalDateTime getFecha() {
-        return fecha;
-    }
-
     LinkedList<Llamada> getLlamadaPeriodo(LocalDateTime[] periodo) {
         LinkedList<Llamada> retList = new LinkedList<>();
         for (Llamada llact : listall) {

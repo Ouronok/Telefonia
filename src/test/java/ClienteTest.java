@@ -34,18 +34,26 @@ public class ClienteTest{
         particular = new Particular(nombre,apellido,NIF,direccion,fecha,tarifa);
         empresa = new Empresa(nombre,NIF,direccion,fecha,tarifa);
         fecha = fecha.now();
-        llam1 = new Llamada("964048351",20,fecha);
+        llam1 = new Llamada("964048351",20,fecha.minusHours (1));
     }
 
-    @Test
+  /*  @Test
     public void getLlamadaPeriodo(){
         Llamada llam2 = new Llamada("943882182",15,fecha.minusDays(1));
         LinkedList<Llamada> original = particular.getListall();
         original.add(llam1);
         original.add(llam2);
+        particular.addLlamada (llam1);
+        particular.addLlamada (llam2);
+        LocalDateTime[] periodo = new LocalDateTime[2];
+        periodo[0] = fecha.minusDays (3);
+        periodo[1] = fecha;
+        LinkedList<Llamada> resultado = particular.getLlamadaPeriodo(periodo);
+        assertEquals (original,particular.getLlamadaPeriodo (periodo));
 
+        }
+ */
 
-    }
 
     @Test
 
@@ -101,6 +109,8 @@ public class ClienteTest{
     @After
     public void remove(){
         particular.getListall().clear();
+        particular.getListafac().clear();
+
     }
 
 
