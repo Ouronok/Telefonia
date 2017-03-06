@@ -8,6 +8,7 @@ class Aplicacion {
     boolean addCliente(String nombre, String nif, String email, Direccion dir, Double precio) {
         Tarifa tarifa = new Tarifa(precio);
         Empresa cliente = new Empresa(nombre, nif, email, dir, fact, tarifa);
+
         return addCliente(cliente);
     }
 
