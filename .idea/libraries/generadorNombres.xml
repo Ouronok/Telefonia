@@ -1,8 +1,7 @@
 <component name="libraryTable">
   <library name="generadorNombres">
     <CLASSES>
-      <root url="jar://$USER_HOME$/Downloads/generadorNombres.jar!/" />
-      <root url="jar://$USER_HOME$/Desktop/generadorNombres.jar!/" />
+      <root url="jar://$PROJECT_DIR$/.idea/libraries/generadorNombres.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

@@ -80,7 +80,7 @@ class Aplicacion {
     Factura getFactura(int cod) {
         for (Cliente cliac : clientes) {
             for (Factura faac : cliac.getListafac()) {
-                if (faac.getFID() == cod) {
+                if (faac.getFid() == cod) {
                     return faac;
                 }
             }

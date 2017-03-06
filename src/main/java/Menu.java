@@ -272,8 +272,4 @@ class Menu {
         }
         System.out.println("Elija la siguiente opcion: ");
     }
-
-
 }
-
-

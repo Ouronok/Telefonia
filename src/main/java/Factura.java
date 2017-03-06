@@ -3,16 +3,16 @@ import java.util.LinkedList;
 
 public class Factura {
 
-    private static int GlobalFID = 0;
+    private static int globalFID = 0;
     private Tarifa tarifa;
-    private int FID;
+    private int fid;
     private LocalDateTime ffac;
     private LocalDateTime[] periodo = new LocalDateTime[2];
     private double importe;
 
     Factura(LocalDateTime ffac, LocalDateTime f1, LocalDateTime f2, Cliente cliente, Tarifa tarifa) {
-        GlobalFID++;
-        FID = GlobalFID;
+        globalFID++;
+        fid = globalFID;
         CalcularImporte(cliente);
         this.ffac = ffac;
         this.periodo[0] = f1;
@@ -31,8 +31,8 @@ public class Factura {
         }
     }
 
-    int getFID() {
-        return FID;
+    int getFid() {
+        return fid;
     }
 
     double getImporte(){
@@ -41,6 +41,6 @@ public class Factura {
 
     @Override
     public String toString() {
-        return FID + "\n" + tarifa + "\n" + ffac + "\n Periodo: " + periodo[0] + "-" + periodo[1] + "\nTarifa: " + tarifa.toString();
+        return fid + "\n" + tarifa +"\n"+"Importe: "+importe+ "\n" + ffac + "\n Periodo: " + periodo[0] + "-" + periodo[1] + "\nTarifa: " + tarifa.toString();
     }
 }
