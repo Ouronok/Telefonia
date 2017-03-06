@@ -41,15 +41,15 @@ public class FacturaTest{
                 fecha.minusMinutes(10),empresa,tarifa);
 
         System.out.println(FID);
-        System.out.println(facturaPart.getFID() - 1);
+        System.out.println(facturaPart.getFid() - 1);
 
     }
 
     @Test
 
     public void testGetFID(){
-        assertEquals(facturaPart.getFID(),FID + 1); //Se incrementa en 1 porque es la primera factura
-        assertEquals(facturaEmp.getFID(),FID + 2); //Se incrementa en 2 porque es la segunda factura
+        assertEquals(facturaPart.getFid(),FID + 1); //Se incrementa en 1 porque es la primera factura
+        assertEquals(facturaEmp.getFid(),FID + 2); //Se incrementa en 2 porque es la segunda factura
 
     }
 
