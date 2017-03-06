@@ -20,7 +20,7 @@ public class Factura {
         this.tarifa = tarifa;
     }
 
-    public LocalDateTime getFecha() {
+    LocalDateTime getFecha() {
         return ffac;
     }
 
@@ -33,6 +33,10 @@ public class Factura {
 
     int getFID() {
         return FID;
+    }
+
+    double getImporte(){
+        return importe;
     }
 
     @Override

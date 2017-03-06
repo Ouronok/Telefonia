@@ -55,7 +55,9 @@ public abstract class Cliente {
         return tarifa;
     }
 
-    String getEmail() {return email; }
+    String getEmail() {
+        return email;
+    }
 
     boolean addFactura(Factura factura) {
         if (listafac.contains(factura)) {
@@ -71,6 +73,6 @@ public abstract class Cliente {
 
     @Override
     public String toString() {
-        return nombre + "," + nif +"\n" + email + "\n" + dir.toString() + "\n" + fecha.toString() + "\n" + tarifa.toString();
+        return nombre + "," + nif + "\n" + email + "\n" + dir.toString() + "\n" + fecha.toString() + "\n" + tarifa.toString();
     }
 }
