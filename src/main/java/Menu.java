@@ -8,7 +8,6 @@ class Menu {
     private Aplicacion app = new Aplicacion();
     private Cliente cliente;
 
-
     public static void main(String[] args) {
         Menu menu = new Menu();
         menu.menu();

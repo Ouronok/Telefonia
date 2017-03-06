@@ -1,28 +1,25 @@
 import es.uji.www.GeneradorDatosINE;
-import org.junit.Assert;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
 /**
- * Created by al341845 on 05/03/2017.
- * Este Test comprueba los métodos publicos de la clase Direccion.COMPLETO
+ * Este Test comprueba los métodos públicos de la clase Direccion
  */
 public class DireccionTest{
 
-    private static String provincia;
     private static String cp;
+    private static String provincia;
     private static String poblacion;
     private static Direccion direccionTest;
 
     @BeforeClass
     public static void init(){
         GeneradorDatosINE gen = new GeneradorDatosINE();
+        cp = "12006";
         provincia = gen.getProvincia();
         poblacion = gen.getPoblacion(provincia);
-        cp = "12006";
         direccionTest = new Direccion(cp,provincia,poblacion);
 
     }
@@ -33,11 +30,8 @@ public class DireccionTest{
     }
 
     @Test
-    public void testGetProvincia(){
-
-        assertEquals(direccionTest.getProvincia(),provincia);
+    public void testGetProvincia(){assertEquals(direccionTest.getProvincia(),provincia);
     }
-
 
     @Test
     public void testGetPoblacion()

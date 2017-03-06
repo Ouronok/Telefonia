@@ -1,4 +1,3 @@
-import es.uji.www.GeneradorDatosINE;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -7,10 +6,10 @@ import java.time.LocalDateTime;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Created by Pau on 05/03/2017.
- * Este Test comprueba los métodos publicos de la clase llamada. COMPLETO
+ * Este Test comprueba los métodos públicos de la clase Llamada.
  */
 public class LlamadaTest{
+
     private static LocalDateTime fecha;
     private static int duracion;
     private static Llamada llamadaTest;

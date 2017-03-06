@@ -4,8 +4,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Created by Pau on 05/03/2017
- * Este Test comprueba los métodos publicos de la clase Tarifa. COMPLETO
+ * Este Test comprueba los métodos públicos de la clase Tarifa.
  */
 
 public class TarifaTest{
@@ -20,9 +19,12 @@ public class TarifaTest{
         tarifa = new Tarifa(precio);
     }
 
+
+
     @Test
+
     public void TestGetPrecio(){
-      assertEquals(precio,tarifa.getPrecio(),0);
+        assertEquals(precio,tarifa.getPrecio(),0);
     }
 
 }

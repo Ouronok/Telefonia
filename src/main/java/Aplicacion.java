@@ -59,7 +59,7 @@ class Aplicacion {
     }
 
     boolean addLlamada(Llamada llamada, Cliente cliente) {
-        return cliente.contains(cliente) && cliente.addLlamada(llamada);
+        return clientes.contains(cliente) && cliente.addLlamada(llamada);
     }
 
     LinkedList<Llamada> getLlamadas(Cliente cliente) {
