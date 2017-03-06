@@ -8,6 +8,7 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * Este Test comprueba los métodos públicos de la clase Cliente.
+ *
  */
 
 public class ClienteTest{
