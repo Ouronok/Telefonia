@@ -11,6 +11,7 @@ public class TarifaTest{
 
 
     private static double precio;
+
     private static Tarifa tarifa;
 
     @BeforeClass
