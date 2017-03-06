@@ -62,6 +62,7 @@ public class ClienteTest{
         assertEquals(particular.getTarifa(),tarifa);
         Tarifa old = particular.getTarifa();
         Tarifa otra = new Tarifa(40);
+
         particular.swpTarifa(otra);
         assertEquals(otra,particular.getTarifa());
         particular.swpTarifa(old);
