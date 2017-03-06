@@ -9,7 +9,6 @@ public class Factura {
     private LocalDateTime ffac;
     private LocalDateTime[] periodo = new LocalDateTime[2];
     private double importe;
-    private Cliente cliente;
 
     Factura(LocalDateTime ffac, LocalDateTime f1, LocalDateTime f2, Cliente cliente, Tarifa tarifa) {
         GlobalFID++;
