@@ -183,6 +183,7 @@ class Menu {
         System.out.println("Desea añadir una empresa o particular? e/p");
         String op = scanner.nextLine();
         String nif;
+        String email;
         String nombre;
         Direccion dir;
         String apellidos = null;
@@ -201,14 +202,16 @@ class Menu {
         nombre = scanner.nextLine();
         System.out.println("Escriba su nif");
         nif = scanner.nextLine();
+        System.out.println("Escriba su email");
+        email = scanner.nextLine();
         dir = crearDir();
         System.out.println("Escriba el precio de su tarifa");
         precio = scanner.nextDouble();
         scanner.nextLine();
         if (apellidos == null) {
-            return app.addCliente(nombre, nif, dir, precio);
+            return app.addCliente(nombre, nif, email, dir, precio);
         }
-        return app.addCliente(nombre, apellidos, nif, dir, precio);
+        return app.addCliente(nombre, apellidos, nif, email, dir, precio);
     }
 
     private Direccion crearDir() {

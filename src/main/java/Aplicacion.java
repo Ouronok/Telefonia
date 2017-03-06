@@ -5,15 +5,15 @@ class Aplicacion {
     private final LocalDateTime fact = LocalDateTime.now();
     private LinkedList<Cliente> clientes = new LinkedList<>();
 
-    boolean addCliente(String nombre, String nif, Direccion dir, Double precio) {
+    boolean addCliente(String nombre, String nif, String email, Direccion dir, Double precio) {
         Tarifa tarifa = new Tarifa(precio);
-        Empresa cliente = new Empresa(nombre, nif, dir, fact, tarifa);
+        Empresa cliente = new Empresa(nombre, nif, email, dir, fact, tarifa);
         return addCliente(cliente);
     }
 
-    boolean addCliente(String nombre, String apellidos, String nif, Direccion dir, Double precio) {
+    boolean addCliente(String nombre, String apellidos, String nif, String email, Direccion dir, Double precio) {
         Tarifa tarifa = new Tarifa(precio);
-        Particular cliente = new Particular(nombre, apellidos, nif, dir, fact, tarifa);
+        Particular cliente = new Particular(nombre, apellidos, nif, email, dir, fact, tarifa);
         return addCliente(cliente);
     }
 

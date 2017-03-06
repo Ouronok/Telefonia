@@ -5,14 +5,16 @@ import java.util.LinkedList;
 public abstract class Cliente {
     private String nombre;
     private String nif;
+    private String email;
     private Direccion dir;
     private LocalDateTime fecha;
     private Tarifa tarifa;
     private LinkedList<Llamada> listall = new LinkedList<>();
     private LinkedList<Factura> listafac = new LinkedList<>();
 
-    Cliente(String nombre, String nif, Direccion dir, LocalDateTime fecha, Tarifa tarifa) {
+    Cliente(String nombre, String nif, String email, Direccion dir, LocalDateTime fecha, Tarifa tarifa) {
         this.nombre = nombre;
+        this.email = email;
         this.nif = nif;
         this.dir = dir;
         this.fecha = fecha;
@@ -53,6 +55,8 @@ public abstract class Cliente {
         return tarifa;
     }
 
+    String getEmail() {return email; }
+
     boolean addFactura(Factura factura) {
         if (listafac.contains(factura)) {
             return false;
@@ -67,6 +71,6 @@ public abstract class Cliente {
 
     @Override
     public String toString() {
-        return nombre + "," + nif + "\n" + dir.toString() + "\n" + fecha.toString() + "\n" + tarifa.toString();
+        return nombre + "," + nif +"\n" + email + "\n" + dir.toString() + "\n" + fecha.toString() + "\n" + tarifa.toString();
     }
 }
