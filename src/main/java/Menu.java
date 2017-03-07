@@ -54,6 +54,12 @@ class Menu {
                     resultado(getFacturas());
                     break;
                 case 11:
+                    resultado(getListClientes())
+                case 12:
+                    resultado(getListLlamadas())
+                case 13:
+                    resultado(getListLlamadas());
+                case 14:
                     System.out.println("Saliendo del programa");
                     exit = true;
                     break;
@@ -234,11 +240,14 @@ class Menu {
         System.out.println("    4-Recuperar cliente");
         System.out.println("    5-Recuperar todos los clientes");
         System.out.println("    6-Dar de alta llamada");
-        System.out.println("    7-Listar llamadas cliente");
+        System.out.println("    7-Listar llamadas todas las llamadas del cliente");
         System.out.println("    8-Emitir factura");
         System.out.println("    9-Recuperar factura");
         System.out.println("    10-Recuperar facturas cliente");
-        System.out.println("    11-Salir");
+        System.out.println("    11-Listar clientes entre fechas");
+        System.out.println("    12-Listar llamadas cliente entre fechas");
+        System.out.println("    13-Listar facturas cliente entre fechas");
+        System.out.println("    14-Salir");
         System.out.print("Opcion: ");
 
     }
@@ -269,5 +278,13 @@ class Menu {
             System.out.println("---------");
         }
         return true;
+    }
+
+    private boolean getListClientes(){
+        LocalDateTime fecha1;
+        LocalDateTime fecha2;
+        System.out.println("Introduce las fecha de inicio");
+        fecha1 = scanner.
+        System.out.println("Introduce la fecha final");
     }
 }
