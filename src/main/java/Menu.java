@@ -261,7 +261,7 @@ class Menu {
 
     private <T> boolean printList(LinkedList<T> list){
         if (list.isEmpty()) {
-            System.out.println("No existen clientes");
+            System.out.println("No existen elementos");
             return false;
         }
         for(T element : list){
