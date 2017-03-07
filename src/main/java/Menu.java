@@ -76,15 +76,7 @@ class Menu {
             return false;
         }
         LinkedList<Factura> list = app.getFacturas(cliente);
-        if (list.isEmpty()) {
-            System.out.println("El cliente no posee facturas");
-            return false;
-        }
-        for (Factura fact : list) {
-            System.out.println(fact.toString());
-            printBar();
-        }
-        return true;
+        return printList(list);
     }
 
     private boolean getFactura() {
@@ -130,15 +122,7 @@ class Menu {
 
     private boolean recClientes() {
         LinkedList<Cliente> list = app.getClientes();
-        if (list.isEmpty()) {
-            System.out.println("No existen clientes");
-            return false;
-        }
-        for (Cliente clact : list) {
-            System.out.println(clact.toString());
-            printBar();
-        }
-        return true;
+        return printList(list);
     }
 
     private void printBar() {
@@ -275,14 +259,15 @@ class Menu {
         System.out.println("Elija la siguiente opcion: ");
     }
 
-    private <T> void printList(LinkedList<T> list){
+    private <T> boolean printList(LinkedList<T> list){
+        if (list.isEmpty()) {
+            System.out.println("No existen clientes");
+            return false;
+        }
         for(T element : list){
             element.toString();
             System.out.println("---------");
         }
-
-
-
-
+        return true;
     }
 }
