@@ -126,6 +126,7 @@ class Aplicacion {
         //FECHAS NO VALIDAS
         if (fecha2.isAfter(fecha1)) return null; //Añadir excepción
         return getList(getFacturas(cliente),fecha1,fecha2);
+
     }
 
 
