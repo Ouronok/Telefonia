@@ -2,6 +2,8 @@ import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.Scanner;
 
+import static javafx.scene.input.KeyCode.T;
+
 class Menu {
 
     private Scanner scanner = new Scanner(System.in);
@@ -271,5 +273,16 @@ class Menu {
             System.out.println("Ha ocurrido un error, vuelva a intentarlo");
         }
         System.out.println("Elija la siguiente opcion: ");
+    }
+
+    private <T> void printList(LinkedList<T> list){
+        for(T element : list){
+            element.toString();
+            System.out.println("---------");
+        }
+
+
+
+
     }
 }
