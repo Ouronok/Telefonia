@@ -92,6 +92,8 @@ class Aplicacion {
         return cliente.getListafac();
     }
 
+
+
     <T extends Dato> LinkedList<T> getList(LinkedList<T> list, LocalDateTime fecha1, LocalDateTime fecha2){
         if(fecha1.isAfter(fecha2)) return null;
 
@@ -104,5 +106,28 @@ class Aplicacion {
         }
         return retList;
     }
+
+    LinkedList<Cliente> getClientes(LocalDateTime fecha1, LocalDateTime fecha2){
+
+        //FECHAS NO VALIDAS
+        if (fecha2.isAfter(fecha1)) return null; //Añadir excepción
+        return getList(clientes,fecha1,fecha2);
+    }
+
+    LinkedList<Llamada> getLlamadas(Cliente cliente, LocalDateTime fecha1, LocalDateTime fecha2){
+
+        //FECHAS NO VALIDAS
+        if (fecha2.isAfter(fecha1)) return null;
+        return getList(getLlamadas(cliente),fecha1,fecha2);
+    }
+
+    LinkedList<Factura> getFacturas(Cliente cliente, LocalDateTime fecha1, LocalDateTime fecha2){
+
+        //FECHAS NO VALIDAS
+        if (fecha2.isAfter(fecha1)) return null; //Añadir excepción
+        return getList(getFacturas(cliente),fecha1,fecha2);
+    }
+
+
 
 }
