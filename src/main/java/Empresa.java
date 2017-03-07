@@ -11,4 +11,5 @@ class Empresa extends Cliente {
     public String toString() {
         return super.toString();
     }
+
 }

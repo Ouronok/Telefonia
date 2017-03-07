@@ -2,7 +2,7 @@ import java.time.LocalDateTime;
 import java.util.LinkedList;
 
 
-public abstract class Cliente {
+public abstract class Cliente implements Dato {
     private String nombre;
     private String nif;
     private String email;
@@ -74,5 +74,9 @@ public abstract class Cliente {
     @Override
     public String toString() {
         return nombre + "," + nif + "\n" + email + "\n" + dir.toString() + "\n" + fecha.toString() + "\n" + tarifa.toString();
+    }
+
+    public LocalDateTime getFecha(){
+        return fecha;
     }
 }

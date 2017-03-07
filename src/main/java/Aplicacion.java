@@ -92,4 +92,17 @@ class Aplicacion {
         return cliente.getListafac();
     }
 
+    <T extends Dato> LinkedList<T> getList(LinkedList<T> list, LocalDateTime fecha1, LocalDateTime fecha2){
+        if(fecha1.isAfter(fecha2)) return null;
+
+        LinkedList<T> retList = new LinkedList<>();
+        for(T elem : list){
+            LocalDateTime fecha = elem.getFecha();
+            if(fecha.isAfter(fecha1) && fecha.isBefore(fecha2)){
+                retList.add(elem);
+            }
+        }
+        return retList;
+    }
+
 }

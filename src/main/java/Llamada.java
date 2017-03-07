@@ -1,7 +1,7 @@
 import java.time.LocalDateTime;
 
 
-class Llamada {
+class Llamada implements Dato{
 
     private String tlf;
     private LocalDateTime fecha;
@@ -12,8 +12,8 @@ class Llamada {
         this.duracion = duracion;
         this.fecha = fecha;
     }
-
-    LocalDateTime getFecha() {
+    @Override
+    public LocalDateTime getFecha() {
         return fecha;
     }
 
