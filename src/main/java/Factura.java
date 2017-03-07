@@ -1,7 +1,7 @@
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 
-public class Factura {
+public class Factura implements Dato {
 
     private static int globalFID = 0;
     private Tarifa tarifa;
@@ -20,7 +20,7 @@ public class Factura {
         this.tarifa = tarifa;
     }
 
-    LocalDateTime getFecha() {
+    public LocalDateTime getFecha() {
         return ffac;
     }
 
