@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -54,11 +55,11 @@ class Menu {
                     resultado(getFacturas());
                     break;
                 case 11:
-                    resultado(getListClientes())
+                    resultado(getListClientes());
                 case 12:
-                    resultado(getListLlamadas())
-                case 13:
                     resultado(getListLlamadas());
+                case 13:
+                    resultado(getListFacturas());
                 case 14:
                     System.out.println("Saliendo del programa");
                     exit = true;
@@ -284,7 +285,23 @@ class Menu {
         LocalDateTime fecha1;
         LocalDateTime fecha2;
         System.out.println("Introduce las fecha de inicio");
-        fecha1 = scanner.
+        fecha1 = crearFecha();
         System.out.println("Introduce la fecha final");
+        fecha2 = crearFecha();
+        LinkedList<Cliente> list = app.getList(app.getClientes(),fecha1,fecha2);
+        return printList(list);
+    }
+
+    private LocalDateTime crearFecha() {
+        System.out.println("Dia");
+        int dia = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Mes");
+        int mes = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Año");
+        int año = scanner.nextInt();
+        scanner.nextLine();
+        return LocalDateTime.of(año,mes,dia,0,0);
     }
 }
