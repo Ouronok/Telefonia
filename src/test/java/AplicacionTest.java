@@ -2,6 +2,7 @@ import es.uji.www.GeneradorDatosINE;
 import org.junit.*;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
+import static org.junit.Assert.assertEquals;
 
 public class AplicacionTest {
 
@@ -37,12 +38,16 @@ public class AplicacionTest {
         factura2 = new Factura(fecha,fecha.minusDays(2),fecha.minusDays(1),particular,tarifa);
         clientes = new LinkedList<>();
         llamadas = new LinkedList<>();
-        clientes.add(particular);
-        llamadas.add(llam2);
+
 
     }
+
+
     @Test
     public void getList(){
+        clientes.add(particular);
+        assertEquals();
+        llamadas.add(llam2);
 
     }
 }
