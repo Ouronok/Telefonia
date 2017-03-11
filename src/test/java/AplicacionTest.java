@@ -1,4 +1,5 @@
 import es.uji.www.GeneradorDatosINE;
+import junitx.framework.ListAssert;
 import org.junit.*;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
@@ -17,6 +18,7 @@ public class AplicacionTest {
     private static LinkedList<Cliente> clientes;
     private static LinkedList<Llamada> llamadas;
     private static LinkedList<Factura> facturas;
+    private static Aplicacion app;
 
     @BeforeClass
     public static void init(){
@@ -29,15 +31,24 @@ public class AplicacionTest {
         String provincia = gen.getProvincia();
         String poblacion = gen.getPoblacion(provincia);
         Direccion direccion = new Direccion("12006",provincia,poblacion);
-        particular = new Particular(nombre,apellido,NIF,email,direccion,fecha.minusDays(4),tarifa);
+        particular = new Particular(nombre,apellido,NIF,email,direccion,fecha.minusDays(2),tarifa);
         empresa = new Empresa(nombre,NIF,email,direccion,fecha.minusDays(4),tarifa);
         fecha = LocalDateTime.now();
-        llam1 = new Llamada("964048351",20,fecha.minusHours(4));
-        llam2 = new Llamada("943882182",15,fecha.minusDays(2));
-        factura1 = new Factura(fecha,fecha.minusMinutes(5),fecha.minusMinutes(4),particular,tarifa);
-        factura2 = new Factura(fecha,fecha.minusDays(2),fecha.minusDays(1),particular,tarifa);
+        llam1 = new Llamada("964048351",20,fecha.minusDays(2));
+        llam2 = new Llamada("943882182",15,fecha.minusDays(4));
+        factura1 = new Factura(fecha,fecha.minusMinutes(5),fecha.minusDays(2),particular,tarifa);
+        factura2 = new Factura(fecha,fecha.minusDays(2),fecha.minusDays(4),particular,tarifa);
         clientes = new LinkedList<>();
         llamadas = new LinkedList<>();
+        app = new Aplicacion();
+        particular.addFactura(factura1);
+        particular.addFactura(factura2);
+        particular.addLlamada(llam1);
+        particular.addLlamada(llam2);
+        app.addCliente(empresa);
+        app.addCliente(particular);
+
+
 
 
     }
@@ -46,8 +57,13 @@ public class AplicacionTest {
     @Test
     public void getList(){
         clientes.add(particular);
-        assertEquals();
-        llamadas.add(llam2);
 
+        LinkedList<Cliente> comp = new LinkedList<>();
+        comp.add(particular);
+        ListAssert.assertEquals(app.getList(app.getClientes(),fecha.minusDays(3),fecha),clientes);
+        llamadas.add(llam2);
+        ListAssert.assertEquals(app.getLlamadas(particular,fecha.minusDays(3),fecha),llamadas);
+        facturas.add(factura1);
+        ListAssert.assertEquals(app.getLlamadas(particular,fecha.minusDays(3),fecha),llamadas);
     }
 }
