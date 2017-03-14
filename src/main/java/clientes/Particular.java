@@ -6,7 +6,7 @@ import datos.Tarifa;
 import java.time.LocalDateTime;
 
 
-class Particular extends Cliente {
+public class Particular extends Cliente {
 
     private String apellidos;
 

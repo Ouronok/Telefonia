@@ -4,7 +4,7 @@ public class Tarifa {
 
     private double precio;
 
-    private Tarifa(double precio) {
+    public Tarifa(double precio) {
         this.precio = precio;
     }
 

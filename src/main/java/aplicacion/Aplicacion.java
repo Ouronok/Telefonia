@@ -1,6 +1,9 @@
 package aplicacion;
 
 import clientes.Cliente;
+import clientes.Empresa;
+import clientes.Particular;
+import datos.Dato;
 import datos.Direccion;
 import datos.Tarifa;
 import pago.Factura;
@@ -10,7 +13,7 @@ import java.time.LocalDateTime;
 import java.util.LinkedList;
 
 
-class Aplicacion {
+public class Aplicacion {
     private final LocalDateTime fact = LocalDateTime.now();
     private LinkedList<Cliente> clientes = new LinkedList<>();
 
@@ -27,7 +30,7 @@ class Aplicacion {
         return addCliente(cliente);
     }
 
-    boolean addCliente(Cliente cliente) {
+    public boolean addCliente(Cliente cliente) {
         for (Cliente cliac : clientes) {
             if (cliac.getNif().equals(cliente.getNif())) {
                 return false;
@@ -63,7 +66,7 @@ class Aplicacion {
         return null;
     }
 
-    LinkedList<Cliente> getClientes() {
+    public LinkedList<Cliente> getClientes() {
         return clientes;
     }
 
@@ -103,7 +106,7 @@ class Aplicacion {
 
 
 
-    <T extends Dato> LinkedList<T> getList(LinkedList<T> list, LocalDateTime fecha1, LocalDateTime fecha2){
+    public <T extends Dato> LinkedList<T> getList(LinkedList<T> list, LocalDateTime fecha1, LocalDateTime fecha2){
         if(fecha1.isAfter(fecha2)) return null;
 
         LinkedList<T> retList = new LinkedList<>();
@@ -123,7 +126,7 @@ class Aplicacion {
         return getList(clientes,fecha1,fecha2);
     }
 
-    LinkedList<Llamada> getLlamadas(Cliente cliente, LocalDateTime fecha1, LocalDateTime fecha2){
+    public LinkedList<Llamada> getLlamadas(Cliente cliente, LocalDateTime fecha1, LocalDateTime fecha2){
 
         //FECHAS NO VALIDAS
         if (fecha2.isAfter(fecha1)) return null;
