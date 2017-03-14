@@ -5,6 +5,6 @@ package excepciones;
  */
 public class BadPeriod extends Exception {
     private BadPeriod(){
-
+        super("La fecha dos no puede ser despues de la primera");
     }
 }

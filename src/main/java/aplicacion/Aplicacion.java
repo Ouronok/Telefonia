@@ -82,6 +82,10 @@ public class Aplicacion {
     }
 
     boolean emitirFactura(Cliente cliente, LocalDateTime[] intervalo) {
+        try(intervalo[0].isAfter(intervalo[2])){
+
+        }
+
         if (!clientes.contains(cliente) || intervalo[0].isAfter(intervalo[2])) {
             return false;
         }
