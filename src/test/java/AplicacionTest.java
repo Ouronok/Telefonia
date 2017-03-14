@@ -1,3 +1,11 @@
+import aplicacion.Aplicacion;
+import clientes.Cliente;
+import clientes.Empresa;
+import clientes.Particular;
+import datos.Direccion;
+import datos.Tarifa;
+import pago.Factura;
+import pago.Llamada;
 import es.uji.www.GeneradorDatosINE;
 import junitx.framework.ListAssert;
 import org.junit.*;

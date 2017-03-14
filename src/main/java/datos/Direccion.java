@@ -1,9 +1,11 @@
-class Direccion {
+package datos;
+
+public class Direccion {
     private String cp;
     private String provincia;
     private String poblacion;
 
-    Direccion(String cp, String provincia, String poblacion) {
+    public Direccion(String cp, String provincia, String poblacion) {
         this.cp = cp;
         this.provincia = provincia;
         this.poblacion = poblacion;

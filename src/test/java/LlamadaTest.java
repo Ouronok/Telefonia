@@ -1,3 +1,4 @@
+import pago.Llamada;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -6,7 +7,7 @@ import java.time.LocalDateTime;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Este Test comprueba los métodos públicos de la clase Llamada.
+ * Este Test comprueba los métodos públicos de la clase pago.Llamada.
  */
 public class LlamadaTest{
 

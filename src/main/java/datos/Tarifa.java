@@ -1,12 +1,14 @@
+package datos;
+
 public class Tarifa {
 
     private double precio;
 
-    Tarifa(double precio) {
+    private Tarifa(double precio) {
         this.precio = precio;
     }
 
-    double getPrecio() {
+   public double getPrecio() {
         return precio;
     }
 

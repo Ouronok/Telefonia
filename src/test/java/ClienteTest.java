@@ -1,3 +1,10 @@
+import clientes.Cliente;
+import clientes.Empresa;
+import clientes.Particular;
+import datos.Direccion;
+import datos.Tarifa;
+import pago.Factura;
+import pago.Llamada;
 import es.uji.www.GeneradorDatosINE;
 import org.junit.*;
 
@@ -7,7 +14,7 @@ import java.util.LinkedList;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Este Test comprueba los métodos públicos de la clase Cliente.
+ * Este Test comprueba los métodos públicos de la clase clientes.Cliente.
  *
  */
 

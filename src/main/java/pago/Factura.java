@@ -1,3 +1,9 @@
+package pago;
+
+import clientes.Cliente;
+import datos.Dato;
+import datos.Tarifa;
+
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 
@@ -10,7 +16,7 @@ public class Factura implements Dato {
     private LocalDateTime[] periodo = new LocalDateTime[2];
     private double importe;
 
-    Factura(LocalDateTime ffac, LocalDateTime f1, LocalDateTime f2, Cliente cliente, Tarifa tarifa) {
+    private Factura(LocalDateTime ffac, LocalDateTime f1, LocalDateTime f2, Cliente cliente, Tarifa tarifa) {
         globalFID++;
         fid = globalFID;
         CalcularImporte(cliente);
@@ -31,16 +37,16 @@ public class Factura implements Dato {
         }
     }
 
-    int getFid() {
+    public int getFid() {
         return fid;
     }
 
-    double getImporte(){
+    private double getImporte(){
         return importe;
     }
 
     @Override
     public String toString() {
-        return fid + "\n" + tarifa +"\n"+"Importe: "+importe+ "\n" + ffac + "\n Periodo: " + periodo[0] + "-" + periodo[1] + "\nTarifa: " + tarifa.toString();
+        return fid + "\n" + tarifa +"\n"+"Importe: "+importe+ "\n" + ffac + "\n Periodo: " + periodo[0] + "-" + periodo[1] + "\ndatos.Tarifa: " + tarifa.toString();
     }
 }

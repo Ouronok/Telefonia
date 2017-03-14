@@ -1,5 +1,13 @@
+package clientes;
+
 import java.time.LocalDateTime;
 import java.util.LinkedList;
+
+import datos.Dato;
+import datos.Tarifa;
+import datos.Direccion;
+import pago.Factura;
+import pago.Llamada;
 
 
 public abstract class Cliente implements Dato {
@@ -12,7 +20,7 @@ public abstract class Cliente implements Dato {
     private LinkedList<Llamada> listall = new LinkedList<>();
     private LinkedList<Factura> listafac = new LinkedList<>();
 
-    Cliente(String nombre, String nif, String email, Direccion dir, LocalDateTime fecha, Tarifa tarifa) {
+    public Cliente(String nombre, String nif, String email, Direccion dir, LocalDateTime fecha, Tarifa tarifa) {
         this.nombre = nombre;
         this.email = email;
         this.nif = nif;
@@ -21,7 +29,7 @@ public abstract class Cliente implements Dato {
         this.tarifa = tarifa;
     }
 
-    LinkedList<Llamada> getLlamadaPeriodo(LocalDateTime[] periodo) {
+    public LinkedList<Llamada> getLlamadaPeriodo(LocalDateTime[] periodo) {
         LinkedList<Llamada> retList = new LinkedList<>();
         for (Llamada llact : listall) {
             if (llact.getFecha().isAfter(periodo[1]) && llact.getFecha().isBefore(periodo[0])) {
@@ -31,11 +39,11 @@ public abstract class Cliente implements Dato {
         return retList;
     }
 
-    void swpTarifa(Tarifa nTarifa) {
+    public void swpTarifa(Tarifa nTarifa) {
         this.tarifa = nTarifa;
     }
 
-    boolean addLlamada(Llamada llamada) {
+    public boolean addLlamada(Llamada llamada) {
         if (listall.contains(llamada)) {
             return false;
         }
@@ -43,23 +51,23 @@ public abstract class Cliente implements Dato {
         return true;
     }
 
-    LinkedList<Llamada> getListall() {
+    public LinkedList<Llamada> getListall() {
         return listall;
     }
 
-    String getNif() {
+    public String getNif() {
         return nif;
     }
 
-    Tarifa getTarifa() {
+    public Tarifa getTarifa() {
         return tarifa;
     }
 
-    String getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    boolean addFactura(Factura factura) {
+    public boolean addFactura(Factura factura) {
         if (listafac.contains(factura)) {
             return false;
         }
@@ -67,7 +75,7 @@ public abstract class Cliente implements Dato {
         return true;
     }
 
-    LinkedList<Factura> getListafac() {
+    public LinkedList<Factura> getListafac() {
         return listafac;
     }
 

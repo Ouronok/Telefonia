@@ -1,10 +1,11 @@
+import datos.Tarifa;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
 /**
- * Este Test comprueba los métodos públicos de la clase Tarifa.
+ * Este Test comprueba los métodos públicos de la clase datos.Tarifa.
  */
 
 public class TarifaTest{

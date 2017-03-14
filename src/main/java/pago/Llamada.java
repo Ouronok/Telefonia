@@ -1,13 +1,17 @@
+package pago;
+
+import datos.Dato;
+
 import java.time.LocalDateTime;
 
 
-class Llamada implements Dato{
+public class Llamada implements Dato {
 
     private String tlf;
     private LocalDateTime fecha;
     private int duracion;
 
-    Llamada(String tlf, int duracion, LocalDateTime fecha) {
+    public Llamada(String tlf, int duracion, LocalDateTime fecha) {
         this.tlf = tlf;
         this.duracion = duracion;
         this.fecha = fecha;
@@ -17,7 +21,7 @@ class Llamada implements Dato{
         return fecha;
     }
 
-    int getDuracion() {
+    public int getDuracion() {
         return duracion;
     }
 
