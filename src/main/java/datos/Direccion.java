@@ -23,6 +23,7 @@ public class Direccion {
         return poblacion;
     }
 
+    @Override
     public String toString() {
         return provincia + ", " + poblacion + ", " + cp;
     }

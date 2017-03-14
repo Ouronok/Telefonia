@@ -12,9 +12,4 @@ public class Empresa extends Cliente {
         super(nombre, nif, email, dir, fecha, tarifa);
     }
 
-    @Override
-    public String toString() {
-        return super.toString();
-    }
-
 }

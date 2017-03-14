@@ -9,7 +9,7 @@ import java.util.LinkedList;
 
 public class Factura implements Dato {
 
-    private static int globalFID = 0;
+    private int globalFID = 0;
     private Tarifa tarifa;
     private int fid;
     private LocalDateTime ffac;
@@ -41,9 +41,6 @@ public class Factura implements Dato {
         return fid;
     }
 
-    private double getImporte(){
-        return importe;
-    }
 
     @Override
     public String toString() {
