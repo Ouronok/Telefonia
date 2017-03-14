@@ -16,7 +16,7 @@ public class Factura implements Dato {
     private LocalDateTime[] periodo = new LocalDateTime[2];
     private double importe;
 
-    private Factura(LocalDateTime ffac, LocalDateTime f1, LocalDateTime f2, Cliente cliente, Tarifa tarifa) {
+    public Factura(LocalDateTime ffac, LocalDateTime f1, LocalDateTime f2, Cliente cliente, Tarifa tarifa) {
         globalFID++;
         fid = globalFID;
         CalcularImporte(cliente);
