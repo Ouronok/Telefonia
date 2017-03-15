@@ -6,6 +6,9 @@ import clientes.Particular;
 import datos.Dato;
 import datos.Direccion;
 import datos.Tarifa;
+import excepciones.BadPeriod;
+import excepciones.NotContained;
+import excepciones.NotCreated;
 import pago.Factura;
 import pago.Llamada;
 
@@ -81,19 +84,19 @@ public class Aplicacion {
         return null;
     }
 
-    boolean emitirFactura(Cliente cliente, LocalDateTime[] intervalo) {
-        try(intervalo[0].isAfter(intervalo[2])){
-
+    boolean emitirFactura(Cliente cliente, LocalDateTime[] intervalo) throws BadPeriod, NotContained {
+        if (intervalo[0].isAfter(intervalo[1])) {
+            throw new BadPeriod();
         }
 
-        if (!clientes.contains(cliente) || intervalo[0].isAfter(intervalo[2])) {
-            return false;
+        if (!clientes.contains(cliente)) {
+            throw new NotContained();
         }
         cliente.addFactura(new Factura(fact, intervalo[0], intervalo[1], cliente, cliente.getTarifa()));
         return true;
     }
 
-    Factura getFactura(int cod) {
+    Factura getFactura(int cod) throws NotCreated {
         for (Cliente cliac : clientes) {
             for (Factura faac : cliac.getListafac()) {
                 if (faac.getFid() == cod) {
@@ -101,7 +104,7 @@ public class Aplicacion {
                 }
             }
         }
-        return null;
+        throw new NotCreated();
     }
 
     LinkedList<Factura> getFacturas(Cliente cliente) {
@@ -110,8 +113,8 @@ public class Aplicacion {
 
 
 
-    public <T extends Dato> LinkedList<T> getList(LinkedList<T> list, LocalDateTime fecha1, LocalDateTime fecha2){
-        if(fecha1.isAfter(fecha2)) return null;
+    public <T extends Dato> LinkedList<T> getList(LinkedList<T> list, LocalDateTime fecha1, LocalDateTime fecha2) throws BadPeriod {
+        if(fecha1.isAfter(fecha2)) throw new BadPeriod();
 
         LinkedList<T> retList = new LinkedList<>();
         for(T elem : list){
@@ -123,24 +126,24 @@ public class Aplicacion {
         return retList;
     }
 
-    LinkedList<Cliente> getClientes(LocalDateTime fecha1, LocalDateTime fecha2){
+    LinkedList<Cliente> getClientes(LocalDateTime fecha1, LocalDateTime fecha2) throws BadPeriod {
 
         //FECHAS NO VALIDAS
-        if (fecha2.isAfter(fecha1)) return null; //Añadir excepción
+        if (fecha2.isAfter(fecha1)) throw new BadPeriod(); //Añadir excepción
         return getList(clientes,fecha1,fecha2);
     }
 
-    public LinkedList<Llamada> getLlamadas(Cliente cliente, LocalDateTime fecha1, LocalDateTime fecha2){
+    public LinkedList<Llamada> getLlamadas(Cliente cliente, LocalDateTime fecha1, LocalDateTime fecha2) throws BadPeriod {
 
         //FECHAS NO VALIDAS
-        if (fecha2.isAfter(fecha1)) return null;
+        if (fecha2.isAfter(fecha1)) throw new BadPeriod();
         return getList(getLlamadas(cliente),fecha1,fecha2);
     }
 
-    LinkedList<Factura> getFacturas(Cliente cliente, LocalDateTime fecha1, LocalDateTime fecha2){
+    LinkedList<Factura> getFacturas(Cliente cliente, LocalDateTime fecha1, LocalDateTime fecha2) throws BadPeriod {
 
         //FECHAS NO VALIDAS
-        if (fecha2.isAfter(fecha1)) return null; //Añadir excepción
+        if (fecha2.isAfter(fecha1)) throw new BadPeriod(); //Añadir excepción
         return getList(getFacturas(cliente),fecha1,fecha2);
 
     }
