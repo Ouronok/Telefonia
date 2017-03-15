@@ -2,6 +2,9 @@ package aplicacion;
 
 import clientes.Cliente;
 import datos.Direccion;
+import excepciones.BadPeriod;
+import excepciones.NotContained;
+import excepciones.NotCreated;
 import pago.Factura;
 import pago.Llamada;
 
@@ -94,9 +97,10 @@ class Menu {
         System.out.println("Escriba el codigo de factura");
         int cod = scanner.nextInt();
         scanner.nextLine();
-        Factura factura = app.getFactura(cod);
-        if (factura == null) {
-            System.out.println("No existe una factura con dicho codigo");
+        Factura factura;
+        try{
+            factura = app.getFactura(cod);
+        } catch(NotCreated e){
             return false;
         }
         System.out.println(factura.toString());
@@ -106,18 +110,22 @@ class Menu {
     private boolean addFactura() {
         cliente = getCliente();
         if(cliente==null){
-            System.out.println("El cliente no existe");
-            return false;
+          return false;
         }
         LocalDateTime[] intervalo = new LocalDateTime[2];
         intervalo[1] = LocalDateTime.now();
         intervalo[0] = LocalDateTime.now().minusMonths(1);
-        return app.emitirFactura(cliente, intervalo);
+        try{
+            app.emitirFactura(cliente, intervalo);
+        } catch (BadPeriod | NotContained e){
+            return false;
+        }
+        return true;
     }
 
     private boolean getLlamadas() {
         Cliente cliente = getCliente();
-        if (cliente != null) {
+        if (cliente == null) {
             return false;
         }
         LinkedList<Llamada> llamadas = app.getLlamadas(cliente);
@@ -167,9 +175,9 @@ class Menu {
     private Cliente getCliente() {
         System.out.println("Escriba el nif del cliente a realizar la operacion");
         String nif = scanner.nextLine();
-        cliente = app.getCliente(nif);
-        if (cliente == null) {
-            System.out.println("No existe dicho cliente");
+        try{
+            cliente = app.getCliente(nif);
+        } catch (NotContained e) {
             return null;
         }
         return cliente;

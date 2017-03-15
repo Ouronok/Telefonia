@@ -60,13 +60,13 @@ public class Aplicacion {
         return false;
     }
 
-    Cliente getCliente(String nif) {
+    Cliente getCliente(String nif) throws NotContained {
         for (Cliente cAct : clientes) {
             if (cAct.getNif().equals(nif)) {
                 return cAct;
             }
         }
-        return null;
+        throw new NotContained();
     }
 
     public LinkedList<Cliente> getClientes() {
