@@ -2,9 +2,7 @@ package aplicacion;
 
 import clientes.Cliente;
 import datos.Direccion;
-import excepciones.BadPeriod;
-import excepciones.NotContained;
-import excepciones.NotCreated;
+import excepciones.*;
 import pago.Factura;
 import pago.Llamada;
 
@@ -64,9 +62,9 @@ class Menu {
                 case 11:
                     resultado(getListClientes());
                 case 12:
-                    resultado(getListLlamadas());
+
                 case 13:
-                    resultado(getListFacturas());
+
                 case 14:
                     System.out.println("Saliendo del programa");
                     exit = true;
@@ -300,7 +298,13 @@ class Menu {
         fecha1 = crearFecha();
         System.out.println("Introduce la fecha final");
         fecha2 = crearFecha();
-        LinkedList<Cliente> list = app.getList(app.getClientes(),fecha1,fecha2);
+        LinkedList<Cliente> list;
+        try{
+            list = app.getList(app.getClientes(),fecha1,fecha2);
+        } catch (BadPeriod e) {
+            return false;
+        }
+
         return printList(list);
     }
 
