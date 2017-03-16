@@ -111,8 +111,6 @@ public class Aplicacion {
         return cliente.getListafac();
     }
 
-
-
     public <T extends Dato> LinkedList<T> getList(LinkedList<T> list, LocalDateTime fecha1, LocalDateTime fecha2) throws BadPeriod {
         if(fecha1.isAfter(fecha2)) throw new BadPeriod();
 
