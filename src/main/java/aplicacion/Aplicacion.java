@@ -12,11 +12,13 @@ import excepciones.NotCreated;
 import pago.Factura;
 import pago.Llamada;
 
+import java.io.OutputStream;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 
 
-public class Aplicacion {
+public class Aplicacion implements Serializable {
     private final LocalDateTime fact = LocalDateTime.now();
     private LinkedList<Cliente> clientes = new LinkedList<>();
 
@@ -139,7 +141,6 @@ public class Aplicacion {
         return getList(getFacturas(cliente),fecha1,fecha2);
 
     }
-
 
 
 }

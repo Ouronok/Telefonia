@@ -4,10 +4,11 @@ import clientes.Cliente;
 import datos.Dato;
 import datos.Tarifa;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 
-public class Factura implements Dato {
+public class Factura implements Dato, Serializable {
 
     private int globalFID = 0;
     private Tarifa tarifa;

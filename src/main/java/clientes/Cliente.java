@@ -1,8 +1,8 @@
 package clientes;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
-
 import datos.Dato;
 import datos.Tarifa;
 import datos.Direccion;
@@ -10,7 +10,7 @@ import pago.Factura;
 import pago.Llamada;
 
 
-public abstract class Cliente implements Dato {
+public abstract class Cliente implements Dato, Serializable {
     private String nombre;
     private String nif;
     private String email;

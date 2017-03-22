@@ -4,6 +4,7 @@ import clientes.Empresa;
 import clientes.Particular;
 import datos.Direccion;
 import datos.Tarifa;
+import excepciones.BadPeriod;
 import pago.Factura;
 import pago.Llamada;
 import es.uji.www.GeneradorDatosINE;
@@ -63,7 +64,7 @@ public class AplicacionTest {
 
 
     @Test
-    public void getList(){
+    public void getList() throws BadPeriod {
         clientes.add(particular);
 
         LinkedList<Cliente> comp = new LinkedList<>();

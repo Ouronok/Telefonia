@@ -6,6 +6,7 @@ import excepciones.*;
 import pago.Factura;
 import pago.Llamada;
 
+import java.io.*;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -13,8 +14,9 @@ import java.util.Scanner;
 class Menu {
 
     private Scanner scanner = new Scanner(System.in);
-    private Aplicacion app = new Aplicacion();
+    private Aplicacion app;
     private Cliente cliente;
+
 
     public static void main(String[] args) {
         Menu menu = new Menu();
@@ -22,7 +24,7 @@ class Menu {
     }
 
     private void menu() {
-        wrtMenu();
+        init();
         int op = scanner.nextInt();
         scanner.nextLine();
         printBar();
@@ -80,6 +82,18 @@ class Menu {
             scanner.nextLine();
             clearScreen();
         }
+    }
+
+    private void init(){
+        try {
+            FileInputStream fis = new FileInputStream("app.txt");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            app = (Aplicacion)ois.readObject();
+            ois.close();
+        } catch (Exception e) {
+            app = new Aplicacion();
+        }
+        wrtMenu();
     }
 
     private boolean getFacturas() {
@@ -319,5 +333,18 @@ class Menu {
         int año = scanner.nextInt();
         scanner.nextLine();
         return LocalDateTime.of(año,mes,dia,0,0);
+    }
+    private void save(){
+        try{
+            PrintWriter writer = new PrintWriter("the-file-name.txt", "UTF-8");
+            FileOutputStream fos = new FileOutputStream("app.bin");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(app);
+            oos.close();
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Ha ocurrido un error al guardar");
+        }
+
     }
 }

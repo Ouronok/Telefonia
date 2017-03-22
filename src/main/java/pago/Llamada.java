@@ -2,10 +2,11 @@ package pago;
 
 import datos.Dato;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 
-public class Llamada implements Dato {
+public class Llamada implements Dato, Serializable {
 
     private String tlf;
     private LocalDateTime fecha;
