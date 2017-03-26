@@ -16,7 +16,8 @@ import static org.junit.Assert.assertEquals;
 
 public class AplicacionTest {
 
-    private static Cliente empresa, particular;
+    private static Empresa empresa;
+    private static Cliente particular;
     private static LocalDateTime fecha;
     private static Tarifa tarifa = new Tarifa(20);
     private static Llamada llam1;
