@@ -38,7 +38,7 @@ public class Factura implements Dato, Serializable {
         }
     }
 
-    public int getFid() {
+    public int getFID() {
         return fid;
     }
 

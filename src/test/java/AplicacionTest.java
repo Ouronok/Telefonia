@@ -16,7 +16,6 @@ import static org.junit.Assert.assertEquals;
 
 public class AplicacionTest {
 
-    private static String NIF;
     private static Cliente empresa, particular;
     private static LocalDateTime fecha;
     private static Tarifa tarifa = new Tarifa(20);
@@ -35,7 +34,7 @@ public class AplicacionTest {
         GeneradorDatosINE gen = new GeneradorDatosINE();
         String nombre = gen.getNombre();
         String apellido = gen.getApellido();
-        NIF = gen.getNIF();
+        String NIF = gen.getNIF();
         String email = "pepe@gmail.com";
         String provincia = gen.getProvincia();
         String poblacion = gen.getPoblacion(provincia);
@@ -69,7 +68,7 @@ public class AplicacionTest {
         LinkedList<Cliente> comp = new LinkedList<>();
         comp.add(particular);
         ListAssert.assertEquals(app.getList(app.getClientes(),fecha.minusDays(3),fecha),clientes);
-        llamadas.add(llam2);
+        llamadas.add(llam1);
         ListAssert.assertEquals(app.getList(particular.getListall(),fecha.minusDays(3),fecha),llamadas);
         facturas.add(factura1);
         ListAssert.assertEquals(app.getList(particular.getListafac(),fecha.minusDays(3),fecha),facturas);

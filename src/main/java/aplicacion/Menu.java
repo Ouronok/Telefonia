@@ -72,6 +72,7 @@ class Menu {
                     break;
                 case 14:
                     System.out.println("Saliendo del programa");
+                    save();
                     exit = true;
                     break;
                 default:
@@ -193,6 +194,7 @@ class Menu {
         try{
             cliente = app.getCliente(nif);
         } catch (NotContained e) {
+            System.out.println(e.getMessage());
             return null;
         }
         return cliente;
@@ -302,7 +304,7 @@ class Menu {
             return false;
         }
         for(T element : list){
-            element.toString();
+            System.out.println(element.toString());
             System.out.println("---------");
         }
         return true;
@@ -332,6 +334,9 @@ class Menu {
         LocalDateTime fecha1;
         LocalDateTime fecha2;
         Cliente cliente = getCliente();
+        if(cliente==null){
+            return false;
+        }
         System.out.println("Introduce las fecha de inicio");
         fecha1 = crearFecha();
         System.out.println("Introduce la fecha final");
@@ -351,6 +356,9 @@ class Menu {
         LocalDateTime fecha1;
         LocalDateTime fecha2;
         Cliente cliente = getCliente();
+        if(cliente==null){
+            return false;
+        }
         System.out.println("Introduce las fecha de inicio");
         fecha1 = crearFecha();
         System.out.println("Introduce la fecha final");
@@ -359,6 +367,7 @@ class Menu {
         try{
             list = app.getList(app.getFacturas(cliente),fecha1,fecha2);
         } catch (BadPeriod e) {
+            System.out.println(e.getMessage());
             return false;
         }
 

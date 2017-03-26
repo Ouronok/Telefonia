@@ -12,7 +12,6 @@ import excepciones.NotCreated;
 import pago.Factura;
 import pago.Llamada;
 
-import java.io.OutputStream;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
@@ -101,7 +100,7 @@ public class Aplicacion implements Serializable {
     Factura getFactura(int cod) throws NotCreated {
         for (Cliente cliac : clientes) {
             for (Factura faac : cliac.getListafac()) {
-                if (faac.getFid() == cod) {
+                if (faac.getFID() == cod) {
                     return faac;
                 }
             }
