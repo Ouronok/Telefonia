@@ -63,10 +63,13 @@ class Menu {
                     break;
                 case 11:
                     resultado(getListClientes());
+                    break;
                 case 12:
-
+                    resultado(getLlamadasCliente());
+                    break;
                 case 13:
-
+                    resultado(getFacturasCliente());
+                    break;
                 case 14:
                     System.out.println("Saliendo del programa");
                     exit = true;
@@ -265,7 +268,7 @@ class Menu {
         System.out.println("    4-Recuperar cliente");
         System.out.println("    5-Recuperar todos los clientes");
         System.out.println("    6-Dar de alta llamada");
-        System.out.println("    7-Listar llamadas todas las llamadas del cliente");
+        System.out.println("    7-Listar todas las llamadas del cliente");
         System.out.println("    8-Emitir factura");
         System.out.println("    9-Recuperar factura");
         System.out.println("    10-Recuperar facturas cliente");
@@ -305,6 +308,8 @@ class Menu {
         return true;
     }
 
+
+
     private boolean getListClientes(){
         LocalDateTime fecha1;
         LocalDateTime fecha2;
@@ -321,6 +326,45 @@ class Menu {
 
         return printList(list);
     }
+
+    private boolean getLlamadasCliente(){
+
+        LocalDateTime fecha1;
+        LocalDateTime fecha2;
+        Cliente cliente = getCliente();
+        System.out.println("Introduce las fecha de inicio");
+        fecha1 = crearFecha();
+        System.out.println("Introduce la fecha final");
+        fecha2 = crearFecha();
+        LinkedList<Llamada> list;
+        try{
+            list = app.getList(app.getLlamadas(cliente),fecha1,fecha2);
+        } catch (BadPeriod e) {
+            return false;
+        }
+
+        return printList(list);
+    }
+
+    private boolean getFacturasCliente(){
+
+        LocalDateTime fecha1;
+        LocalDateTime fecha2;
+        Cliente cliente = getCliente();
+        System.out.println("Introduce las fecha de inicio");
+        fecha1 = crearFecha();
+        System.out.println("Introduce la fecha final");
+        fecha2 = crearFecha();
+        LinkedList<Factura> list;
+        try{
+            list = app.getList(app.getFacturas(cliente),fecha1,fecha2);
+        } catch (BadPeriod e) {
+            return false;
+        }
+
+        return printList(list);
+    }
+
 
     private LocalDateTime crearFecha() {
         System.out.println("Dia");

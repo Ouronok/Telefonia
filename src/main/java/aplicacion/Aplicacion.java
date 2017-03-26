@@ -126,21 +126,4 @@ public class Aplicacion implements Serializable {
         return retList;
     }
 
-    LinkedList<Cliente> getClientes(LocalDateTime fecha1, LocalDateTime fecha2) throws BadPeriod {
-        if (fecha2.isAfter(fecha1)) throw new BadPeriod();
-        return getList(clientes,fecha1,fecha2);
-    }
-
-    public LinkedList<Llamada> getLlamadas(Cliente cliente, LocalDateTime fecha1, LocalDateTime fecha2) throws BadPeriod {
-        if (fecha2.isAfter(fecha1)) throw new BadPeriod();
-        return getList(getLlamadas(cliente),fecha1,fecha2);
-    }
-
-    LinkedList<Factura> getFacturas(Cliente cliente, LocalDateTime fecha1, LocalDateTime fecha2) throws BadPeriod {
-        if (fecha2.isAfter(fecha1)) throw new BadPeriod();
-        return getList(getFacturas(cliente),fecha1,fecha2);
-
-    }
-
-
 }
