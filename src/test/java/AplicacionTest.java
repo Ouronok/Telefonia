@@ -49,6 +49,7 @@ public class AplicacionTest {
         factura2 = new Factura(fecha,fecha.minusDays(2),fecha.minusDays(4),particular,tarifa);
         clientes = new LinkedList<>();
         llamadas = new LinkedList<>();
+        facturas = new LinkedList<>();
         app = new Aplicacion();
         particular.addFactura(factura1);
         particular.addFactura(factura2);
@@ -56,8 +57,6 @@ public class AplicacionTest {
         particular.addLlamada(llam2);
         app.addCliente(empresa);
         app.addCliente(particular);
-
-
 
 
     }
@@ -71,8 +70,8 @@ public class AplicacionTest {
         comp.add(particular);
         ListAssert.assertEquals(app.getList(app.getClientes(),fecha.minusDays(3),fecha),clientes);
         llamadas.add(llam2);
-        ListAssert.assertEquals(app.getLlamadas(particular,fecha.minusDays(3),fecha),llamadas);
+        ListAssert.assertEquals(app.getList(particular.getListall(),fecha.minusDays(3),fecha),llamadas);
         facturas.add(factura1);
-        ListAssert.assertEquals(app.getLlamadas(particular,fecha.minusDays(3),fecha),llamadas);
+        ListAssert.assertEquals(app.getList(particular.getListafac(),fecha.minusDays(3),fecha),facturas);
     }
 }
