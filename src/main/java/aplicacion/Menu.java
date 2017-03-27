@@ -284,7 +284,6 @@ class Menu {
         System.out.println("    13-Listar facturas cliente entre fechas");
         System.out.println("    14-Salir");
         System.out.print("Opcion: ");
-
     }
 
 
