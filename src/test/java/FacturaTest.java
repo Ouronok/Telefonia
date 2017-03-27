@@ -47,14 +47,6 @@ public class FacturaTest{
     }
 
     @Test
-
-    public void testGetFID(){ //DADO QUE ESTAMOS UTILIZANDO GLOBALFID AL CREAR OTRAS FACTURAS EN OTROS TEST NO PUEDO CONTROLAR EL FUNCIONAMIENTO DEL TEST
-        assertEquals(facturaPart.getFID(),FID + 1); //Se incrementa en 1 porque es la primera factura
-        assertEquals(facturaEmp.getFID(),FID + 2); //Se incrementa en 2 porque es la segunda factura
-
-    }
-
-    @Test
     public void testGetFecha(){
 
         assertEquals(facturaPart.getFecha(),fecha);

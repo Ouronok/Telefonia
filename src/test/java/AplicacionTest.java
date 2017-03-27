@@ -5,14 +5,16 @@ import clientes.Particular;
 import datos.Direccion;
 import datos.Tarifa;
 import excepciones.BadPeriod;
+import junitx.framework.ListAssert;
 import pago.Factura;
 import pago.Llamada;
 import es.uji.www.GeneradorDatosINE;
-import junitx.framework.ListAssert;
 import org.junit.*;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
-import static org.junit.Assert.assertEquals;
+
+import static junitx.framework.Assert.assertEquals;
+
 
 public class AplicacionTest {
 
@@ -32,15 +34,16 @@ public class AplicacionTest {
     @BeforeClass
     public static void init(){
 
+
         GeneradorDatosINE gen = new GeneradorDatosINE();
         String nombre = gen.getNombre();
-        String apellido = gen.getApellido();
+        String apellidos = gen.getApellido();
         String NIF = gen.getNIF();
         String email = "pepe@gmail.com";
         String provincia = gen.getProvincia();
         String poblacion = gen.getPoblacion(provincia);
         Direccion direccion = new Direccion("12006",provincia,poblacion);
-        particular = new Particular(nombre,apellido,NIF,email,direccion,fecha.minusDays(2),tarifa);
+        particular = new Particular(nombre,apellidos,NIF,email,direccion,fecha.minusDays(5),tarifa);
         empresa = new Empresa(nombre,NIF,email,direccion,fecha.minusDays(4),tarifa);
         fecha = LocalDateTime.now();
         llam1 = new Llamada("964048351",20,fecha.minusDays(2));
@@ -54,7 +57,6 @@ public class AplicacionTest {
         particular.addFactura(factura1);
         particular.addFactura(factura2);
         particular.addLlamada(llam1);
-        particular.addLlamada(llam2);
         app.addCliente(empresa);
         app.addCliente(particular);
 
@@ -63,7 +65,17 @@ public class AplicacionTest {
 
 
     @Test
-    public void getList() throws BadPeriod {
+    public void testgetFacturas(){
+
+        facturas.add(factura1);
+        facturas.add(factura2);
+        assertEquals(app.getFacturas(particular),facturas);
+
+
+    }
+
+ @Test
+    public void getListTest() throws BadPeriod {
         clientes.add(particular);
 
         LinkedList<Cliente> comp = new LinkedList<>();
@@ -74,4 +86,5 @@ public class AplicacionTest {
         facturas.add(factura1);
         ListAssert.assertEquals(app.getList(particular.getListafac(),fecha.minusDays(3),fecha),facturas);
     }
+
 }

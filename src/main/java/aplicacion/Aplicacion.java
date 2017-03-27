@@ -78,7 +78,7 @@ public class Aplicacion implements Serializable {
         return clientes.contains(cliente) && cliente.addLlamada(llamada);
     }
 
-    LinkedList<Llamada> getLlamadas(Cliente cliente) {
+    public LinkedList<Llamada> getLlamadas(Cliente cliente) {
         if (clientes.contains(cliente)) {
             return cliente.getListall();
         }
@@ -108,7 +108,7 @@ public class Aplicacion implements Serializable {
         throw new NotCreated();
     }
 
-    LinkedList<Factura> getFacturas(Cliente cliente) {
+    public LinkedList<Factura> getFacturas(Cliente cliente) {
         return cliente.getListafac();
     }
 

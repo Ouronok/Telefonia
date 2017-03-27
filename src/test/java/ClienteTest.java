@@ -49,7 +49,7 @@ public class ClienteTest{
     }
 
     @Test
-    public void getLlamadaPeriodo(){ //Hay algún conflicto con las fechas que no llegamos a resolver
+    public void testgetLlamadaPeriodo(){ //Hay algún conflicto con las fechas que no llegamos a resolver
 
         LinkedList<Llamada> original = particular.getListall();
         original.add(llam1);
