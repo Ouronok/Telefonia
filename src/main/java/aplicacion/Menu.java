@@ -78,7 +78,6 @@ class Menu {
                 default:
                     clearScreen();
                     System.out.println("Introduzca una opcion valida");
-
             }
             if (exit) break;
             wrtMenu();
@@ -90,14 +89,20 @@ class Menu {
 
     private void init(){
         try {
-            FileInputStream fis = new FileInputStream("app.txt");
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            app = (Aplicacion)ois.readObject();
-            ois.close();
+            load();
         } catch (Exception e) {
             app = new Aplicacion();
+            System.out.println("Se ha inicializado la aplicacion por primera vez");
         }
         wrtMenu();
+    }
+
+    private void load() throws IOException, ClassNotFoundException {
+        FileInputStream fis = new FileInputStream("app.bin");
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        app = (Aplicacion)ois.readObject();
+        ois.close();
+        System.out.println("Se ha cargado con exito el programa");
     }
 
     private boolean getFacturas() {
@@ -389,12 +394,13 @@ class Menu {
     }
     private void save(){
         try{
-            PrintWriter writer = new PrintWriter("the-file-name.txt", "UTF-8");
+            PrintWriter writer = new PrintWriter("app.bin", "UTF-8");
             FileOutputStream fos = new FileOutputStream("app.bin");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(app);
             oos.close();
             writer.close();
+            System.out.println("Se ha guardado con exito");
         } catch (IOException e) {
             System.out.println("Ha ocurrido un error al guardar");
         }

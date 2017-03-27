@@ -17,8 +17,8 @@ public abstract class Cliente implements Dato, Serializable {
     private Direccion dir;
     private LocalDateTime fecha;
     private Tarifa tarifa;
-    private LinkedList<Llamada> listall = new LinkedList<>();
-    private LinkedList<Factura> listafac = new LinkedList<>();
+    private LinkedList<Llamada> listall;
+    private LinkedList<Factura> listafac;
 
     public Cliente(String nombre, String nif, String email, Direccion dir, LocalDateTime fecha, Tarifa tarifa) {
         this.nombre = nombre;
@@ -27,6 +27,8 @@ public abstract class Cliente implements Dato, Serializable {
         this.dir = dir;
         this.fecha = fecha;
         this.tarifa = tarifa;
+        this.listall = new LinkedList<>();
+        this.listafac = new LinkedList<>();
     }
 
     public LinkedList<Llamada> getLlamadaPeriodo(LocalDateTime[] periodo) {
@@ -61,10 +63,6 @@ public abstract class Cliente implements Dato, Serializable {
 
     public Tarifa getTarifa() {
         return tarifa;
-    }
-
-    public String getEmail() {
-        return email;
     }
 
     public boolean addFactura(Factura factura) {
