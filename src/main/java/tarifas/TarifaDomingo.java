@@ -1,9 +1,7 @@
 package tarifas;
 
 import java.lang.Math;
-/**
- * Created by ouron on 28/03/2017.
- */
+
 public class TarifaDomingo extends Tarifa{
         private Tarifa tarifa;
         public TarifaDomingo(Tarifa tarifa){
