@@ -6,15 +6,13 @@ import java.io.Serializable;
 
 public abstract class Tarifa implements Serializable {
 
-    private double precio;
+    double precio;
 
     public Tarifa(double precio) {
         this.precio = precio;
     }
 
-   public double getPrecio() {
-        return precio;
-    }
+   public abstract double getPrecio();
 
     public double getPrecioLlamada(Llamada llamada){
         return llamada.getDuracion()*precio;
