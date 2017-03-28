@@ -9,6 +9,10 @@ public class TarifaBasica extends Tarifa {
         super(precio);
     }
     @Override
+    public double getPrecio(){
+        return super.precio;
+    }
+    @Override
     public String descripcion(){
         return "Tarifa basica de precio fijo";
     }

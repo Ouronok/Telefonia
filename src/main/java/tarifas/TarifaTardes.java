@@ -5,12 +5,19 @@ package tarifas;
  */
 public class TarifaTardes extends Tarifa {
     private Tarifa tarifa;
-    public TarifaTardes(Tarifa tarifa, Double precio){
+
+    public TarifaTardes(Tarifa tarifa, Double precio) {
         super(precio);
         this.tarifa = tarifa;
     }
+
     @Override
-    public String descripcion(){
+    public double getPrecio() {
+        return Math.min(tarifa.getPrecio(), super.precio);
+    }
+
+    @Override
+    public String descripcion() {
         return "Tarifa de tardes mas barata";
     }
 
