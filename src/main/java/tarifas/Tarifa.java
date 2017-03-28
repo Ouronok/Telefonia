@@ -1,5 +1,7 @@
 package tarifas;
 
+import pago.Llamada;
+
 import java.io.Serializable;
 
 public abstract class Tarifa implements Serializable {
@@ -12,6 +14,10 @@ public abstract class Tarifa implements Serializable {
 
    public double getPrecio() {
         return precio;
+    }
+
+    public double getPrecioLlamada(Llamada llamada){
+        return llamada.getDuracion()*precio;
     }
 
     public abstract String descripcion();

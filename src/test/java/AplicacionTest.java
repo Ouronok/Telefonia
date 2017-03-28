@@ -3,7 +3,7 @@ import clientes.Cliente;
 import clientes.Empresa;
 import clientes.Particular;
 import datos.Direccion;
-import tarifas.Tarifa;
+import tarifas.*;
 import excepciones.BadPeriod;
 import junitx.framework.ListAssert;
 import pago.Factura;
@@ -21,7 +21,7 @@ public class AplicacionTest {
     private static Empresa empresa;
     private static Particular particular;
     private static LocalDateTime fecha = LocalDateTime.now();
-    private static Tarifa tarifa = new Tarifa(20);
+    private static Tarifa tarifa = new TarifaBasica(20);
     private static Llamada llam1;
     private static Llamada llam2;
     private static Factura factura1;
@@ -108,7 +108,7 @@ public class AplicacionTest {
 
     @After
     public void clean() {
-        clientes = new LinkedList<>() ;
+        clientes = new LinkedList<>();
         llamadas = new LinkedList<>();
         facturas = new LinkedList<>();
     }
