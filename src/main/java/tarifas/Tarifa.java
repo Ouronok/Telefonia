@@ -2,7 +2,7 @@ package tarifas;
 
 import java.io.Serializable;
 
-public class Tarifa implements Serializable {
+public abstract class Tarifa implements Serializable {
 
     private double precio;
 
@@ -13,6 +13,8 @@ public class Tarifa implements Serializable {
    public double getPrecio() {
         return precio;
     }
+
+    public abstract String descripcion();
 
     @Override
     public String toString() {

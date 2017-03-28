@@ -10,7 +10,6 @@ import pago.Factura;
 import pago.Llamada;
 import es.uji.www.GeneradorDatosINE;
 import org.junit.*;
-
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 
@@ -33,7 +32,7 @@ public class AplicacionTest {
     private static Aplicacion app;
 
     @BeforeClass
-    public static void init() {
+    public static void init(){
 
 
         GeneradorDatosINE gen = new GeneradorDatosINE();
