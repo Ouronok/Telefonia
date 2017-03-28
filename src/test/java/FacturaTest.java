@@ -7,6 +7,7 @@ import pago.Factura;
 import es.uji.www.GeneradorDatosINE;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import tarifas.TarifaBasica;
 
 import java.time.LocalDateTime;
 
@@ -36,7 +37,7 @@ public class FacturaTest{
         Direccion direccion = new Direccion("12006",provincia,poblacion);
         fecha = LocalDateTime.now();
         FID = 0;
-        Tarifa tarifa = new Tarifa(20);
+        Tarifa tarifa = new TarifaBasica(20);
         Cliente particular = new Particular(nombre,apellido,NIF,email,direccion,fecha,tarifa);
         Cliente empresa = new Empresa(nombre,NIF,email,direccion,fecha,tarifa);
         facturaPart = new Factura(fecha,fecha.minusMinutes(30),

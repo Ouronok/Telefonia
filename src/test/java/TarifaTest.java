@@ -1,11 +1,12 @@
 import tarifas.Tarifa;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import tarifas.TarifaBasica;
 
 import static org.junit.Assert.assertEquals;
 
 /**
- * Este Test comprueba los métodos públicos de la clase tarifas.Tarifa.
+ * Este Test comprueba los métodos públicos de la clase Tarifa.
  */
 
 public class TarifaTest{
@@ -18,7 +19,7 @@ public class TarifaTest{
     @BeforeClass
     public static void init(){
         precio = (double) 20;
-        tarifa = new Tarifa(precio);
+        tarifa = new TarifaBasica(precio);
     }
 
 

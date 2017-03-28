@@ -48,8 +48,8 @@ public class AplicacionTest {
         fecha = LocalDateTime.now();
         llam1 = new Llamada("964048351", 20, fecha.minusDays(2));
         llam2 = new Llamada("943882182", 15, fecha.minusDays(4));
-        factura1 = new Factura(fecha, fecha.minusDays(6), fecha.minusDays(2), particular, tarifa);
-        factura2 = new Factura(fecha, fecha.minusDays(2), fecha.minusDays(1), particular, tarifa);
+        factura1 = new Factura(fecha.minusDays(2), fecha.minusDays(6), fecha.minusDays(2), particular, tarifa);
+        factura2 = new Factura(fecha.minusDays(11), fecha.minusDays(2), fecha.minusDays(1), particular, tarifa);
         clientes = new LinkedList<>();
         llamadas = new LinkedList<>();
         facturas = new LinkedList<>();
@@ -101,8 +101,8 @@ public class AplicacionTest {
         ListAssert.assertEquals(app.getList(app.getClientes(), fecha.minusDays(3), fecha), clientes);
         llamadas.add(llam1);
         ListAssert.assertEquals(app.getList(particular.getListall(), fecha.minusDays(3), fecha), llamadas);
-        facturas.add(factura2);
-        assertEquals(app.getList(particular.getListafac(), fecha.minusDays(3), fecha), facturas);
+        facturas.add(factura1);
+        assertEquals(app.getList(particular.getListafac(), fecha.minusDays(10), fecha), facturas);
 
     }
 
