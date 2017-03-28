@@ -7,6 +7,7 @@ import pago.Factura;
 import pago.Llamada;
 import es.uji.www.GeneradorDatosINE;
 import org.junit.*;
+import tarifas.TarifaBasica;
 
 import java.time.LocalDateTime;
 import java.util.LinkedList;
@@ -23,7 +24,7 @@ public class ClienteTest{
     private static String NIF;
     private static Cliente empresa, particular;
     private static LocalDateTime fecha;
-    private static Tarifa tarifa = new Tarifa(20);
+    private static Tarifa tarifa = new TarifaBasica(20);
     private static Llamada llam1;
     private static Llamada llam2;
     private static Factura factura1;
@@ -70,7 +71,7 @@ public class ClienteTest{
     public void testSwapTarifa(){
         assertEquals(particular.getTarifa(),tarifa);
         Tarifa old = particular.getTarifa();
-        Tarifa otra = new Tarifa(40);
+        Tarifa otra = new TarifaBasica(40);
 
         particular.swpTarifa(otra);
         assertEquals(otra,particular.getTarifa());
