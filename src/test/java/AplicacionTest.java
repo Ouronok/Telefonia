@@ -43,7 +43,7 @@ public class AplicacionTest {
         String provincia = gen.getProvincia();
         String poblacion = gen.getPoblacion(provincia);
         Direccion direccion = new Direccion("12006",provincia,poblacion);
-        particular = new Particular(nombre,apellidos,NIF,email,direccion,fecha.minusDays(5),tarifa);
+        particular = new Particular(nombre,apellidos,NIF,email,direccion,fecha.minusDays(2),tarifa);
         empresa = new Empresa(nombre,NIF,email,direccion,fecha.minusDays(4),tarifa);
         fecha = LocalDateTime.now();
         llam1 = new Llamada("964048351",20,fecha.minusDays(2));
@@ -76,11 +76,9 @@ public class AplicacionTest {
 
  @Test
     public void getListTest() throws BadPeriod {
-        clientes.add(particular);
-
         LinkedList<Cliente> comp = new LinkedList<>();
         comp.add(particular);
-        ListAssert.assertEquals(app.getList(app.getClientes(),fecha.minusDays(3),fecha),clientes);
+        ListAssert.assertEquals(comp, app.getList(app.getClientes(),fecha.minusDays(3),fecha));
         llamadas.add(llam1);
         ListAssert.assertEquals(app.getList(particular.getListall(),fecha.minusDays(3),fecha),llamadas);
         facturas.add(factura1);

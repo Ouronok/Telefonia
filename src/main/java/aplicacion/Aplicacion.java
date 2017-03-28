@@ -5,7 +5,7 @@ import clientes.Empresa;
 import clientes.Particular;
 import datos.Dato;
 import datos.Direccion;
-import tarifas.Tarifa;
+import tarifas.*;
 import excepciones.BadPeriod;
 import excepciones.NotContained;
 import excepciones.NotCreated;
@@ -22,14 +22,14 @@ public class Aplicacion implements Serializable {
     private LinkedList<Cliente> clientes = new LinkedList<>();
 
     boolean addCliente(String nombre, String nif, String email, Direccion dir, Double precio) {
-        Tarifa tarifa = new Tarifa(precio);
+        Tarifa tarifa = new TarifaBasica(precio);
         Empresa cliente = new Empresa(nombre, nif, email, dir, fact, tarifa);
 
         return addCliente(cliente);
     }
 
     boolean addCliente(String nombre, String apellidos, String nif, String email, Direccion dir, Double precio) {
-        Tarifa tarifa = new Tarifa(precio);
+        Tarifa tarifa = new TarifaBasica(precio);
         Particular cliente = new Particular(nombre, apellidos, nif, email, dir, fact, tarifa);
         return addCliente(cliente);
     }
@@ -53,7 +53,7 @@ public class Aplicacion implements Serializable {
     }
 
     boolean swpTarifa(Cliente cliente, double precio) {
-        Tarifa tarifa = new Tarifa(precio);
+        Tarifa tarifa = new TarifaBasica(precio);
         if (clientes.contains(cliente)) {
             cliente.swpTarifa(tarifa);
             return true;
