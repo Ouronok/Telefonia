@@ -10,11 +10,15 @@ import pago.Factura;
 import pago.Llamada;
 import es.uji.www.GeneradorDatosINE;
 import org.junit.*;
+
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 
 import static junitx.framework.Assert.assertEquals;
 
+/**
+ * Este Test comprueba los métodos públicos de la clase Aplicación.
+ */
 
 public class AplicacionTest {
 
@@ -32,7 +36,7 @@ public class AplicacionTest {
     private static Aplicacion app;
 
     @BeforeClass
-    public static void init(){
+    public static void init() {
 
 
         GeneradorDatosINE gen = new GeneradorDatosINE();
@@ -94,10 +98,7 @@ public class AplicacionTest {
     @Test
     public void getListTest() throws BadPeriod {
 
-
         clientes.add(particular);
-        LinkedList<Cliente> comp = new LinkedList<>();
-        comp.add(particular);
         ListAssert.assertEquals(app.getList(app.getClientes(), fecha.minusDays(3), fecha), clientes);
         llamadas.add(llam1);
         ListAssert.assertEquals(app.getList(particular.getListall(), fecha.minusDays(3), fecha), llamadas);

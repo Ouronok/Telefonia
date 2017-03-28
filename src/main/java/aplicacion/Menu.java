@@ -29,7 +29,7 @@ class Menu {
         scanner.nextLine();
         printBar();
         boolean exit = false;
-        while (!exit) {
+        do {
             switch (op) {
                 case 1:
                     resultado(addCliente());
@@ -79,12 +79,13 @@ class Menu {
                     clearScreen();
                     System.out.println("Introduzca una opcion valida");
             }
+
             if (exit) break;
             wrtMenu();
             op = scanner.nextInt();
             scanner.nextLine();
             clearScreen();
-        }
+        }while(!exit);
     }
 
     private void init(){

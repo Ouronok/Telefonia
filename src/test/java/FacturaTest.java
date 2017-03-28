@@ -20,7 +20,6 @@ import static org.junit.Assert.assertEquals;
 public class FacturaTest{
 
     private static LocalDateTime fecha;
-    private static int FID ;
     private static Factura facturaPart;
     private static Factura facturaEmp;
 
@@ -36,7 +35,6 @@ public class FacturaTest{
         String poblacion = generador.getPoblacion(provincia);
         Direccion direccion = new Direccion("12006",provincia,poblacion);
         fecha = LocalDateTime.now();
-        FID = 0;
         Tarifa tarifa = new TarifaBasica(20);
         Cliente particular = new Particular(nombre,apellido,NIF,email,direccion,fecha,tarifa);
         Cliente empresa = new Empresa(nombre,NIF,email,direccion,fecha,tarifa);
