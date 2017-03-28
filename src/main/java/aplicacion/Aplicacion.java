@@ -74,8 +74,8 @@ public class Aplicacion implements Serializable {
         return clientes;
     }
 
-    boolean addLlamada(Llamada llamada, Cliente cliente) {
-        return clientes.contains(cliente) && cliente.addLlamada(llamada);
+    boolean addLlamada(String tlf, int duracion, LocalDateTime fecha, Cliente cliente) {
+        return clientes.contains(cliente) && cliente.addLlamada(new Llamada(tlf, duracion, fecha));
     }
 
     public LinkedList<Llamada> getLlamadas(Cliente cliente) {
@@ -123,6 +123,9 @@ public class Aplicacion implements Serializable {
             }
         }
         return retList;
+    }
+    public Direccion crearDir(String cp, String provincia, String poblacion){
+        return new Direccion(cp,provincia,poblacion);
     }
 
 }

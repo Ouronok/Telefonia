@@ -15,7 +15,6 @@ class Menu {
 
     private Scanner scanner = new Scanner(System.in);
     private Aplicacion app;
-    private Cliente cliente;
 
 
     public static void main(String[] args) {
@@ -130,7 +129,7 @@ class Menu {
     }
 
     private boolean addFactura() {
-        cliente = getCliente();
+        Cliente cliente = getCliente();
         if(cliente==null){
           return false;
         }
@@ -171,7 +170,7 @@ class Menu {
     }
 
     private boolean recCliente() {
-        cliente = getCliente();
+        Cliente cliente = getCliente();
         if (cliente == null){
             System.out.println("No existe dicho cliente");
             return false;
@@ -181,7 +180,7 @@ class Menu {
     }
 
     private boolean addLlamada() {
-        cliente = getCliente();
+        Cliente cliente = getCliente();
         if(cliente==null){
             return false;
         }
@@ -190,11 +189,12 @@ class Menu {
         LocalDateTime fecha = LocalDateTime.now();
         System.out.println("Escribe la duracion de la llamada");
         int duracion = scanner.nextInt();
-        return app.addLlamada(new Llamada(tlf, duracion, fecha), cliente);
+        return app.addLlamada(tlf,duracion,fecha,cliente);
     }
 
 
     private Cliente getCliente() {
+        Cliente cliente;
         System.out.println("Escriba el nif del cliente a realizar la operacion");
         String nif = scanner.nextLine();
         try{
@@ -251,18 +251,18 @@ class Menu {
         provincia = scanner.nextLine();
         System.out.println("Escriba la poblacion");
         poblacion = scanner.nextLine();
-        return new Direccion(cp, provincia, poblacion);
+        return app.crearDir(cp,provincia,poblacion);
     }
 
     private boolean swpTarifa() {
-        cliente = getCliente();
+        Cliente cliente = getCliente();
         System.out.println("Escriba el nuevo precio de la tarifa");
         double precio = scanner.nextDouble();
         return app.swpTarifa(cliente, precio);
     }
 
     private boolean delCliente() {
-        cliente = getCliente();
+        Cliente cliente = getCliente();
         return app.delCliente(cliente);
     }
 
