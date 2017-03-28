@@ -2,7 +2,7 @@ package pago;
 
 import clientes.Cliente;
 import datos.Dato;
-import datos.Tarifa;
+import tarifas.Tarifa;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -45,6 +45,6 @@ public class Factura implements Dato, Serializable {
 
     @Override
     public String toString() {
-        return fid + "\n" + tarifa +"\n"+"Importe: "+importe+ "\n" + ffac + "\n Periodo: " + periodo[0] + "-" + periodo[1] + "\ndatos.Tarifa: " + tarifa.toString();
+        return fid + "\n" + tarifa +"\n"+"Importe: "+importe+ "\n" + ffac + "\n Periodo: " + periodo[0] + "-" + periodo[1] + "\ntarifas.Tarifa: " + tarifa.toString();
     }
 }

@@ -5,7 +5,7 @@ import clientes.Empresa;
 import clientes.Particular;
 import datos.Dato;
 import datos.Direccion;
-import datos.Tarifa;
+import tarifas.Tarifa;
 import excepciones.BadPeriod;
 import excepciones.NotContained;
 import excepciones.NotCreated;

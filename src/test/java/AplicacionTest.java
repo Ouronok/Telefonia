@@ -3,7 +3,7 @@ import clientes.Cliente;
 import clientes.Empresa;
 import clientes.Particular;
 import datos.Direccion;
-import datos.Tarifa;
+import tarifas.Tarifa;
 import excepciones.BadPeriod;
 import junitx.framework.ListAssert;
 import pago.Factura;
@@ -20,7 +20,7 @@ public class AplicacionTest {
 
     private static Empresa empresa;
     private static Particular particular;
-    private static LocalDateTime fecha;
+    private static LocalDateTime fecha = LocalDateTime.now();
     private static Tarifa tarifa = new Tarifa(20);
     private static Llamada llam1;
     private static Llamada llam2;

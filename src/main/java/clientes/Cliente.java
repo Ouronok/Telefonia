@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 import datos.Dato;
-import datos.Tarifa;
+import tarifas.Tarifa;
 import datos.Direccion;
 import pago.Factura;
 import pago.Llamada;

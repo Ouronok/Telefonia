@@ -1,4 +1,4 @@
-package datos;
+package tarifas;
 
 import java.io.Serializable;
 

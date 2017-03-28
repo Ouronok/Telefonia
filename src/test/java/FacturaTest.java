@@ -2,7 +2,7 @@ import clientes.Cliente;
 import clientes.Empresa;
 import clientes.Particular;
 import datos.Direccion;
-import datos.Tarifa;
+import tarifas.Tarifa;
 import pago.Factura;
 import es.uji.www.GeneradorDatosINE;
 import org.junit.BeforeClass;

@@ -1,7 +1,7 @@
 package clientes;
 
 import datos.Direccion;
-import datos.Tarifa;
+import tarifas.Tarifa;
 
 import java.time.LocalDateTime;
 
