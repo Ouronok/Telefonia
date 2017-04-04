@@ -18,7 +18,6 @@ public abstract class Tarifa implements Serializable {
         return llamada.getDuracion()*precio;
     }
 
-    public abstract String descripcion();
 
     @Override
     public String toString() {

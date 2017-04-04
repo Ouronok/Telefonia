@@ -14,7 +14,6 @@ import java.util.LinkedList;
 
 public class Factura implements Dato, Serializable {
 
-    private int globalFID = 0;
     private Tarifa tact;
     private Tarifa tbas= new TarifaBasica(15);
     private int fid;
@@ -23,6 +22,7 @@ public class Factura implements Dato, Serializable {
     private double importe;
 
     public Factura(LocalDateTime ffac, LocalDateTime f1, LocalDateTime f2, Cliente cliente, Tarifa tact) {
+        int globalFID = 0;
         globalFID++;
         fid = globalFID;
         CalcularImporte(cliente);

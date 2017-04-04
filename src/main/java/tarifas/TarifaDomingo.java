@@ -12,9 +12,4 @@ public class TarifaDomingo extends Tarifa{
         public double getPrecio(){
             return Math.min(tarifa.getPrecio(),super.precio);
         }
-        @Override
-        public String descripcion(){
-            return "Tarifa de domingo gratuita";
-        }
-
 }
