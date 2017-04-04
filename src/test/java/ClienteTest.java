@@ -15,7 +15,7 @@ import java.util.LinkedList;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Este Test comprueba los métodos públicos de la clase clientes.Cliente.
+ * Este Test comprueba los métodos públicos de la clase Cliente.
  */
 
 public class ClienteTest {
