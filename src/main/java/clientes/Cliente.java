@@ -34,7 +34,7 @@ public abstract class Cliente implements Dato, Serializable {
     public LinkedList<Llamada> getLlamadaPeriodo(LocalDateTime[] periodo) {
         LinkedList<Llamada> retList = new LinkedList<>();
         for (Llamada llact : listall) {
-            if (llact.getFecha().isAfter(periodo[1]) && llact.getFecha().isBefore(periodo[0])) {
+            if (llact.getFecha().isAfter(periodo[0]) && llact.getFecha().isBefore(periodo[1])) {
                 retList.add(llact);
             }
         }
