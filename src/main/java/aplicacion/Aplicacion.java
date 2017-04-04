@@ -4,13 +4,12 @@ import clientes.Cliente;
 import clientes.Empresa;
 import clientes.Particular;
 import datos.Dato;
-import datos.Direccion;
-import tarifas.*;
 import excepciones.BadPeriod;
 import excepciones.NotContained;
 import excepciones.NotCreated;
 import pago.Factura;
 import pago.Llamada;
+import tarifas.Tarifa;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -19,18 +18,16 @@ import java.util.LinkedList;
 
 public class Aplicacion implements Serializable {
     private final LocalDateTime fact = LocalDateTime.now();
-    private LinkedList<Cliente> clientes = new LinkedList<>();
+    private Factoria factoria = new Factoria();
+    private LinkedList<Cliente> clientes = factoria.creaLista();
 
-    boolean addCliente(String nombre, String nif, String email, Direccion dir, Double precio) {
-        Tarifa tarifa = new TarifaBasica(precio);
-        Empresa cliente = new Empresa(nombre, nif, email, dir, fact, tarifa);
-
+    boolean addCliente(String nombre, String nif, String email, String[] dir, Double precio) {
+        Empresa cliente = factoria.creaEmpresa(nombre, nif, email, factoria.crearDir(dir), fact, precio);
         return addCliente(cliente);
     }
 
-    boolean addCliente(String nombre, String apellidos, String nif, String email, Direccion dir, Double precio) {
-        Tarifa tarifa = new TarifaBasica(precio);
-        Particular cliente = new Particular(nombre, apellidos, nif, email, dir, fact, tarifa);
+    boolean addCliente(String nombre, String apellidos, String nif, String email, String[] dir, Double precio) {
+        Particular cliente = factoria.creaParticular(nombre, apellidos, nif, email, factoria.crearDir(dir), fact, precio);
         return addCliente(cliente);
     }
 
@@ -53,7 +50,7 @@ public class Aplicacion implements Serializable {
     }
 
     boolean swpTarifa(Cliente cliente, double precio) {
-        Tarifa tarifa = new TarifaBasica(precio);
+        Tarifa tarifa = factoria.creaTarifa(precio);
         if (clientes.contains(cliente)) {
             cliente.swpTarifa(tarifa);
             return true;
@@ -67,7 +64,7 @@ public class Aplicacion implements Serializable {
                 return cAct;
             }
         }
-        throw new NotContained();
+        throw factoria.creaNotContained();
     }
 
     public LinkedList<Cliente> getClientes() {
@@ -75,7 +72,7 @@ public class Aplicacion implements Serializable {
     }
 
     boolean addLlamada(String tlf, int duracion, LocalDateTime fecha, Cliente cliente) {
-        return clientes.contains(cliente) && cliente.addLlamada(new Llamada(tlf, duracion, fecha));
+        return clientes.contains(cliente) && cliente.addLlamada(factoria.creaLlamada(tlf, duracion, fecha));
     }
 
     public LinkedList<Llamada> getLlamadas(Cliente cliente) {
@@ -85,16 +82,15 @@ public class Aplicacion implements Serializable {
         return null;
     }
 
-    boolean emitirFactura(Cliente cliente, LocalDateTime[] intervalo) throws BadPeriod, NotContained {
+    void emitirFactura(Cliente cliente, LocalDateTime[] intervalo) throws BadPeriod, NotContained {
         if (intervalo[0].isAfter(intervalo[1])) {
-            throw new BadPeriod();
+            throw factoria.creaBadPeriod();
         }
 
         if (!clientes.contains(cliente)) {
-            throw new NotContained();
+            throw factoria.creaNotContained();
         }
-        cliente.addFactura(new Factura(fact, intervalo[0], intervalo[1], cliente, cliente.getTarifa()));
-        return true;
+        cliente.addFactura(factoria.creaFactura(fact, intervalo, cliente, cliente.getTarifa()));
     }
 
     Factura getFactura(int cod) throws NotCreated {
@@ -105,7 +101,7 @@ public class Aplicacion implements Serializable {
                 }
             }
         }
-        throw new NotCreated();
+        throw factoria.creaNotCreated();
     }
 
     public LinkedList<Factura> getFacturas(Cliente cliente) {
@@ -113,9 +109,9 @@ public class Aplicacion implements Serializable {
     }
 
     public <T extends Dato> LinkedList<T> getList(LinkedList<T> list, LocalDateTime fecha1, LocalDateTime fecha2) throws BadPeriod {
-        if(fecha1.isAfter(fecha2)) throw new BadPeriod();
+        if (fecha1.isAfter(fecha2)) throw factoria.creaBadPeriod();
 
-        LinkedList<T> retList = new LinkedList<>();
+        LinkedList<T> retList = factoria.creaLista();
         for(T elem : list){
             LocalDateTime fecha = elem.getFecha();
             if(fecha.isAfter(fecha1) && fecha.isBefore(fecha2)){
@@ -124,8 +120,4 @@ public class Aplicacion implements Serializable {
         }
         return retList;
     }
-    public Direccion crearDir(String cp, String provincia, String poblacion){
-        return new Direccion(cp,provincia,poblacion);
-    }
-
 }

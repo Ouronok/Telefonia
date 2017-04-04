@@ -1,8 +1,9 @@
 package aplicacion;
 
 import clientes.Cliente;
-import datos.Direccion;
-import excepciones.*;
+import excepciones.BadPeriod;
+import excepciones.NotContained;
+import excepciones.NotCreated;
 import pago.Factura;
 import pago.Llamada;
 
@@ -212,7 +213,7 @@ class Menu {
         String nif;
         String email;
         String nombre;
-        Direccion dir;
+        String[] dir;
         String apellidos = null;
         double precio;
 
@@ -241,7 +242,7 @@ class Menu {
         return app.addCliente(nombre, apellidos, nif, email, dir, precio);
     }
 
-    private Direccion crearDir() {
+    private String[] crearDir() {
         String cp;
         String provincia;
         String poblacion;
@@ -251,7 +252,8 @@ class Menu {
         provincia = scanner.nextLine();
         System.out.println("Escriba la poblacion");
         poblacion = scanner.nextLine();
-        return app.crearDir(cp,provincia,poblacion);
+        String[] ret = {cp, provincia, poblacion};
+        return ret;
     }
 
     private boolean swpTarifa() {
