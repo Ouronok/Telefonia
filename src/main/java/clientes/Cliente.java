@@ -54,7 +54,7 @@ public abstract class Cliente implements Dato, Serializable {
     }
 
     public LinkedList<Llamada> getListall() {
-        return listall;    }
+        return listall;     }
 
     public String getNif() {
         return nif;
