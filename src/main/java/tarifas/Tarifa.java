@@ -12,11 +12,9 @@ public abstract class Tarifa implements Serializable {
         this.precio = precio;
     }
 
-    public abstract double getPrecio();
+   public abstract double getPrecio();
 
-    public double getPrecioLlamada(Llamada llamada) {
-        return llamada.getDuracion() * precio;
-    }
+    public abstract double precioLlamada(Llamada llamada);
 
 
     @Override
