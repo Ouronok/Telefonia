@@ -25,7 +25,6 @@ public class Factura implements Dato, Serializable {
         int globalFID = 0;
         globalFID++;
         fid = globalFID;
-        CalcularImporte(cliente);
         this.ffac = ffac;
         this.periodo[0] = f1;
         this.periodo[1] = f2;
@@ -39,12 +38,11 @@ public class Factura implements Dato, Serializable {
     private void CalcularImporte(Cliente cliente) {
         LinkedList<Llamada> llper = cliente.getLlamadaPeriodo(periodo);
         for (Llamada llact : llper) {
-            checkTime(llact);
-            importe += tact.getPrecioLlamada(llact);
+            importe += llact.getPrecio();
         }
     }
 
-    private void checkTime(Llamada llact) {
+   private void checkTime(Llamada llact) {
         if (llact.getFecha().getDayOfWeek()== DayOfWeek.SUNDAY){
             tact = new TarifaDomingo(tact);
         } else if(llact.getFecha().getHour()>=16 && llact.getFecha().getHour()<=20){
@@ -54,6 +52,7 @@ public class Factura implements Dato, Serializable {
         }
 
     }
+
 
     public int getFID() {
         return fid;

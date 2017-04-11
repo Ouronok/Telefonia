@@ -10,8 +10,12 @@ import excepciones.NotCreated;
 import pago.Factura;
 import pago.Llamada;
 import tarifas.Tarifa;
+import tarifas.TarifaBasica;
+import tarifas.TarifaDomingo;
+import tarifas.TarifaTardes;
 
 import java.io.Serializable;
+import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 
@@ -72,7 +76,22 @@ public class Aplicacion implements Serializable {
     }
 
     boolean addLlamada(String tlf, int duracion, LocalDateTime fecha, Cliente cliente) {
-        return clientes.contains(cliente) && cliente.addLlamada(factoria.creaLlamada(tlf, duracion, fecha));
+
+        return clientes.contains(cliente) && cliente.addLlamada(factoria.creaLlamada(tlf, duracion, fecha,checkTarifa(cliente,fecha)));
+    }
+
+    private Tarifa checkTarifa(Cliente cliente, LocalDateTime fecha) {
+        TarifaBasica tbas = cliente.getTarifa();
+        TarifaDomingo tdom = factoria.creaTarifaDomingo(cliente.getTarifa());
+        TarifaTardes ttarde = factoria.creaTarifaTarde(cliente.getTarifa());
+        if (fecha.getDayOfWeek() == DayOfWeek.SUNDAY){
+            cliente.swpTarifa(tdom);
+        } else if(fecha.getHour()>=16 && fecha.getHour()<=20){
+            cliente.swpTarifa(ttarde);
+        } else {
+            cliente.swpTarifa(tbas);
+        }
+
     }
 
     public LinkedList<Llamada> getLlamadas(Cliente cliente) {
