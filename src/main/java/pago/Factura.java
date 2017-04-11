@@ -35,12 +35,7 @@ public class Factura implements Dato, Serializable {
         return ffac;
     }
 
-    private void CalcularImporte(Cliente cliente) {
-        LinkedList<Llamada> llper = cliente.getLlamadaPeriodo(periodo);
-        for (Llamada llact : llper) {
-            importe += ;
-        }
-    }
+
 
    private void checkTime(Llamada llact) {
         if (llact.getFecha().getDayOfWeek()== DayOfWeek.SUNDAY){
