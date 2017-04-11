@@ -1,19 +1,22 @@
 package tarifas;
 
 
-public class TarifaTardes extends Tarifa {
-    private Tarifa tarifa;
+import pago.Llamada;
+
+public class TarifaTardes extends TarifaEspecial {
 
     public TarifaTardes(Tarifa tarifa, Double precio) {
-        super(precio);
-        this.tarifa = tarifa;
+        super(precio,tarifa);
+
     }
 
     @Override
-    public double getPrecio() {
-        return Math.min(tarifa.getPrecio(), super.precio);
+    public double precioLlamada(Llamada llamada) {
+        if(llamada.getFecha().getHour() >= 16 && llamada.getFecha().getHour() <= 20){
+            return Math.min(precioLlamada(llamada), getRecubierta().precioLlamada(llamada));
+        }
+        return getRecubierta().precioLlamada(llamada);
     }
-
 
 
 }

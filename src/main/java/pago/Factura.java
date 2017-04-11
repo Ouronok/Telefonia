@@ -38,7 +38,7 @@ public class Factura implements Dato, Serializable {
     private void CalcularImporte(Cliente cliente) {
         LinkedList<Llamada> llper = cliente.getLlamadaPeriodo(periodo);
         for (Llamada llact : llper) {
-            importe += llact.getPrecio();
+            importe += ;
         }
     }
 
