@@ -77,7 +77,7 @@ public class Aplicacion implements Serializable {
 
     boolean addLlamada(String tlf, int duracion, LocalDateTime fecha, Cliente cliente) {
 
-        return clientes.contains(cliente) && cliente.addLlamada(factoria.creaLlamada(tlf, duracion, fecha,checkTarifa(cliente,fecha)));
+        return clientes.contains(cliente) && cliente.addLlamada(factoria.creaLlamada(tlf, duracion, fecha,));
     }
 
 
@@ -127,4 +127,6 @@ public class Aplicacion implements Serializable {
         }
         return retList;
     }
+
+
 }
