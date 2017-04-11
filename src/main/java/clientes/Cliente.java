@@ -80,7 +80,8 @@ public abstract class Cliente implements Dato, Serializable {
     @Override
     public String toString() {
         return "Nombre: " + nombre + "\n" + "NIF: " + nif + "\n" + "Email: "
-        + email + "\n" +  "Direccion: " + dir.toString() + "\n" + fecha.toString() + "\n" + tarifa.toString();
+        + email + "\n" +  "Direccion: " + dir.toString() + "\n" + "Fecha" + fecha.toString() + "\n" + "Tarifa" +
+                tarifa.toString();
     }
 
     public LocalDateTime getFecha(){
