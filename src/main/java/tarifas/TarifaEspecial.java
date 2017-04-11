@@ -1,8 +1,5 @@
 package tarifas;
 
-/**
- * Created by al342052 on 11/04/2017.
- */
 public abstract class TarifaEspecial extends Tarifa {
     private Tarifa recubierta;
 
