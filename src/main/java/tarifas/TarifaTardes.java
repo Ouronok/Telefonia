@@ -18,5 +18,10 @@ public class TarifaTardes extends TarifaEspecial {
         return getRecubierta().precioLlamada(llamada);
     }
 
+    @Override
+    public double getPrecio() {
+        return super.precio;
+    }
+
 
 }

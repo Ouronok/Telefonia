@@ -53,8 +53,8 @@ class Factoria {
         return new NotCreated();
     }
 
-    Factura creaFactura(LocalDateTime fact, LocalDateTime[] intervalo, Cliente cliente, Tarifa tarifa) {
-        return new Factura(fact, intervalo[0], intervalo[1], cliente, tarifa);
+    Factura creaFactura(LocalDateTime fact, LocalDateTime[] intervalo,Double importe, Tarifa tarifa) {
+        return new Factura(fact, intervalo[0], intervalo[1],importe, tarifa);
     }
 
     Direccion crearDir(String[] val) {

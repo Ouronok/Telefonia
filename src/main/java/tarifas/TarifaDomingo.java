@@ -18,6 +18,11 @@ public class TarifaDomingo extends TarifaEspecial {
         else return getRecubierta().precioLlamada(llamada);
     }
 
+    @Override
+    public double getPrecio() {
+        return 0;
+    }
+
 //    @Override
 //        public double getPrecio(){
 //            return Math.min(tarifa.getPrecio(),super.precio);

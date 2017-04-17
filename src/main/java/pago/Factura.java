@@ -13,15 +13,13 @@ import java.time.LocalDateTime;
 import java.util.LinkedList;
 
 public class Factura implements Dato, Serializable {
-
     private Tarifa tact;
-    private Tarifa tbas= new TarifaBasica(15);
     private int fid;
     private LocalDateTime ffac;
     private LocalDateTime[] periodo = new LocalDateTime[2];
     private double importe;
 
-    public Factura(LocalDateTime ffac, LocalDateTime f1, LocalDateTime f2, Cliente cliente, Tarifa tact) {
+    public Factura(LocalDateTime ffac, LocalDateTime f1, LocalDateTime f2, Double importe, Tarifa tact) {
         int globalFID = 0;
         globalFID++;
         fid = globalFID;
@@ -29,23 +27,11 @@ public class Factura implements Dato, Serializable {
         this.periodo[0] = f1;
         this.periodo[1] = f2;
         this.tact = tact;
+        this.importe = importe;
     }
 
     public LocalDateTime getFecha() {
         return ffac;
-    }
-
-
-
-   private void checkTime(Llamada llact) {
-        if (llact.getFecha().getDayOfWeek()== DayOfWeek.SUNDAY){
-            tact = new TarifaDomingo(tact);
-        } else if(llact.getFecha().getHour()>=16 && llact.getFecha().getHour()<=20){
-            tact = new TarifaTardes(tact, 0.5);
-        } else {
-            tact = tbas;
-        }
-
     }
 
 

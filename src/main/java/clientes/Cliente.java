@@ -76,6 +76,8 @@ public abstract class Cliente implements Dato, Serializable {
         return listafac;
     }
 
+    public void calcImp(){}
+
     @Override
     public String toString() {
         return "Nombre: " + nombre + "\n" + "NIF: " + nif + "\n" + "Email: "
@@ -87,3 +89,4 @@ public abstract class Cliente implements Dato, Serializable {
         return fecha;
     }
 }
+

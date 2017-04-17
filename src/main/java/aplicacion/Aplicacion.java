@@ -77,7 +77,7 @@ public class Aplicacion implements Serializable {
 
     boolean addLlamada(String tlf, int duracion, LocalDateTime fecha, Cliente cliente) {
 
-        return clientes.contains(cliente) && cliente.addLlamada(factoria.creaLlamada(tlf, duracion, fecha,));
+        return clientes.contains(cliente) && cliente.addLlamada(factoria.creaLlamada(tlf, duracion, fecha,cliente.getTarifa()));
     }
 
 
@@ -97,7 +97,18 @@ public class Aplicacion implements Serializable {
         if (!clientes.contains(cliente)) {
             throw factoria.creaNotContained();
         }
-        cliente.addFactura(factoria.creaFactura(fact, intervalo, cliente, cliente.getTarifa()));
+        double importe = calcImp(cliente, intervalo);
+        cliente.addFactura(factoria.creaFactura(fact, intervalo, importe, cliente.getTarifa()));
+    }
+
+    private double calcImp(Cliente cliente, LocalDateTime[] intervalo) {
+        double importe=0;
+        for(Llamada llac : cliente.getListall()){
+            if(llac.getFecha().isAfter(intervalo[0]) && llac.getFecha().isBefore(intervalo[1])){
+                importe+= cliente.getTarifa().precioLlamada(llac);
+            }
+        }
+        return importe;
     }
 
     Factura getFactura(int cod) throws NotCreated {
