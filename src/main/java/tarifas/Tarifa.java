@@ -20,4 +20,5 @@ public abstract class Tarifa implements Serializable {
     public String toString() {
         return precio + "€";
     }
+
 }

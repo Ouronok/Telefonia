@@ -53,11 +53,12 @@ public class Aplicacion implements Serializable {
         return false;
     }
 
-    boolean swpTarifa(Cliente cliente, double precio) {
-        Tarifa tarifa = factoria.creaTarifa(precio);
+    boolean swpPrecio(Cliente cliente, double precio) {
         if (clientes.contains(cliente)) {
-            cliente.swpTarifa(tarifa);
-            return true;
+            if(cliente.getTarifa() instanceof TarifaBasica){
+                ((TarifaBasica) cliente.getTarifa()).swpPrecio(precio);
+                return true;
+            }
         }
         return false;
     }

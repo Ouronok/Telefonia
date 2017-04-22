@@ -88,5 +88,7 @@ public abstract class Cliente implements Dato, Serializable {
     public LocalDateTime getFecha(){
         return fecha;
     }
+
+
 }
 

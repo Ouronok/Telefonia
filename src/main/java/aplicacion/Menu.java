@@ -256,11 +256,20 @@ class Menu {
         return ret;
     }
 
-    private boolean swpTarifa() {
+    private boolean swpPrecio() {
         Cliente cliente = getCliente();
         System.out.println("Escriba el nuevo precio de la tarifa");
         double precio = scanner.nextDouble();
-        return app.swpTarifa(cliente, precio);
+        return app.swpPrecio(cliente, precio);
+    }
+
+    private boolean swpTarifa() {
+        System.out.println("Elija la tarifa a aplicar: ");
+        System.out.println(" 1-Domingos");
+        System.out.println(" 2-Tardes");
+        int op = scanner.nextInt();
+        scanner.next();
+        if(op==1){
     }
 
     private boolean delCliente() {
