@@ -31,7 +31,7 @@ public class FactoriaClientes {
     // EXCEPCIONES
 
     NotContained creaNotContained() {
-        return new NotContained();
+
     }
 
     NotCreated creaNotCreated() {

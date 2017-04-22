@@ -71,6 +71,9 @@ class Menu {
                     resultado(getFacturasCliente());
                     break;
                 case 14:
+                    resultado(swpPrecio());
+                    break;
+                case 15:
                     System.out.println("Saliendo del programa");
                     save();
                     exit = true;
@@ -264,12 +267,26 @@ class Menu {
     }
 
     private boolean swpTarifa() {
+        Cliente cliente = getCliente();
         System.out.println("Elija la tarifa a aplicar: ");
         System.out.println(" 1-Domingos");
         System.out.println(" 2-Tardes");
         int op = scanner.nextInt();
         scanner.next();
-        if(op==1){
+        switch (op) {
+            case (1): {
+                cliente.swpTarifa(FactoriaTarifas.createDomingo());
+                return true;
+            }
+            case (2): {
+                cliente.swpTarifa(FactoriaTarifas.createTardes());
+                return true;
+            }
+            default: {
+                System.out.println("Opcion invalida");
+                return false;
+            }
+        }
     }
 
     private boolean delCliente() {
@@ -294,7 +311,8 @@ class Menu {
         System.out.println("    11-Listar clientes entre fechas");
         System.out.println("    12-Listar llamadas cliente entre fechas");
         System.out.println("    13-Listar facturas cliente entre fechas");
-        System.out.println("    14-Salir");
+        System.out.println("    14-Cambiar precio tarifa basica");
+        System.out.println("    15-Salir");
         System.out.print("Opcion: ");
     }
 
