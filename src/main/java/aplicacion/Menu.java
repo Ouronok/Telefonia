@@ -272,21 +272,7 @@ class Menu {
         System.out.println(" 1-Domingos");
         System.out.println(" 2-Tardes");
         int op = scanner.nextInt();
-        scanner.next();
-        switch (op) {
-            case (1): {
-                cliente.swpTarifa(FactoriaTarifas.createDomingo());
-                return true;
-            }
-            case (2): {
-                cliente.swpTarifa(FactoriaTarifas.createTardes());
-                return true;
-            }
-            default: {
-                System.out.println("Opcion invalida");
-                return false;
-            }
-        }
+        return app.swpTarifa(op,cliente);
     }
 
     private boolean delCliente() {

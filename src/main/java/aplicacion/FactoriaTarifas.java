@@ -20,19 +20,16 @@ import java.util.LinkedList;
 
 public class FactoriaTarifas {
 
-    BadPeriod creaBadPeriod() {
-        return new BadPeriod();
-    }
 
     TarifaBasica creaTarifa(Double precio) {
         return new TarifaBasica(precio);
     }
 
-    public TarifaDomingo creaTarifaDomingo(Tarifa tarifa) {
+    public static TarifaDomingo creaDomingo(Tarifa tarifa) {
         return new TarifaDomingo(tarifa);
     }
 
-    public TarifaTardes creaTarifaTarde(Tarifa tarifa) {
+    public static TarifaTardes creaTardes(Tarifa tarifa) {
         return new TarifaTardes(tarifa, (double) 10);
     }
 }
