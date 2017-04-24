@@ -38,10 +38,8 @@ public class FacturaTest{
         Tarifa tarifa = new TarifaBasica(20);
         Cliente particular = new Particular(nombre,apellido,NIF,email,direccion,fecha,tarifa);
         Cliente empresa = new Empresa(nombre,NIF,email,direccion,fecha,tarifa);
-        facturaPart = new Factura(fecha,fecha.minusMinutes(30),
-                fecha.minusMinutes(10),particular,tarifa);
-        facturaEmp = new Factura(fecha,fecha.minusMinutes(30),
-                fecha.minusMinutes(10),empresa,tarifa);
+        facturaPart = new Factura(fecha,fecha.minusMinutes(30), fecha.minusMinutes(10),300.0,tarifa);
+        facturaEmp = new Factura(fecha,fecha.minusMinutes(30), fecha.minusMinutes(10),200.0,tarifa);
 
     }
 

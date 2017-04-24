@@ -42,10 +42,10 @@ public class ClienteTest {
         fecha = LocalDateTime.now();
         particular = new Particular(nombre, apellido, NIF, email, direccion, fecha, tarifa);
         empresa = new Empresa(nombre, NIF, email, direccion, fecha, tarifa);
-        llam1 = new Llamada("964048351", 20, fecha.minusHours(1));
-        llam2 = new Llamada("943882182", 15, fecha.minusDays(1));
+        llam1 = new Llamada("964048351", 20, fecha.minusHours(1),tarifa);
+        llam2 = new Llamada("943882182", 15, fecha.minusDays(1),tarifa);
         factura1 = new Factura(fecha, fecha.minusMinutes(30),
-                fecha.minusMinutes(10), particular, tarifa);
+                fecha.minusMinutes(10), 500.0, tarifa);
     }
 
     @Test
@@ -122,7 +122,7 @@ public class ClienteTest {
     public void testAddFactura() {
         LinkedList<Factura> original = particular.getListafac();
         Factura newFactura = new Factura(fecha, fecha.minusMinutes(30),
-                fecha.minusMinutes(10), particular, tarifa);
+                fecha.minusMinutes(10), 500.0, tarifa);
         original.add(newFactura);
         particular.addFactura(newFactura);
         assertEquals(original, particular.getListafac());

@@ -1,6 +1,8 @@
 import pago.Llamada;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import tarifas.Tarifa;
+import tarifas.TarifaBasica;
 
 import java.time.LocalDateTime;
 
@@ -14,6 +16,7 @@ public class LlamadaTest{
     private static LocalDateTime fecha;
     private static int duracion;
     private static Llamada llamadaTest;
+    private static Tarifa tarifa;
 
     @BeforeClass
 
@@ -21,7 +24,8 @@ public class LlamadaTest{
         String tlf = "964045938";
         duracion = 20;
         fecha = LocalDateTime.now();
-        llamadaTest = new Llamada(tlf,duracion,fecha);
+        tarifa = new TarifaBasica(20.0);
+        llamadaTest = new Llamada(tlf,duracion,fecha,tarifa);
     }
 
 

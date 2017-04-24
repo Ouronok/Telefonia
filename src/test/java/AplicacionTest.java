@@ -50,10 +50,10 @@ public class AplicacionTest {
         particular = new Particular(nombre, apellidos, "20489083Q", email, direccion, fecha.minusDays(2), tarifa);
         empresa = new Empresa(nombre, NIF, email, direccion, fecha.minusDays(4), tarifa);
         fecha = LocalDateTime.now();
-        llam1 = new Llamada("964048351", 20, fecha.minusDays(2));
-        llam2 = new Llamada("943882182", 15, fecha.minusDays(4));
-        factura1 = new Factura(fecha.minusDays(2), fecha.minusDays(6), fecha.minusDays(2), particular, tarifa);
-        factura2 = new Factura(fecha.minusDays(11), fecha.minusDays(2), fecha.minusDays(1), particular, tarifa);
+        llam1 = new Llamada("964048351", 20, fecha.minusDays(2),tarifa);
+        llam2 = new Llamada("943882182", 15, fecha.minusDays(4),tarifa);
+        factura1 = new Factura(fecha.minusDays(2), fecha.minusDays(6), fecha.minusDays(2), 300.0, tarifa);
+        factura2 = new Factura(fecha.minusDays(11), fecha.minusDays(2), fecha.minusDays(1), 500.0, tarifa);
         clientes = new LinkedList<>();
         llamadas = new LinkedList<>();
         facturas = new LinkedList<>();
