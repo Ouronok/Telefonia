@@ -4,6 +4,7 @@ import clientes.Cliente;
 import clientes.Empresa;
 import clientes.Particular;
 import datos.Dato;
+import datos.Direccion;
 import excepciones.BadPeriod;
 import excepciones.NotContained;
 import excepciones.NotCreated;
@@ -22,16 +23,18 @@ import java.util.LinkedList;
 
 public class Aplicacion implements Serializable {
     private final LocalDateTime fact = LocalDateTime.now();
-    private Factoria factoria = new Factoria();
-    private LinkedList<Cliente> clientes = factoria.creaLista();
+    private FactoriaClientes fcli = new FactoriaClientes();
+    private FactoriaTarifas fta = new FactoriaTarifas();
+    private LinkedList<Cliente> clientes = new LinkedList<>();
 
     boolean addCliente(String nombre, String nif, String email, String[] dir, Double precio) {
-        Empresa cliente = factoria.creaEmpresa(nombre, nif, email, factoria.crearDir(dir), fact, precio);
+        Empresa cliente = fcli.creaEmpresa(nombre, nif, email, crearDir(dir), fact, fta.creaTarifa(precio));
         return addCliente(cliente);
     }
 
+
     boolean addCliente(String nombre, String apellidos, String nif, String email, String[] dir, Double precio) {
-        Particular cliente = factoria.creaParticular(nombre, apellidos, nif, email, factoria.crearDir(dir), fact, precio);
+        Particular cliente = fcli.creaParticular(nombre, apellidos, nif, email, crearDir(dir), fact, fta.creaTarifa(precio));
         return addCliente(cliente);
     }
 
@@ -53,6 +56,10 @@ public class Aplicacion implements Serializable {
         return false;
     }
 
+    private Direccion crearDir(String[] dir) {
+        return new Direccion(dir[0],dir[1],dir[2]);
+    }
+
     boolean swpPrecio(Cliente cliente, double precio) {
         if (clientes.contains(cliente)) {
             if(cliente.getTarifa() instanceof TarifaBasica){
@@ -69,7 +76,7 @@ public class Aplicacion implements Serializable {
                 return cAct;
             }
         }
-        throw factoria.creaNotContained();
+        throw new NotContained();
     }
 
     public LinkedList<Cliente> getClientes() {
@@ -78,7 +85,7 @@ public class Aplicacion implements Serializable {
 
     boolean addLlamada(String tlf, int duracion, LocalDateTime fecha, Cliente cliente) {
 
-        return clientes.contains(cliente) && cliente.addLlamada(factoria.creaLlamada(tlf, duracion, fecha,cliente.getTarifa()));
+        return clientes.contains(cliente) && cliente.addLlamada(new Llamada(tlf, duracion, fecha,cliente.getTarifa()));
     }
 
 
@@ -92,14 +99,14 @@ public class Aplicacion implements Serializable {
 
     void emitirFactura(Cliente cliente, LocalDateTime[] intervalo) throws BadPeriod, NotContained {
         if (intervalo[0].isAfter(intervalo[1])) {
-            throw factoria.creaBadPeriod();
+            throw new BadPeriod();
         }
 
         if (!clientes.contains(cliente)) {
-            throw factoria.creaNotContained();
+            throw new NotContained();
         }
         double importe = calcImp(cliente, intervalo);
-        cliente.addFactura(factoria.creaFactura(fact, intervalo, importe, cliente.getTarifa()));
+        cliente.addFactura(new Factura(fact, intervalo[0],intervalo[1], importe, cliente.getTarifa()));
     }
 
     private double calcImp(Cliente cliente, LocalDateTime[] intervalo) {
@@ -120,7 +127,7 @@ public class Aplicacion implements Serializable {
                 }
             }
         }
-        throw factoria.creaNotCreated();
+        throw new NotCreated();
     }
 
     public LinkedList<Factura> getFacturas(Cliente cliente) {
@@ -128,9 +135,9 @@ public class Aplicacion implements Serializable {
     }
 
     public <T extends Dato> LinkedList<T> getList(LinkedList<T> list, LocalDateTime fecha1, LocalDateTime fecha2) throws BadPeriod {
-        if (fecha1.isAfter(fecha2)) throw factoria.creaBadPeriod();
+        if (fecha1.isAfter(fecha2)) throw new BadPeriod();
 
-        LinkedList<T> retList = factoria.creaLista();
+        LinkedList<T> retList = new LinkedList<>();
         for(T elem : list){
             LocalDateTime fecha = elem.getFecha();
             if(fecha.isAfter(fecha1) && fecha.isBefore(fecha2)){
