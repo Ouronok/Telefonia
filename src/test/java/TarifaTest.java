@@ -33,8 +33,8 @@ public class TarifaTest{
         tarifa3 = new TarifaTardes(tarifa1,10.0);
         fecha = LocalDateTime.now();
         llam1 = new Llamada("630183333",20,fecha,tarifa1);
-        llam2 = new Llamada("630143333",20,fecha,tarifa2);
-        llam3 = new Llamada("630113333",20,fecha,tarifa3);
+        llam2 = new Llamada("630143333",20,fecha.minusDays(1),tarifa2);
+        llam3 = new Llamada("630113333",20,fecha.minusHours(4),tarifa3);
     }
 
 
@@ -45,8 +45,10 @@ public class TarifaTest{
         assertEquals(precio,tarifa.getPrecio(),0);
     }
 
-
+@Test
     public void Loquesea(){
+        assertEquals(precio.,tarifa1);
+
 
 
 
