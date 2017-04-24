@@ -13,7 +13,7 @@ public class TarifaTardes extends TarifaEspecial {
     @Override
     public double precioLlamada(Llamada llamada) {
         if(llamada.getFecha().getHour() >= 16 && llamada.getFecha().getHour() <= 20){
-            return Math.min(precioLlamada(llamada), getRecubierta().precioLlamada(llamada));
+            return Math.min(this.getPrecio() * llamada.getDuracion(), getRecubierta().getPrecio() * llamada.getDuracion());
         }
         return getRecubierta().precioLlamada(llamada);
     }
