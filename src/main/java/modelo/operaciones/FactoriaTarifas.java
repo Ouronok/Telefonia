@@ -1,6 +1,10 @@
-package modelo;
+package modelo.operaciones;
 
 
+import modelo.tarifas.Tarifa;
+import modelo.tarifas.TarifaBasica;
+import modelo.tarifas.TarifaDomingo;
+import modelo.tarifas.TarifaTardes;
 import org.jetbrains.annotations.NotNull;
 
 

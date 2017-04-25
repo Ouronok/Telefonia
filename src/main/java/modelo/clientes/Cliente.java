@@ -1,4 +1,10 @@
-package modelo;
+package modelo.clientes;
+
+import modelo.datos.Dato;
+import modelo.datos.Direccion;
+import modelo.datos.Factura;
+import modelo.datos.Llamada;
+import modelo.tarifas.Tarifa;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;

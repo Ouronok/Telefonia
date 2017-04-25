@@ -1,4 +1,9 @@
-package modelo;
+package modelo.operaciones;
+
+import modelo.datos.Direccion;
+import modelo.clientes.Empresa;
+import modelo.clientes.Particular;
+import modelo.tarifas.Tarifa;
 
 import java.time.LocalDateTime;
 

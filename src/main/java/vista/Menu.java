@@ -1,12 +1,12 @@
 package vista;
 
-import controlador.Aplicacion;
-import modelo.Cliente;
-import modelo.BadPeriod;
-import modelo.NotContained;
-import modelo.NotCreated;
-import modelo.Factura;
-import modelo.Llamada;
+import modelo.operaciones.Aplicacion;
+import modelo.clientes.Cliente;
+import modelo.excepciones.BadPeriod;
+import modelo.excepciones.NotContained;
+import modelo.excepciones.NotCreated;
+import modelo.datos.Factura;
+import modelo.datos.Llamada;
 
 import java.io.*;
 import java.time.LocalDateTime;

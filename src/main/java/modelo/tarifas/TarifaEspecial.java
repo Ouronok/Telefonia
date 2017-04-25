@@ -1,4 +1,4 @@
-package modelo;
+package modelo.tarifas;
 
 public abstract class TarifaEspecial extends Tarifa {
     private Tarifa recubierta;

@@ -1,5 +1,7 @@
-package modelo;
+package modelo.tarifas;
 
+
+import modelo.datos.Llamada;
 
 public class TarifaBasica extends Tarifa {
 

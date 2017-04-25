@@ -1,4 +1,6 @@
-package modelo;
+package modelo.datos;
+
+import modelo.tarifas.Tarifa;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;

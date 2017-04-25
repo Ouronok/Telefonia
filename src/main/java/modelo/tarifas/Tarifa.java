@@ -1,6 +1,6 @@
-package modelo;
+package modelo.tarifas;
 
-import modelo.Llamada;
+import modelo.datos.Llamada;
 
 import java.io.Serializable;
 
