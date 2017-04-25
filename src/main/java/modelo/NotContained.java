@@ -1,4 +1,4 @@
-package excepciones;
+package modelo;
 
 
 public class NotContained extends Exception {

@@ -1,15 +1,15 @@
-import pago.Llamada;
+import modelo.Llamada;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import tarifas.Tarifa;
-import tarifas.TarifaBasica;
+import modelo.Tarifa;
+import modelo.TarifaBasica;
 
 import java.time.LocalDateTime;
 
 import static org.junit.Assert.assertEquals;
 
 /**
- * Este Test comprueba los métodos públicos de la clase pago.Llamada.
+ * Este Test comprueba los métodos públicos de la clase modelo.Llamada.
  */
 public class LlamadaTest{
 

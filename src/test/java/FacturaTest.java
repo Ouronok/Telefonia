@@ -1,13 +1,13 @@
-import clientes.Cliente;
-import clientes.Empresa;
-import clientes.Particular;
-import datos.Direccion;
-import tarifas.Tarifa;
-import pago.Factura;
+import modelo.Cliente;
+import modelo.Empresa;
+import modelo.Particular;
+import modelo.Direccion;
+import modelo.Tarifa;
+import modelo.Factura;
 import es.uji.www.GeneradorDatosINE;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import tarifas.TarifaBasica;
+import modelo.TarifaBasica;
 
 import java.time.LocalDateTime;
 
@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 
 
 /**
- * Este Test comprueba los métodos publicos de la clase pago.Factura.
+ * Este Test comprueba los métodos publicos de la clase modelo.Factura.
  */
 public class FacturaTest{
 

@@ -1,10 +1,10 @@
-import pago.Llamada;
-import tarifas.Tarifa;
+import modelo.Llamada;
+import modelo.Tarifa;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import tarifas.TarifaBasica;
-import tarifas.TarifaDomingo;
-import tarifas.TarifaTardes;
+import modelo.TarifaBasica;
+import modelo.TarifaDomingo;
+import modelo.TarifaTardes;
 
 import java.time.LocalDateTime;
 

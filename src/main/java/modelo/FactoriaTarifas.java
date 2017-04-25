@@ -1,12 +1,7 @@
-package aplicacion;
+package modelo;
 
 
 import org.jetbrains.annotations.NotNull;
-import tarifas.Tarifa;
-import tarifas.TarifaBasica;
-import tarifas.TarifaDomingo;
-import tarifas.TarifaTardes;
-
 
 
 public class FactoriaTarifas {

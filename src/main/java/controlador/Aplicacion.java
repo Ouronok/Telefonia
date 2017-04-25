@@ -1,22 +1,20 @@
-package aplicacion;
+package controlador;
 
-import clientes.Cliente;
-import clientes.Empresa;
-import clientes.Particular;
-import datos.Dato;
-import datos.Direccion;
-import excepciones.BadPeriod;
-import excepciones.NotContained;
-import excepciones.NotCreated;
-import pago.Factura;
-import pago.Llamada;
-import tarifas.Tarifa;
-import tarifas.TarifaBasica;
-import tarifas.TarifaDomingo;
-import tarifas.TarifaTardes;
+import modelo.FactoriaClientes;
+import modelo.FactoriaTarifas;
+import modelo.Cliente;
+import modelo.Empresa;
+import modelo.Particular;
+import modelo.Dato;
+import modelo.Direccion;
+import modelo.BadPeriod;
+import modelo.NotContained;
+import modelo.NotCreated;
+import modelo.Factura;
+import modelo.Llamada;
+import modelo.TarifaBasica;
 
 import java.io.Serializable;
-import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 
@@ -27,13 +25,13 @@ public class Aplicacion implements Serializable {
     private FactoriaTarifas fta = new FactoriaTarifas();
     private LinkedList<Cliente> clientes = new LinkedList<>();
 
-    boolean addCliente(String nombre, String nif, String email, String[] dir, Double precio) {
+    public boolean addCliente(String nombre, String nif, String email, String[] dir, Double precio) {
         Empresa cliente = fcli.creaEmpresa(nombre, nif, email, crearDir(dir), fact, fta.creaTarifa(precio));
         return addCliente(cliente);
     }
 
 
-    boolean addCliente(String nombre, String apellidos, String nif, String email, String[] dir, Double precio) {
+    public boolean addCliente(String nombre, String apellidos, String nif, String email, String[] dir, Double precio) {
         Particular cliente = fcli.creaParticular(nombre, apellidos, nif, email, crearDir(dir), fact, fta.creaTarifa(precio));
         return addCliente(cliente);
     }
@@ -48,7 +46,7 @@ public class Aplicacion implements Serializable {
         return true;
     }
 
-    boolean delCliente(Cliente cliente) {
+    public boolean delCliente(Cliente cliente) {
         if (clientes.contains(cliente)) {
             clientes.remove(cliente);
             return true;
@@ -60,7 +58,7 @@ public class Aplicacion implements Serializable {
         return new Direccion(dir[0],dir[1],dir[2]);
     }
 
-    boolean swpPrecio(Cliente cliente, double precio) {
+    public boolean swpPrecio(Cliente cliente, double precio) {
         if (clientes.contains(cliente)) {
             if(cliente.getTarifa() instanceof TarifaBasica){
                 ((TarifaBasica) cliente.getTarifa()).swpPrecio(precio);
@@ -70,7 +68,7 @@ public class Aplicacion implements Serializable {
         return false;
     }
 
-    Cliente getCliente(String nif) throws NotContained {
+    public Cliente getCliente(String nif) throws NotContained {
         for (Cliente cAct : clientes) {
             if (cAct.getNif().equals(nif)) {
                 return cAct;
@@ -83,7 +81,7 @@ public class Aplicacion implements Serializable {
         return clientes;
     }
 
-    boolean addLlamada(String tlf, int duracion, LocalDateTime fecha, Cliente cliente) {
+    public boolean addLlamada(String tlf, int duracion, LocalDateTime fecha, Cliente cliente) {
 
         return clientes.contains(cliente) && cliente.addLlamada(new Llamada(tlf, duracion, fecha,cliente.getTarifa()));
     }
@@ -97,7 +95,7 @@ public class Aplicacion implements Serializable {
         return null;
     }
 
-    void emitirFactura(Cliente cliente, LocalDateTime[] intervalo) throws BadPeriod, NotContained {
+    public void emitirFactura(Cliente cliente, LocalDateTime[] intervalo) throws BadPeriod, NotContained {
         if (intervalo[0].isAfter(intervalo[1])) {
             throw new BadPeriod();
         }
@@ -119,7 +117,7 @@ public class Aplicacion implements Serializable {
         return importe;
     }
 
-    Factura getFactura(int cod) throws NotCreated {
+    public Factura getFactura(int cod) throws NotCreated {
         for (Cliente cliac : clientes) {
             for (Factura faac : cliac.getListafac()) {
                 if (faac.getFID() == cod) {

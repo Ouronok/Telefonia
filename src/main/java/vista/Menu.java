@@ -1,11 +1,12 @@
-package aplicacion;
+package vista;
 
-import clientes.Cliente;
-import excepciones.BadPeriod;
-import excepciones.NotContained;
-import excepciones.NotCreated;
-import pago.Factura;
-import pago.Llamada;
+import controlador.Aplicacion;
+import modelo.Cliente;
+import modelo.BadPeriod;
+import modelo.NotContained;
+import modelo.NotCreated;
+import modelo.Factura;
+import modelo.Llamada;
 
 import java.io.*;
 import java.time.LocalDateTime;

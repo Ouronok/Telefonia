@@ -1,15 +1,15 @@
-import aplicacion.FactoriaClientes;
-import clientes.Cliente;
-import clientes.Empresa;
-import clientes.Particular;
-import datos.Direccion;
+import modelo.FactoriaClientes;
+import modelo.Cliente;
+import modelo.Empresa;
+import modelo.Particular;
+import modelo.Direccion;
 import es.uji.www.GeneradorDatosINE;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import pago.Factura;
-import pago.Llamada;
-import tarifas.Tarifa;
-import tarifas.TarifaBasica;
+import modelo.Factura;
+import modelo.Llamada;
+import modelo.Tarifa;
+import modelo.TarifaBasica;
 
 import java.time.LocalDateTime;
 

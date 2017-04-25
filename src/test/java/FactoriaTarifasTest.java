@@ -1,10 +1,10 @@
-import aplicacion.FactoriaTarifas;
+import modelo.FactoriaTarifas;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import tarifas.Tarifa;
-import tarifas.TarifaBasica;
-import tarifas.TarifaDomingo;
-import tarifas.TarifaTardes;
+import modelo.Tarifa;
+import modelo.TarifaBasica;
+import modelo.TarifaDomingo;
+import modelo.TarifaTardes;
 
 import static junitx.framework.Assert.assertEquals;
 

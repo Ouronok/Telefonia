@@ -1,13 +1,5 @@
-package aplicacion;
+package modelo;
 
-import clientes.Cliente;
-import clientes.Empresa;
-import clientes.Particular;
-import datos.Direccion;
-import excepciones.NotContained;
-import excepciones.NotCreated;
-import tarifas.Tarifa;
-import tarifas.TarifaBasica;
 import java.time.LocalDateTime;
 
 

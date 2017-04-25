@@ -1,13 +1,8 @@
-package clientes;
+package modelo;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
-import datos.Dato;
-import tarifas.Tarifa;
-import datos.Direccion;
-import pago.Factura;
-import pago.Llamada;
 
 
 public abstract class Cliente implements Dato, Serializable {

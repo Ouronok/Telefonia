@@ -1,4 +1,4 @@
-import datos.Direccion;
+import modelo.Direccion;
 import es.uji.www.GeneradorDatosINE;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -6,7 +6,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Este Test comprueba los métodos públicos de la clase datos.Direccion
+ * Este Test comprueba los métodos públicos de la clase modelo.Direccion
  */
 public class DireccionTest{
 

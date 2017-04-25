@@ -1,13 +1,6 @@
-import aplicacion.Aplicacion;
-import clientes.Cliente;
-import clientes.Empresa;
-import clientes.Particular;
-import datos.Direccion;
-import tarifas.*;
-import excepciones.BadPeriod;
+import controlador.Aplicacion;
+import modelo.*;
 import junitx.framework.ListAssert;
-import pago.Factura;
-import pago.Llamada;
 import es.uji.www.GeneradorDatosINE;
 import org.junit.*;
 

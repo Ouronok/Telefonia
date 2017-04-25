@@ -1,6 +1,4 @@
-package tarifas;
-
-import pago.Llamada;
+package modelo;
 
 
 import java.time.DayOfWeek;

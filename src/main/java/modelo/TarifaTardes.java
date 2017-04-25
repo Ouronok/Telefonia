@@ -1,7 +1,5 @@
-package tarifas;
+package modelo;
 
-
-import pago.Llamada;
 
 public class TarifaTardes extends TarifaEspecial {
 

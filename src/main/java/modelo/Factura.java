@@ -1,16 +1,7 @@
-package pago;
-
-import clientes.Cliente;
-import datos.Dato;
-import tarifas.Tarifa;
-import tarifas.TarifaBasica;
-import tarifas.TarifaDomingo;
-import tarifas.TarifaTardes;
+package modelo;
 
 import java.io.Serializable;
-import java.time.DayOfWeek;
 import java.time.LocalDateTime;
-import java.util.LinkedList;
 
 public class Factura implements Dato, Serializable {
     private Tarifa tact;
