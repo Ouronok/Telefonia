@@ -23,13 +23,13 @@ public class Aplicacion implements Serializable {
     private FactoriaTarifas fta = new FactoriaTarifas();
     private LinkedList<Cliente> clientes = new LinkedList<>();
 
-    public boolean addCliente(String nombre, String nif, String email, String[] dir, Double precio) {
+    public boolean creaEmpresa(String nombre, String nif, String email, String[] dir, Double precio) {
         Empresa cliente = fcli.creaEmpresa(nombre, nif, email, crearDir(dir), fact, fta.creaTarifa(precio));
         return addCliente(cliente);
     }
 
 
-    public boolean addCliente(String nombre, String apellidos, String nif, String email, String[] dir, Double precio) {
+    public boolean creaParticular(String nombre, String apellidos, String nif, String email, String[] dir, Double precio) {
         Particular cliente = fcli.creaParticular(nombre, apellidos, nif, email, crearDir(dir), fact, fta.creaTarifa(precio));
         return addCliente(cliente);
     }
@@ -93,7 +93,7 @@ public class Aplicacion implements Serializable {
         return null;
     }
 
-    public void emitirFactura(Cliente cliente, LocalDateTime[] intervalo) throws BadPeriod, NotContained {
+    public boolean emitirFactura(Cliente cliente, LocalDateTime[] intervalo) throws BadPeriod, NotContained {
         if (intervalo[0].isAfter(intervalo[1])) {
             throw new BadPeriod();
         }
@@ -102,7 +102,7 @@ public class Aplicacion implements Serializable {
             throw new NotContained();
         }
         double importe = calcImp(cliente, intervalo);
-        cliente.addFactura(new Factura(fact, intervalo[0],intervalo[1], importe, cliente.getTarifa()));
+        return cliente.addFactura(new Factura(fact, intervalo[0],intervalo[1], importe, cliente.getTarifa()));
     }
 
     private double calcImp(Cliente cliente, LocalDateTime[] intervalo) {

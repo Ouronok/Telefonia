@@ -241,9 +241,9 @@ class Menu {
         precio = scanner.nextDouble();
         scanner.nextLine();
         if (apellidos == null) {
-            return app.addCliente(nombre, nif, email, dir, precio);
+            return app.creaEmpresa(nombre, nif, email, dir, precio);
         }
-        return app.addCliente(nombre, apellidos, nif, email, dir, precio);
+        return app.creaParticular(nombre, apellidos, nif, email, dir, precio);
     }
 
     private String[] crearDir() {
