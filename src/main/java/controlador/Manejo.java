@@ -9,7 +9,7 @@ public class Manejo implements Controlador {
 
     private InterrogaVista vista;
     private CambioModelo modelo;
-    private Escuchador escuchador;
+
 
 
     @Override
@@ -27,7 +27,6 @@ public class Manejo implements Controlador {
         this.vista = vista;
     }
 
-    public void setEscuchador(Escuchador escuchador) {
-        this.escuchador = escuchador;
-    }
+
+
 }

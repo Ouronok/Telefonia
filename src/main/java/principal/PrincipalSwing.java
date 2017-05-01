@@ -2,8 +2,7 @@ package principal;
 
 import controlador.Manejo;
 import modelo.operaciones.Aplicacion;
-import vista.Escuchador;
-import vista.ImplementacionVista;
+import vista.Interfaz;
 
 import javax.swing.*;
 
@@ -15,18 +14,17 @@ public class PrincipalSwing {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                Ventana ventana = new Ventana();
-                ventana.ejecuta();
+                Manejo controlador = new Manejo();
+                Interfaz vista = new Interfaz();
+                Aplicacion modelo = new Aplicacion();
+                vista.setControlador(controlador);
+                vista.setModelo(modelo);
+                modelo.setVista(vista);
+                controlador.setModelo(modelo);
+                controlador.setVista(vista);
             }
         });
-        Manejo controlador = new Manejo();
-        ImplementacionVista vista = new ImplementacionVista();
-        Aplicacion modelo = new Aplicacion();
-        vista.setControlador(controlador);
-        vista.setModelo(modelo);
-        modelo.setVista(vista);
-        controlador.setModelo(modelo);
-        controlador.setVista(vista);
+
 
 
 
