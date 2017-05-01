@@ -1,27 +1,26 @@
 package modelo.operaciones;
 
-import modelo.datos.Dato;
-import modelo.datos.Direccion;
-import modelo.datos.Factura;
-import modelo.datos.Llamada;
-import modelo.clientes.Cliente;
-import modelo.clientes.Empresa;
-import modelo.clientes.Particular;
-import modelo.excepciones.BadPeriod;
-import modelo.excepciones.NotContained;
-import modelo.excepciones.NotCreated;
+import modelo.CambioModelo;
+import modelo.InterrogaModelo;
+import modelo.clientes.*;
+import modelo.datos.*;
+import modelo.excepciones.*;
 import modelo.tarifas.TarifaBasica;
+import vista.InformaVista;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 
 
-public class Aplicacion implements Serializable {
+public class Aplicacion implements Serializable, CambioModelo, InterrogaModelo {
     private final LocalDateTime fact = LocalDateTime.now();
     private FactoriaClientes fcli = new FactoriaClientes();
     private FactoriaTarifas fta = new FactoriaTarifas();
     private LinkedList<Cliente> clientes = new LinkedList<>();
+    private InformaVista vista;
+
+
 
     public boolean creaEmpresa(String nombre, String nif, String email, String[] dir, Double precio) {
         Empresa cliente = fcli.creaEmpresa(nombre, nif, email, crearDir(dir), fact, fta.creaTarifa(precio));
@@ -157,5 +156,9 @@ public class Aplicacion implements Serializable {
                 return false;
 
         }
+    }
+
+    public void setVista(InformaVista vista) {
+        this.vista = vista;
     }
 }

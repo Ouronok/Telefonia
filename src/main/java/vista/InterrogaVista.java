@@ -1,12 +1,15 @@
-package modelo;
+package vista;
 
 import modelo.clientes.Cliente;
 import modelo.datos.Factura;
 
 import java.util.LinkedList;
 
-public interface Modelo {
-    boolean creaParticular();
+/**
+ * Created by ouronok on 25/04/17.
+ */
+public interface InterrogaVista {
+  /*  boolean creaParticular();
     boolean creaEmpresa();
     boolean addCliente();
     boolean delCliente();
@@ -19,4 +22,6 @@ public interface Modelo {
     Factura getFatura();
     LinkedList getList();
     boolean swpTarifa();
+
+*/
 }

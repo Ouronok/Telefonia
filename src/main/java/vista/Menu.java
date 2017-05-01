@@ -14,7 +14,7 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 class Menu {
-
+/*
     private Scanner scanner = new Scanner(System.in);
     private Aplicacion app;
 
@@ -422,4 +422,5 @@ class Menu {
         }
 
     }
+    */
 }
