@@ -3,6 +3,8 @@ package vista;
 import controlador.Controlador;
 import controlador.Manejo;
 import modelo.InterrogaModelo;
+import vista.escuchadores.EscPrin;
+import vista.ventanas.Principal;
 
 import javax.swing.*;
 
@@ -11,28 +13,26 @@ public class Interfaz implements InterrogaVista,InformaVista {
 
     private Controlador controlador;
     private InterrogaModelo modelo;
-    private Escuchador escuchador;
+    Principal principal= new Principal();
 
-    public Interfaz(){
-        inicializa();
-    }
 
-    private void inicializa() {
 
-        JFrame principal = new JFrame();
-        JButton boton = new JButton("Pulsame para informar");
-        boton.addActionListener(escuchador);
-        principal.getContentPane().add(boton);
-        principal.pack();
-        principal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        principal.setVisible(true);
-    }
+
+
+
 
 
     public void setControlador(Manejo controlador) {
         this.controlador = controlador;
-        escuchador.setControlador(controlador);
+        inicializa(controlador);
 
+
+    }
+
+    private void inicializa(Manejo controlador) {
+        principal.setListener(new EscPrin());
+        principal.getListener().setControlador(controlador);
+        principal.setVisible(true);
     }
 
     public void setModelo(InterrogaModelo modelo) {

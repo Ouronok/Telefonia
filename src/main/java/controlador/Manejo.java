@@ -1,7 +1,6 @@
 package controlador;
 
 import modelo.CambioModelo;
-import vista.Escuchador;
 import vista.InterrogaVista;
 
 
