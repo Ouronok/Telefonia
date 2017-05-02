@@ -11,14 +11,14 @@ public class Interfaz implements InterrogaVista,InformaVista {
 
     private Controlador controlador;
     private InterrogaModelo modelo;
+    private Escuchador escuchador;
 
     public Interfaz(){
         inicializa();
     }
 
     private void inicializa() {
-        Escuchador escuchador = new Escuchador();
-        escuchador.setControlador(controlador);
+
         JFrame principal = new JFrame();
         JButton boton = new JButton("Pulsame para informar");
         boton.addActionListener(escuchador);
@@ -31,6 +31,8 @@ public class Interfaz implements InterrogaVista,InformaVista {
 
     public void setControlador(Manejo controlador) {
         this.controlador = controlador;
+        escuchador.setControlador(controlador);
+
     }
 
     public void setModelo(InterrogaModelo modelo) {
