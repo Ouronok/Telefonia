@@ -77,7 +77,6 @@ public abstract class Cliente implements Dato, Serializable {
         return listafac;
     }
 
-    public void calcImp(){}
 
     @Override
     public String toString() {
