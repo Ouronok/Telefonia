@@ -6,11 +6,18 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class EscPrin extends Escuchador implements ActionListener {
+public class EscPrin extends Escuchador {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        super.controlador.escribe();
-    }
+        JButton boton = (JButton)e.getSource();
+        String texto = boton.getText();
+        switch(texto){
+            case("Mostrar"):
+                super.controlador.abreMostrar();
+                break;
+            }
+        }
 }
+
 

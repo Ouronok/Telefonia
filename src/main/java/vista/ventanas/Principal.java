@@ -4,6 +4,7 @@ import vista.escuchadores.EscPrin;
 import vista.escuchadores.Escuchador;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionListener;
 
 /**
@@ -15,11 +16,28 @@ public class Principal extends JFrame implements Ventanas {
 
 
     private void crea() {
-        JButton boton = new JButton("Mostrar");
-        boton.addActionListener(escuchador);
-        getContentPane().add(boton);
+        Container contenedor = getContentPane();
+        JPanel panel = new JPanel();
+        botones(panel);
+        contenedor.add(panel);
         pack();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    private void botones(JPanel panel) {
+        JButton boton1 = new JButton("Mostrar");
+        JButton boton2 = new JButton("Operaciones");
+        JButton boton3 = new JButton("Cliente");
+        boton1.addActionListener(escuchador);
+        boton2.addActionListener(escuchador);
+        boton3.addActionListener(escuchador);
+        panel.add(boton1);
+        panel.add(boton2);
+        panel.add(boton3);
+
+
+
+
     }
 
     @Override

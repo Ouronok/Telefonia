@@ -16,12 +16,6 @@ public class Interfaz implements InterrogaVista,InformaVista {
     Principal principal= new Principal();
 
 
-
-
-
-
-
-
     public void setControlador(Manejo controlador) {
         this.controlador = controlador;
         inicializa(controlador);

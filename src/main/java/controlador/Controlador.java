@@ -8,4 +8,5 @@ public interface Controlador {
 
     void escribe();
 
+    void abreMostrar();
 }

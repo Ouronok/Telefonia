@@ -11,7 +11,7 @@ public abstract class Escuchador implements ActionListener {
     public Controlador controlador;
 
     public void setControlador(Controlador controlador){
-        controlador=controlador;
+        this.controlador=controlador;
     }
 
 }

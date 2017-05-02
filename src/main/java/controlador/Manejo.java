@@ -26,6 +26,10 @@ public class Manejo implements Controlador {
         this.vista = vista;
     }
 
+    public void abreMostrar(){
+        vista.abreMostrar();
+    }
+
 
 
 }
