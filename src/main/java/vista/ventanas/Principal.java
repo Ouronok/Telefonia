@@ -10,12 +10,9 @@ import java.awt.event.ActionListener;
 /**
  * Created by ouronok on 2/05/17.
  */
-public class Principal extends JFrame implements Ventanas {
+public class Principal extends Ventana {
 
-    Escuchador escuchador;
-
-
-    private void crea() {
+    public void crea() {
         Container contenedor = getContentPane();
         JPanel panel = new JPanel();
         botones(panel);
@@ -34,26 +31,6 @@ public class Principal extends JFrame implements Ventanas {
         panel.add(boton1);
         panel.add(boton2);
         panel.add(boton3);
-
-
-
-
     }
 
-    @Override
-    public void setListener(Escuchador escuchador) {
-        this.escuchador=escuchador;
-        crea();
-
-    }
-
-    @Override
-    public void setVisible(Boolean stat) {
-    setVisible(stat);
-    }
-
-    @Override
-    public Escuchador getListener() {
-        return escuchador;
-    }
 }

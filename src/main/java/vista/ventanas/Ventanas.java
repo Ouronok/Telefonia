@@ -10,7 +10,6 @@ import java.awt.event.ActionListener;
  */
 public interface Ventanas {
     void setListener(Escuchador escuchador);
-    void setVisible(Boolean stat);
     Escuchador getListener();
 
 }
