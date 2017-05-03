@@ -3,20 +3,17 @@ package vista;
 import controlador.Controlador;
 import controlador.Manejo;
 import modelo.InterrogaModelo;
-import vista.escuchadores.EscMos;
-import vista.escuchadores.EscPrin;
+import modelo.clientes.Cliente;
 import vista.ventanas.Mostrar;
 import vista.ventanas.Principal;
-
-import javax.swing.*;
 
 
 public class Interfaz implements InterrogaVista,InformaVista {
 
     private Controlador controlador;
     private InterrogaModelo modelo;
-    Principal principal= new Principal();
-    Mostrar mostrar = new Mostrar();
+    Principal principal;
+    Mostrar mostrar;
 
 
     public void setControlador(Manejo controlador) {
@@ -27,10 +24,10 @@ public class Interfaz implements InterrogaVista,InformaVista {
     }
 
     private void inicializa(Manejo controlador) {
-        principal.setListener(new EscPrin());
+        principal = new Principal();
+        mostrar = new Mostrar();
         principal.getListener().setControlador(controlador);
         principal.setVisible(true);
-        mostrar.setListener(new EscMos());
         mostrar.getListener().setControlador(controlador);
     }
 
@@ -43,5 +40,16 @@ public class Interfaz implements InterrogaVista,InformaVista {
         principal.setVisible(false);
         mostrar.setVisible(true);
 
+    }
+
+    @Override
+    public void muestraCliente(Cliente cliente
+    ) {
+
+    }
+
+    @Override
+    public void noCli() {
+        mostrar.error();
     }
 }

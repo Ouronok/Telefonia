@@ -1,10 +1,10 @@
 package vista.ventanas;
 
-import vista.escuchadores.EscMos;
 import vista.escuchadores.Escuchador;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 
 /**
  * Created by ouronok on 2/05/17.
@@ -12,7 +12,12 @@ import java.awt.*;
 public class Mostrar extends Ventana {
 
 
+    private JTextField nombre;
+    private JTextField dni;
+    private JTextField ape;
+
     public void crea() {
+        super.escuchador= new EscMos();
         Container contenedor = getContentPane();
         JPanel panel = new JPanel();
         boxes(contenedor);
@@ -24,13 +29,18 @@ public class Mostrar extends Ventana {
 
     }
 
+
+    public void error() {
+        JOptionPane.showMessageDialog(this,"No se puede completar la busqueda");
+    }
+
     private void botones(JPanel panel2) {
     }
 
     private void boxes(Container contenedor) {
-        JTextField nombre = new JTextField(25);
-        JTextField dni = new JTextField(8);
-        JTextField ape = new JTextField(20);
+        nombre = new JTextField(25);
+        dni = new JTextField(8);
+        ape = new JTextField(20);
         JLabel enombre = new JLabel("Nombre");
         JLabel eap = new JLabel("Apellidos");
         JLabel edni = new JLabel("DNI:");
@@ -45,4 +55,19 @@ public class Mostrar extends Ventana {
 
     }
 
+
+    private class EscMos extends Escuchador {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JButton boton = (JButton)e.getSource();
+            String texto = boton.getText();
+            switch(texto){
+                case("Buscar"):
+                    String search = dni.getText();
+                    super.controlador.buscaCliente(search);
+                    break;
+            }
+
+        }
+    }
 }

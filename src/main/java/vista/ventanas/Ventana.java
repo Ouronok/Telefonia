@@ -10,10 +10,9 @@ import javax.swing.*;
 public abstract class Ventana extends JFrame implements Ventanas {
 
     Escuchador escuchador;
-    
-    @Override
-    public void setListener(Escuchador escuchador) {
-        this.escuchador=escuchador;
+
+
+    public Ventana(){
         crea();
     }
 
@@ -24,4 +23,5 @@ public abstract class Ventana extends JFrame implements Ventanas {
     public Escuchador getListener() {
         return escuchador;
     }
+
 }

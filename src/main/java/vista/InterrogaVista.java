@@ -10,7 +10,6 @@ import java.util.LinkedList;
  */
 public interface InterrogaVista {
     void abreMostrar();
-
   /*  boolean creaParticular();
     boolean creaEmpresa();
     boolean addCliente();

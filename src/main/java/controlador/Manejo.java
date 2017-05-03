@@ -1,6 +1,7 @@
 package controlador;
 
 import modelo.CambioModelo;
+import modelo.excepciones.NotContained;
 import vista.InterrogaVista;
 
 
@@ -30,6 +31,10 @@ public class Manejo implements Controlador {
         vista.abreMostrar();
     }
 
+    @Override
+    public void buscaCliente(String dni) {
+            modelo.getCliente(dni);
+    }
 
 
 }

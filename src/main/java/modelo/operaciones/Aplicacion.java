@@ -65,13 +65,13 @@ public class Aplicacion implements Serializable, CambioModelo, InterrogaModelo {
         return false;
     }
 
-    public Cliente getCliente(String nif) throws NotContained {
+    public void getCliente(String nif) {
         for (Cliente cAct : clientes) {
             if (cAct.getNif().equals(nif)) {
-                return cAct;
+                vista.muestraCliente(cAct);
             }
         }
-        throw new NotContained();
+       vista.noCli();
     }
 
     public LinkedList<Cliente> getClientes() {

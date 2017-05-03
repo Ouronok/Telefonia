@@ -1,11 +1,10 @@
 package vista.ventanas;
 
-import vista.escuchadores.EscPrin;
 import vista.escuchadores.Escuchador;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 /**
  * Created by ouronok on 2/05/17.
@@ -13,6 +12,7 @@ import java.awt.event.ActionListener;
 public class Principal extends Ventana {
 
     public void crea() {
+        super.escuchador= new EscPrin();
         Container contenedor = getContentPane();
         JPanel panel = new JPanel();
         botones(panel);
@@ -33,4 +33,17 @@ public class Principal extends Ventana {
         panel.add(boton3);
     }
 
+    private class EscPrin extends Escuchador {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JButton boton = (JButton)e.getSource();
+            String texto = boton.getText();
+            switch(texto){
+                case("Mostrar"):
+                    super.controlador.abreMostrar();
+                    break;
+                }
+            }
+    }
 }
