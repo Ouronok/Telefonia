@@ -74,8 +74,14 @@ public class Aplicacion implements Serializable, CambioModelo, InterrogaModelo {
        vista.noCli();
     }
 
-    public LinkedList<Cliente> getClientes() {
-        return clientes;
+    public void getClientes() {
+        Cliente[] res = new Cliente[clientes.size()];
+        int con = 0;
+        for(Cliente cac : clientes){
+            res[con] = cac;
+            con++;
+        }
+        vista.getClientes(res);
     }
 
     public boolean addLlamada(String tlf, int duracion, LocalDateTime fecha, Cliente cliente) {

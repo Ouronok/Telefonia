@@ -5,10 +5,9 @@ package controlador;
  */
 public interface Controlador {
 
-
-    void escribe();
-
     void abreMostrar();
 
     void buscaCliente(String dni);
+
+    void muestraClientes();
 }

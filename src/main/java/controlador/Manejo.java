@@ -12,12 +12,6 @@ public class Manejo implements Controlador {
 
 
 
-    @Override
-    public void escribe() {
-        System.out.println("Recibido");
-    }
-
-
     public void setModelo(CambioModelo modelo) {
         this.modelo = modelo;
     }
@@ -34,6 +28,11 @@ public class Manejo implements Controlador {
     @Override
     public void buscaCliente(String dni) {
             modelo.getCliente(dni);
+    }
+
+    @Override
+    public void muestraClientes() {
+        modelo.getClientes();
     }
 
 

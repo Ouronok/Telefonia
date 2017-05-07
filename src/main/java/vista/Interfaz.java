@@ -7,6 +7,8 @@ import modelo.clientes.Cliente;
 import vista.ventanas.Mostrar;
 import vista.ventanas.Principal;
 
+import java.util.LinkedList;
+
 
 public class Interfaz implements InterrogaVista,InformaVista {
 
@@ -51,5 +53,10 @@ public class Interfaz implements InterrogaVista,InformaVista {
     @Override
     public void noCli() {
         mostrar.error();
+    }
+
+    @Override
+    public void getClientes(Cliente[] clientes) {
+        mostrar.mostrarClientes(clientes);
     }
 }
