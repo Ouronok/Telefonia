@@ -6,9 +6,7 @@ import vista.Interfaz;
 
 import javax.swing.*;
 
-/**
- * Created by ouron on 01/05/2017.
- */
+
 public class PrincipalSwing {
     public static void main(String args[]){
         SwingUtilities.invokeLater(new Runnable() {

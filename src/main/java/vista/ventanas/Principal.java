@@ -1,41 +1,49 @@
 package vista.ventanas;
 
-import vista.escuchadores.EscPrin;
 import vista.escuchadores.Escuchador;
 
 import javax.swing.*;
-import java.awt.event.ActionListener;
+import java.awt.*;
+import java.awt.event.ActionEvent;
 
 /**
  * Created by ouronok on 2/05/17.
  */
-public class Principal extends JFrame implements Ventanas {
+public class Principal extends Ventana {
 
-    Escuchador escuchador;
-
-
-    private void crea() {
-        JButton boton = new JButton("Mostrar");
-        boton.addActionListener(escuchador);
-        getContentPane().add(boton);
+    public void crea() {
+        super.escuchador= new EscPrin();
+        Container contenedor = getContentPane();
+        JPanel panel = new JPanel();
+        botones(panel);
+        contenedor.add(panel);
         pack();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    @Override
-    public void setListener(Escuchador escuchador) {
-        this.escuchador=escuchador;
-        crea();
-
+    private void botones(JPanel panel) {
+        JButton boton1 = new JButton("Mostrar");
+        JButton boton2 = new JButton("Operaciones");
+        JButton boton3 = new JButton("Cliente");
+        boton1.addActionListener(escuchador);
+        boton2.addActionListener(escuchador);
+        boton3.addActionListener(escuchador);
+        panel.add(boton1);
+        panel.add(boton2);
+        panel.add(boton3);
     }
 
-    @Override
-    public void setVisible(Boolean stat) {
-    setVisible(stat);
-    }
+    private class EscPrin extends Escuchador {
 
-    @Override
-    public Escuchador getListener() {
-        return escuchador;
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JButton boton = (JButton)e.getSource();
+            String texto = boton.getText();
+            switch(texto){
+                case("Mostrar"):
+                    super.controlador.abreMostrar();
+                    break;
+                }
+            }
     }
 }

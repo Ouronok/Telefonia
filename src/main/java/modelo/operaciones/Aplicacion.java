@@ -65,17 +65,23 @@ public class Aplicacion implements Serializable, CambioModelo, InterrogaModelo {
         return false;
     }
 
-    public Cliente getCliente(String nif) throws NotContained {
+    public void getCliente(String nif) {
         for (Cliente cAct : clientes) {
             if (cAct.getNif().equals(nif)) {
-                return cAct;
+                vista.muestraCliente(cAct);
             }
         }
-        throw new NotContained();
+       vista.noCli();
     }
 
-    public LinkedList<Cliente> getClientes() {
-        return clientes;
+    public void getClientes() {
+        Cliente[] res = new Cliente[clientes.size()];
+        int con = 0;
+        for(Cliente cac : clientes){
+            res[con] = cac;
+            con++;
+        }
+        vista.getClientes(res);
     }
 
     public boolean addLlamada(String tlf, int duracion, LocalDateTime fecha, Cliente cliente) {

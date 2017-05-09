@@ -1,6 +1,7 @@
 package controlador;
 
 import modelo.CambioModelo;
+import modelo.excepciones.NotContained;
 import vista.InterrogaVista;
 
 
@@ -9,12 +10,6 @@ public class Manejo implements Controlador {
     private InterrogaVista vista;
     private CambioModelo modelo;
 
-
-
-    @Override
-    public void escribe() {
-        System.out.println("Recibido");
-    }
 
 
     public void setModelo(CambioModelo modelo) {
@@ -26,6 +21,19 @@ public class Manejo implements Controlador {
         this.vista = vista;
     }
 
+    public void abreMostrar(){
+        vista.abreMostrar();
+    }
+
+    @Override
+    public void buscaCliente(String dni) {
+            modelo.getCliente(dni);
+    }
+
+    @Override
+    public void muestraClientes() {
+        modelo.getClientes();
+    }
 
 
 }

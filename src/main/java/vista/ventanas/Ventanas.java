@@ -9,8 +9,7 @@ import java.awt.event.ActionListener;
  * Created by ouronok on 2/05/17.
  */
 public interface Ventanas {
-    void setListener(Escuchador escuchador);
-    void setVisible(Boolean stat);
+
     Escuchador getListener();
 
 }
