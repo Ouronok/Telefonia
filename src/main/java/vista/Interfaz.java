@@ -63,7 +63,7 @@ public class Interfaz implements InterrogaVista,InformaVista {
     }
 
     @Override
-    public void getClientes(Cliente[] clientes) {
+    public void getClientes(LinkedList<Cliente> clientes) {
         mostrar.mostrarClientes(clientes);
     }
 }
