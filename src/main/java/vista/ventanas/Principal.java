@@ -44,6 +44,8 @@ public class Principal extends Ventana {
                 case("Mostrar"):
                     super.controlador.abreMostrar();
                     break;
+                case("Operaciones"):
+                    super.controlador.abreOps();
                 }
             }
     }

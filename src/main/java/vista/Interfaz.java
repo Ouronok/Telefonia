@@ -16,6 +16,7 @@ public class Interfaz implements InterrogaVista,InformaVista {
     private InterrogaModelo modelo;
     Principal principal;
     Mostrar mostrar;
+    Operaciones operaciones;
 
 
     public void setControlador(Manejo controlador) {
@@ -31,6 +32,8 @@ public class Interfaz implements InterrogaVista,InformaVista {
         principal.getListener().setControlador(controlador);
         principal.setVisible(true);
         mostrar.getListener().setControlador(controlador);
+        operaciones = new Operaciones();
+        operaciones.getListener().setControlador(controlador);
     }
 
     public void setModelo(InterrogaModelo modelo) {
@@ -49,6 +52,12 @@ public class Interfaz implements InterrogaVista,InformaVista {
         principal.setVisible(true);
         mostrar.setVisible(false);
 
+    }
+
+    @Override
+    public void abreOps() {
+        principal.setVisible(false);
+        operaciones.setVisible(true);
     }
 
     @Override
