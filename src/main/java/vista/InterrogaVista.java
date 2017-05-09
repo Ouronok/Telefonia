@@ -12,6 +12,8 @@ public interface InterrogaVista {
     void abreMostrar();
 
     void cierraMostrar();
+
+    void abreOps();
   /*  boolean creaParticular();
     boolean creaEmpresa();
     boolean addCliente();

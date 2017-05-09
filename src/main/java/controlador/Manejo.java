@@ -40,5 +40,10 @@ public class Manejo implements Controlador {
         vista.cierraMostrar();
     }
 
+    @Override
+    public void abreOps() {
+        vista.abreOps();
+    }
+
 
 }

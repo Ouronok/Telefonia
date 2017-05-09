@@ -12,4 +12,6 @@ public interface Controlador {
     void muestraClientes();
 
     void goPrincipal();
+
+    void abreOps();
 }
