@@ -5,6 +5,7 @@ import controlador.Manejo;
 import modelo.InterrogaModelo;
 import modelo.clientes.Cliente;
 import vista.ventanas.Mostrar;
+import vista.ventanas.Operaciones;
 import vista.ventanas.Principal;
 
 import java.util.LinkedList;
@@ -17,7 +18,6 @@ public class Interfaz implements InterrogaVista,InformaVista {
     Principal principal;
     Mostrar mostrar;
     Operaciones operaciones;
-
 
     public void setControlador(Manejo controlador) {
         this.controlador = controlador;
