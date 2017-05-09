@@ -45,9 +45,16 @@ public class Interfaz implements InterrogaVista,InformaVista {
     }
 
     @Override
+    public void cierraMostrar() {
+        principal.setVisible(true);
+        mostrar.setVisible(false);
+
+    }
+
+    @Override
     public void muestraCliente(Cliente cliente
     ) {
-
+        mostrar.muestraCliente(cliente);
     }
 
     @Override

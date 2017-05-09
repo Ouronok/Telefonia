@@ -6,7 +6,6 @@ import vista.escuchadores.Escuchador;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.util.LinkedList;
 
 /**
  * Created by ouronok on 2/05/17.
@@ -14,21 +13,19 @@ import java.util.LinkedList;
 public class Mostrar extends Ventana {
 
 
-    private JTextField nombre;
+
     private JTextField dni;
-    private JTextField ape;
+
     private JButton muestra;
+    private JButton atras;
     private JList moscli;
     private Container contenedor;
+    private JButton dnibut;
 
     public void crea() {
-        super.escuchador= new EscMos();
+        super.escuchador = new EscMos();
         contenedor = getContentPane();
-        JPanel panel = new JPanel();
-        boxes(contenedor);
-        JPanel panel2 = new JPanel();
-        botones(panel2);
-        contenedor.add(panel2);
+        rellena();
         pack();
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -39,45 +36,43 @@ public class Mostrar extends Ventana {
         JOptionPane.showMessageDialog(this,"No se puede completar la busqueda");
     }
 
-    private void botones(JPanel panel2) {
 
-
-    }
-
-    private void boxes(Container contenedor) {
-        nombre = new JTextField(25);
+    private void rellena() {
+        JLabel dnie = new JLabel("DNI:");
         dni = new JTextField(8);
-        ape = new JTextField(20);
+        atras = new JButton("Atras");
+        atras.addActionListener(super.escuchador);
+        dnibut = new JButton("DNI");
+        dnibut.addActionListener(super.escuchador);
         muestra = new JButton("Muestra");
         muestra.addActionListener(super.escuchador);
-        JLabel enombre = new JLabel("Nombre");
-        JLabel eap = new JLabel("Apellidos");
-        JLabel edni = new JLabel("DNI:");
-        contenedor.setLayout(new FlowLayout());
         JPanel upanel = new JPanel();
-
-        String[] mosclit = {"Hola","Pepe"};
-        moscli = new JList(mosclit);
-        upanel.add(edni);
+        upanel.add(dnie);
         upanel.add(dni);
-        upanel.add(eap);
-        upanel.add(ape);
-        upanel.add(enombre);
-        upanel.add(nombre);
+        upanel.add(dnibut);
         upanel.add(muestra);
         contenedor.add(upanel, BorderLayout.NORTH);
+        moscli = new JList();
+        contenedor.add(moscli, BorderLayout.CENTER);
 
-        getContentPane().add(moscli, BorderLayout.SOUTH);
 
     }
 
     public void mostrarClientes(Cliente[] clientes) {
-        String[] mosclit = {"Hola","Pepe"};
-        moscli = new JList(mosclit);
-        getContentPane().add(moscli);
-        revalidate();
-        repaint();
+        DefaultListModel<String> model = new DefaultListModel<>();
+        model.addElement("Hola");
+        model.addElement("Pepe");
+        moscli.setModel(model);
+        pack();
+        //revalidate();
+        //repaint();
         System.out.println("Holas");
+
+    }
+
+    public void muestraCliente(Cliente cliente){
+        moscli = new JList(new String[]{cliente.toString()});
+        System.out.println("Pitos");
 
     }
 
@@ -88,12 +83,15 @@ public class Mostrar extends Ventana {
             JButton boton = (JButton)e.getSource();
             String texto = boton.getText();
             switch(texto){
-                case("Buscar"):
-                    String search = dni.getText();
-                    super.controlador.buscaCliente(search);
+                case("DNI"):
+                    System.out.println("Aqui");
+                    super.controlador.buscaCliente(dni.getText());
                     break;
                 case("Muestra"):
                     super.controlador.muestraClientes();
+                    break;
+                case("Atras"):
+                    super.controlador.goPrincipal();
             }
 
         }

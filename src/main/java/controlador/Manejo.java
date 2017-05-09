@@ -35,5 +35,10 @@ public class Manejo implements Controlador {
         modelo.getClientes();
     }
 
+    @Override
+    public void goPrincipal() {
+        vista.cierraMostrar();
+    }
+
 
 }
