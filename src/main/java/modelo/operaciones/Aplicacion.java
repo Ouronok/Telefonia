@@ -66,24 +66,16 @@ public class Aplicacion implements Serializable, CambioModelo, InterrogaModelo {
     }
 
     public void getCliente(String nif) {
-        System.out.println("Llego");
         for (Cliente cAct : clientes) {
             if (cAct.getNif().equals(nif)) {
                 vista.muestraCliente(cAct);
             }
         }
-        System.out.println("Pitosapp");
        vista.noCli();
     }
 
     public void getClientes() {
-        Cliente[] res = new Cliente[clientes.size()];
-        int con = 0;
-        for(Cliente cac : clientes){
-            res[con] = cac;
-            con++;
-        }
-        vista.getClientes(res);
+        vista.getClientes(clientes);
     }
 
     public boolean addLlamada(String tlf, int duracion, LocalDateTime fecha, Cliente cliente) {

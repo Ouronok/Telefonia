@@ -12,6 +12,7 @@ import java.awt.event.ActionEvent;
 public class Principal extends Ventana {
 
     public void crea() {
+        super.setTitle("Menu principal");
         super.escuchador= new EscPrin();
         Container contenedor = getContentPane();
         JPanel panel = new JPanel();

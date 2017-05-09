@@ -6,6 +6,7 @@ import vista.escuchadores.Escuchador;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.LinkedList;
 
 /**
  * Created by ouronok on 2/05/17.
@@ -23,6 +24,7 @@ public class Mostrar extends Ventana {
     private JButton dnibut;
 
     public void crea() {
+        super.setTitle("Muestra clientes");
         super.escuchador = new EscMos();
         contenedor = getContentPane();
         rellena();
@@ -54,18 +56,18 @@ public class Mostrar extends Ventana {
         contenedor.add(upanel, BorderLayout.NORTH);
         moscli = new JList();
         contenedor.add(moscli, BorderLayout.CENTER);
+        contenedor.add(atras,BorderLayout.SOUTH);
 
 
     }
 
-    public void mostrarClientes(Cliente[] clientes) {
-        DefaultListModel<String> model = new DefaultListModel<>();
-        model.addElement("Hola");
-        model.addElement("Pepe");
+    public void mostrarClientes(LinkedList<Cliente> clientes) {
+        DefaultListModel<Cliente> model = new DefaultListModel<>();
+        for(Cliente cac: clientes){
+            model.addElement(cac);
+        }
         moscli.setModel(model);
         pack();
-        //revalidate();
-        //repaint();
         System.out.println("Holas");
 
     }
