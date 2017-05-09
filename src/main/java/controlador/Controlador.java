@@ -10,4 +10,6 @@ public interface Controlador {
     void buscaCliente(String dni);
 
     void muestraClientes();
+
+    void goPrincipal();
 }
