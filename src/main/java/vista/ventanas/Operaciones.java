@@ -12,11 +12,13 @@ import java.awt.event.ActionEvent;
 public class Operaciones extends Ventana{
 
 
-
+    private Container contenedor;
 
     @Override
     public void crea() {
+        super.setTitle("Operaciones disponibles");
         super.escuchador = new EscuchaOperaciones();
+        contenedor = getContentPane();
         rellena();
         pack();
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -32,23 +34,31 @@ public class Operaciones extends Ventana{
         JTabbedPane pestanyas = new JTabbedPane();
         pestanyas.add("Añadir Cliente",new PannelAnyadir());
         pestanyas.add("Borrar Cliente",new PannelBorrar());
+        contenedor.add(pestanyas);
     }
 
 
     private class PannelAnyadir extends JPanel{
         public PannelAnyadir() {
-            JTextField nombre = new JTextField(25);
+            setLayout(new GridLayout(20,2));
+            JLabel etiqueta_Nif = new JLabel("NIF: ");
             JTextField nif = new JTextField(8);
+            JLabel etiqueta_nombre = new JLabel("Nombre: ");
+            JTextField nombre = new JTextField(25);
+
             JTextField apellidos = new JTextField(20);
             JCheckBox empresa = new JCheckBox();
             JTextField direccion = new JTextField(30);
             JTextField email = new JTextField(20);
+            add(etiqueta_Nif);
             add(nif);
+            add(etiqueta_nombre);
+            add(nombre);
             add(apellidos);
             add(empresa);
             add(direccion);
             add(email);
-            add(nombre);
+
 
         }
 
