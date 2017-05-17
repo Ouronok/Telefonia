@@ -19,11 +19,9 @@ public abstract class Ventana extends JFrame implements Ventanas {
 
     protected abstract void crea();
 
-
     @Override
     public Escuchador getListener() {
         return escuchador;
     }
 
-    public abstract void selecciona(Cliente cliente);
 }

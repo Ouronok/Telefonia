@@ -1,5 +1,6 @@
 package vista.ventanas;
 
+import modelo.clientes.Cliente;
 import vista.escuchadores.Escuchador;
 
 import javax.swing.*;
@@ -21,6 +22,7 @@ public class Principal extends Ventana {
         pack();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
+
 
     private void botones(JPanel panel) {
         JButton boton1 = new JButton("Mostrar");

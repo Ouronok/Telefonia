@@ -104,12 +104,5 @@ public class Interfaz implements InterrogaVista,InformaVista {
     public void getClientes(LinkedList<Cliente> clientes) {
         mostrar.mostrarClientes(clientes);
     }
-    @Override
-    public void anyadirCliente() {
-        operaciones.anyadirCliente(clientes);
-    }
-    @Override
-    public void noAnyadido() {
-        operaciones.error;
 
 }
