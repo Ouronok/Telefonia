@@ -26,7 +26,11 @@ public class Manejo implements Controlador {
 
     @Override
     public void buscaCliente(String dni) {
-        vista.muestraCliente(modelo.getCliente(dni));
+        try {
+            vista.muestraCliente(modelo.getCliente(dni));
+        } catch (NotContained notContained) {
+            vista.noEnc();
+        }
 
     }
 
@@ -62,7 +66,11 @@ public class Manejo implements Controlador {
 
     @Override
     public void seleccionaCliente(String text) {
-        vista.selecciona(modelo.getCliente(text));
+        try {
+            vista.selecciona(modelo.getCliente(text));
+        } catch (NotContained notContained) {
+            vista.noSel();
+        }
     }
 
     @Override

@@ -32,11 +32,6 @@ public class Operaciones extends Ventana {
 
     }
 
-    @Override
-    public void selecciona(Cliente cliente) {
-
-    }
-
 
     public void error() {
         JOptionPane.showMessageDialog(this,"Este cliente ya existe");

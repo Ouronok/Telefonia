@@ -25,6 +25,10 @@ public interface InterrogaVista {
 
     void selecciona(Cliente cliente);
 
+    void noSel();
+
+    void noEnc();
+
   /*  boolean creaParticular();
     boolean creaEmpresa();
     boolean addCliente();

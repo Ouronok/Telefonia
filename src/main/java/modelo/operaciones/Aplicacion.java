@@ -66,13 +66,13 @@ public class Aplicacion implements Serializable, CambioModelo, InterrogaModelo {
         return false;
     }
 
-    public Cliente getCliente(String nif) {
+    public Cliente getCliente(String nif) throws NotContained {
         for (Cliente cAct : clientes) {
             if (cAct.getNif().equals(nif)) {
                 return cAct;
             }
         }
-        return null;
+        throw new NotContained();
     }
 
     public void getClientes() {

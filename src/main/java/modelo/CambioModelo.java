@@ -1,9 +1,10 @@
 package modelo;
 
 import modelo.clientes.Cliente;
+import modelo.excepciones.NotContained;
 
 public interface CambioModelo {
-    Cliente getCliente(String nif);
+    Cliente getCliente(String nif) throws NotContained;
 
     void getClientes();
 

@@ -90,5 +90,8 @@ public abstract class Cliente implements Dato, Serializable {
     }
 
 
+    public String getNombre() {
+        return nombre;
+    }
 }
 

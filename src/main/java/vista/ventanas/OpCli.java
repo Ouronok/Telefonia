@@ -13,7 +13,7 @@ import java.awt.event.ActionEvent;
 public class OpCli extends Ventana {
     private Container contenedor;
     private JLabel cactext;
-    private boolean seleccionado=false;
+    private Cliente seleccionado;
     private JTextField cact;
 
     @Override
@@ -31,9 +31,10 @@ public class OpCli extends Ventana {
 
     }
 
-    @Override
-    public void selecciona(Cliente cliente) {
 
+    public void selecciona(Cliente cliente) {
+        cactext.setText(cliente.getNombre());
+        seleccionado = cliente;
     }
 
     private void rellena(){
@@ -56,6 +57,10 @@ public class OpCli extends Ventana {
         contenedor.add(pestanyas,BorderLayout.CENTER);
         contenedor.add(atras,BorderLayout.SOUTH);
         contenedor.add(down,BorderLayout.NORTH);
+    }
+
+    public void noSel() {
+        JOptionPane.showMessageDialog(this,"No existe dicho cliente");
     }
 
 
