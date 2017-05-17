@@ -20,4 +20,8 @@ public interface Controlador {
     void atrasOpCli();
 
     void atrasOp();
+
+    void addEmpresa(String text);
+
+    void addParticular(String s);
 }
