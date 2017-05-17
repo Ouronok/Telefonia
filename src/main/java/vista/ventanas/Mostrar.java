@@ -94,7 +94,7 @@ public class Mostrar extends Ventana {
             String texto = boton.getText();
             switch(texto){
                 case("DNI"):
-                    System.out.println("Aqui");
+                    System.out.println("Le pasamos: "+ dni.getText());
                     super.controlador.buscaCliente(dni.getText());
                     break;
                 case("Muestra"):

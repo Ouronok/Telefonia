@@ -70,6 +70,7 @@ public class Aplicacion implements Serializable, CambioModelo, InterrogaModelo {
         for (Cliente cAct : clientes) {
             if (cAct.getNif().equals(nif)) {
                 vista.muestraCliente(cAct);
+                return;
             }
         }
        vista.noCli();

@@ -3,6 +3,7 @@ package vista.ventanas;
 import vista.escuchadores.Escuchador;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
@@ -73,6 +74,7 @@ public class Operaciones extends Ventana {
             add(direccion);
             add(etiqueta_Email);
             add(email);
+            add(añadir, BorderLayout.SOUTH);
         }
 
 
