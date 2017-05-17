@@ -12,5 +12,5 @@ public interface InformaVista {
 
     void noCli();
 
-    void getClientes(LinkedList<Cliente> clientes);
+    void  getClientes(LinkedList<Cliente> clientes);
 }
