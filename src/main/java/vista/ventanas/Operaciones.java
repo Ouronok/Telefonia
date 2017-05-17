@@ -9,8 +9,10 @@ import java.awt.event.ActionEvent;
 
 public class Operaciones extends Ventana {
 
-    private JButton atras;
     private Container contenedor;
+    private JButton  añadir;
+    private JTextField nif;
+    private JLabel etiqueta_Nif;
 
     @Override
     public void crea() {
@@ -19,7 +21,7 @@ public class Operaciones extends Ventana {
         contenedor = getContentPane();
         rellena();
         pack();
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
 
     }
@@ -27,7 +29,8 @@ public class Operaciones extends Ventana {
     private void rellena() {
 
         JTabbedPane pestanyas = new JTabbedPane();
-        atras = new JButton("Atras");
+        añadir = new JButton("Añadir");
+        JButton atras = new JButton("Atras");
         atras.addActionListener(super.escuchador);
         pestanyas.add("Añadir Cliente", new PannelAnyadir());
         pestanyas.add("Borrar Cliente", new PannelBorrar());
@@ -39,13 +42,13 @@ public class Operaciones extends Ventana {
 
 
     private class PannelAnyadir extends JPanel {
-        public PannelAnyadir() {
+        private PannelAnyadir() {
 
             setLayout(new GridLayout(10, 2));
 
             //FIELDS
-            JLabel etiqueta_Nif = new JLabel("NIF: ");
-            JTextField nif = new JTextField(8);
+            etiqueta_Nif = new JLabel("NIF: ");
+            nif = new JTextField(8);
             JLabel etiqueta_Nombre = new JLabel("Nombre: ");
             JTextField nombre = new JTextField(25);
             JLabel etiqueta_Apellido = new JLabel("Apellidos: ");
@@ -77,10 +80,11 @@ public class Operaciones extends Ventana {
 
     private class PannelBorrar extends JPanel {
 
-        public PannelBorrar() {
+        private PannelBorrar() {
+            //FIELDS
             setLayout(new GridLayout(20, 2));
-            JLabel etiqueta_Nif = new JLabel("NIF: ");
-            JTextField nif = new JTextField(8);
+            etiqueta_Nif = new JLabel("NIF: ");
+            nif = new JTextField(8);
 
             //AÑADE EN EL PANEL
             add(etiqueta_Nif);
