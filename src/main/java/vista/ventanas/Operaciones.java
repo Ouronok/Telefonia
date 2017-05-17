@@ -35,7 +35,7 @@ public class Operaciones extends Ventana {
         atras.addActionListener(super.escuchador);
         pestanyas.add("Añadir Cliente", new PannelAnyadir());
         pestanyas.add("Borrar Cliente", new PannelBorrar());
-        contenedor.add(pestanyas);
+        contenedor.add(pestanyas,BorderLayout.CENTER);
         JPanel spanel = new JPanel();
         spanel.add(atras);
         contenedor.add(spanel, BorderLayout.SOUTH);

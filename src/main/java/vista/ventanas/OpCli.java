@@ -1,5 +1,6 @@
 package vista.ventanas;
 
+import modelo.clientes.Cliente;
 import vista.escuchadores.Escuchador;
 
 import javax.swing.*;
@@ -11,6 +12,9 @@ import java.awt.event.ActionEvent;
  */
 public class OpCli extends Ventana {
     private Container contenedor;
+    private JLabel cactext;
+    private boolean seleccionado=false;
+    private JTextField cact;
 
     @Override
     public void crea() {
@@ -27,15 +31,31 @@ public class OpCli extends Ventana {
 
     }
 
+    @Override
+    public void selecciona(Cliente cliente) {
+
+    }
+
     private void rellena(){
+        JLabel act = new JLabel("Elegir cliente: ");
+        cact = new JTextField(20);
+        JButton busca = new JButton("Seleccionar");
+        busca.addActionListener(escuchador);
+        JPanel down = new JPanel();
+        cactext = new JLabel("Ningun cliente");
+        down.add(act);
+        down.add(cact);
+        down.add(cactext);
+        down.add(busca);
         JTabbedPane pestanyas = new JTabbedPane();
         pestanyas.add("Tarifas",new PanelTarifas());
         pestanyas.add("Facturas",new PanelFacturas());
         pestanyas.add("Llamadas",new PanelLlamadas());
         JButton atras = new JButton("Atras");
         atras.addActionListener(escuchador);
-        contenedor.add(pestanyas,BorderLayout.NORTH);
+        contenedor.add(pestanyas,BorderLayout.CENTER);
         contenedor.add(atras,BorderLayout.SOUTH);
+        contenedor.add(down,BorderLayout.NORTH);
     }
 
 
@@ -87,6 +107,10 @@ public class OpCli extends Ventana {
             switch(texto){
                 case("Atras"):
                     super.controlador.atrasOpCli();
+                    break;
+                case ("Selecciona"):
+                    super.controlador.seleccionaCliente(cact.getText());
+
             }
 
         }

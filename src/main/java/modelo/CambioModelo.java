@@ -1,7 +1,9 @@
 package modelo;
 
+import modelo.clientes.Cliente;
+
 public interface CambioModelo {
-    void getCliente(String nif);
+    Cliente getCliente(String nif);
     void getClientes();
 }
 

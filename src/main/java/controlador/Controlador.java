@@ -20,4 +20,6 @@ public interface Controlador {
     void atrasOpCli();
 
     void atrasOp();
+
+    void seleccionaCliente(String text);
 }

@@ -1,5 +1,6 @@
 package vista.ventanas;
 
+import modelo.clientes.Cliente;
 import vista.escuchadores.Escuchador;
 
 import javax.swing.*;
@@ -24,4 +25,5 @@ public abstract class Ventana extends JFrame implements Ventanas {
         return escuchador;
     }
 
+    public abstract void selecciona(Cliente cliente);
 }

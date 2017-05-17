@@ -91,6 +91,11 @@ public class Interfaz implements InterrogaVista,InformaVista {
     }
 
     @Override
+    public void selecciona(Cliente cliente) {
+        operaciones.selecciona(cliente);
+    }
+
+    @Override
     public void noCli() {
         mostrar.error();
     }

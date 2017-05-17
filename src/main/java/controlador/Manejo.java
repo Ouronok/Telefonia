@@ -27,8 +27,10 @@ public class Manejo implements Controlador {
 
     @Override
     public void buscaCliente(String dni) {
-            modelo.getCliente(dni);
+            vista.muestraCliente(modelo.getCliente(dni));
     }
+
+
 
     @Override
     public void muestraClientes() {
@@ -58,6 +60,11 @@ public class Manejo implements Controlador {
     @Override
     public void atrasOp() {
         vista.cierraOp();
+    }
+
+    @Override
+    public void seleccionaCliente(String text) {
+        vista.selecciona(modelo.getCliente(text));
     }
 
 

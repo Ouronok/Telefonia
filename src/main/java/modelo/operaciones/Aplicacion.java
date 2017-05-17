@@ -66,14 +66,13 @@ public class Aplicacion implements Serializable, CambioModelo, InterrogaModelo {
         return false;
     }
 
-    public void getCliente(String nif) {
+    public Cliente getCliente(String nif) {
         for (Cliente cAct : clientes) {
             if (cAct.getNif().equals(nif)) {
-                vista.muestraCliente(cAct);
-                return;
+                return cAct;
             }
         }
-       vista.noCli();
+        return null;
     }
 
     public void getClientes() {
