@@ -36,13 +36,23 @@ public class Manejo implements Controlador {
     }
 
     @Override
-    public void goPrincipal() {
+    public void atrasMostrar() {
         vista.cierraMostrar();
     }
 
     @Override
     public void abreOps() {
         vista.abreOps();
+    }
+
+    @Override
+    public void abreCliente() {
+        vista.abreCliente();
+    }
+
+    @Override
+    public void atrasOpCli() {
+        vista.cierraOpCli();
     }
 
 

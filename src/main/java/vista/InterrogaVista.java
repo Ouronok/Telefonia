@@ -14,6 +14,11 @@ public interface InterrogaVista {
     void cierraMostrar();
 
     void abreOps();
+
+    void abreCliente();
+
+    void cierraOpCli();
+
   /*  boolean creaParticular();
     boolean creaEmpresa();
     boolean addCliente();

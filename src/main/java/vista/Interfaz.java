@@ -5,6 +5,7 @@ import controlador.Manejo;
 import modelo.InterrogaModelo;
 import modelo.clientes.Cliente;
 import vista.ventanas.Mostrar;
+import vista.ventanas.OpCli;
 import vista.ventanas.Operaciones;
 import vista.ventanas.Principal;
 
@@ -18,6 +19,8 @@ public class Interfaz implements InterrogaVista,InformaVista {
     Principal principal;
     Mostrar mostrar;
     Operaciones operaciones;
+    OpCli clientes;
+
 
     public void setControlador(Manejo controlador) {
         this.controlador = controlador;
@@ -29,11 +32,14 @@ public class Interfaz implements InterrogaVista,InformaVista {
     private void inicializa(Manejo controlador) {
         principal = new Principal();
         mostrar = new Mostrar();
+        clientes = new OpCli();
         principal.getListener().setControlador(controlador);
         principal.setVisible(true);
         mostrar.getListener().setControlador(controlador);
         operaciones = new Operaciones();
         operaciones.getListener().setControlador(controlador);
+        clientes.getListener().setControlador(controlador);
+
     }
 
     public void setModelo(InterrogaModelo modelo) {
@@ -58,6 +64,18 @@ public class Interfaz implements InterrogaVista,InformaVista {
     public void abreOps() {
         principal.setVisible(false);
         operaciones.setVisible(true);
+    }
+
+    @Override
+    public void abreCliente() {
+        principal.setVisible(false);
+        clientes.setVisible(true);
+    }
+
+    @Override
+    public void cierraOpCli() {
+        clientes.setVisible(false);
+        principal.setVisible(true);
     }
 
     @Override

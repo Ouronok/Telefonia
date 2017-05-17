@@ -13,7 +13,7 @@ public class Principal extends Ventana {
 
     public void crea() {
         super.setTitle("Menu principal");
-        super.escuchador= new EscPrin();
+        super.escuchador = new EscPrin();
         Container contenedor = getContentPane();
         JPanel panel = new JPanel();
         botones(panel);
@@ -38,15 +38,18 @@ public class Principal extends Ventana {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            JButton boton = (JButton)e.getSource();
+            JButton boton = (JButton) e.getSource();
             String texto = boton.getText();
-            switch(texto){
-                case("Mostrar"):
+            switch (texto) {
+                case ("Mostrar"):
                     super.controlador.abreMostrar();
                     break;
-                case("Operaciones"):
+                case ("Operaciones"):
                     super.controlador.abreOps();
-                }
+                    break;
+                case ("Cliente"):
+                    super.controlador.abreCliente();
             }
+        }
     }
 }

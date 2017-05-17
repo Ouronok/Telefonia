@@ -23,7 +23,7 @@ public class Mostrar extends Ventana {
     private JList moscli;
     private Container contenedor;
     private JButton dnibut;
-    private DefaultListModel<String> model = new DefaultListModel<>();
+    private DefaultListModel<String> model;
 
     public void crea() {
         super.setTitle("Muestra clientes");
@@ -59,14 +59,13 @@ public class Mostrar extends Ventana {
         upanel.add(muestra);
         contenedor.add(upanel, BorderLayout.NORTH);
         moscli = new JList();
+        model = new DefaultListModel<>();
+        moscli.setModel(model);
         contenedor.add(moscli, BorderLayout.CENTER);
         JPanel spanel = new JPanel();
         spanel.add(limpia);
         spanel.add(atras);
         contenedor.add(spanel,BorderLayout.SOUTH);
-
-
-
     }
 
     public void mostrarClientes(LinkedList<Cliente> clientes) {
@@ -74,19 +73,16 @@ public class Mostrar extends Ventana {
         for(Cliente cac: clientes){
             model.addElement(cac.toString());
         }
-        moscli.setModel(model);
         pack();
     }
 
     public void muestraCliente(Cliente cliente){
         model.addElement(cliente.toString());
-        moscli.setModel(model);
         pack();
 
     }
     private void limpia() {
         model.removeAllElements();
-        moscli.setModel(model);
         pack();
 
     }
@@ -107,7 +103,7 @@ public class Mostrar extends Ventana {
                     super.controlador.muestraClientes();
                     break;
                 case("Atras"):
-                    super.controlador.goPrincipal();
+                    super.controlador.atrasMostrar();
                 case("Limpia"):
                     limpia();
             }

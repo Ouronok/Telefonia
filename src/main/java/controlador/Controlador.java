@@ -11,7 +11,11 @@ public interface Controlador {
 
     void muestraClientes();
 
-    void goPrincipal();
+    void atrasMostrar();
 
     void abreOps();
+
+    void abreCliente();
+
+    void atrasOpCli();
 }
