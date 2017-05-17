@@ -22,4 +22,8 @@ public interface Controlador {
     void atrasOp();
 
     void seleccionaCliente(String text);
+
+    void addEmpresa(String text);
+
+    void addParticular(String s);
 }

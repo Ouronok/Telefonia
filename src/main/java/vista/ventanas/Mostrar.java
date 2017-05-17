@@ -14,7 +14,6 @@ public class Mostrar extends Ventana {
 
 
     private JTextField dni;
-
     private JButton muestra;
     private JButton atras;
     private JButton limpia;

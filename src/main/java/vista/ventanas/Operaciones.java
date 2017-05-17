@@ -1,9 +1,9 @@
 package vista.ventanas;
 
+import modelo.clientes.Cliente;
 import vista.escuchadores.Escuchador;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
@@ -13,7 +13,11 @@ public class Operaciones extends Ventana {
     private Container contenedor;
     private JButton  añadir;
     private JTextField nif;
-    private JLabel etiqueta_Nif;
+    private JTextField nombre;
+    private JTextField apellidos;
+    private JCheckBox empresa;
+    private JTextField direccion;
+    private JTextField email;
 
     @Override
     public void crea() {
@@ -25,6 +29,11 @@ public class Operaciones extends Ventana {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
 
+    }
+
+
+    public void error() {
+        JOptionPane.showMessageDialog(this,"Este cliente ya existe");
     }
 
     private void rellena() {
@@ -42,22 +51,23 @@ public class Operaciones extends Ventana {
     }
 
 
+
     private class PannelAnyadir extends JPanel {
         private PannelAnyadir() {
 
             setLayout(new GridLayout(10, 2));
 
             //FIELDS
-            etiqueta_Nif = new JLabel("NIF: ");
+            JLabel etiqueta_Nif = new JLabel("NIF: ");
             nif = new JTextField(8);
             JLabel etiqueta_Nombre = new JLabel("Nombre: ");
-            JTextField nombre = new JTextField(25);
+            nombre = new JTextField(25);
             JLabel etiqueta_Apellido = new JLabel("Apellidos: ");
-            JTextField apellidos = new JTextField(20);
+            apellidos = new JTextField(20);
             JLabel etiqueta_Empresa = new JLabel("Empresa: ");
-            JCheckBox empresa = new JCheckBox();
+            empresa = new JCheckBox();
             JLabel etiqueta_Direccion = new JLabel("Direccion: ");
-            JTextField direccion = new JTextField(30);
+            direccion = new JTextField(30);
             JLabel etiqueta_Email = new JLabel("Email: ");
             JTextField email = new JTextField(20);
 
@@ -85,7 +95,7 @@ public class Operaciones extends Ventana {
         private PannelBorrar() {
             //FIELDS
             setLayout(new GridLayout(20, 2));
-            etiqueta_Nif = new JLabel("NIF: ");
+            JLabel etiqueta_Nif = new JLabel("NIF: ");
             nif = new JTextField(8);
 
             //AÑADE EN EL PANEL
@@ -105,6 +115,13 @@ public class Operaciones extends Ventana {
             switch (texto) {
                 case ("Atras"):
                     super.controlador.atrasOp();
+                    break;
+                case("Añadir"):
+                    if (empresa.isSelected())
+                        super.controlador.addEmpresa(nif.getText() + nombre.getText() + direccion.getText() + email.getText());
+                    else
+                        super.controlador.addParticular(nif.getText() + nombre.getText() + apellidos.getText() + direccion.getText() + email.getText());
+
             }
 
         }
