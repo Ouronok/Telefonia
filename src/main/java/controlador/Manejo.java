@@ -28,6 +28,7 @@ public class Manejo implements Controlador {
     @Override
     public void buscaCliente(String dni) {
             vista.muestraCliente(modelo.getCliente(dni));
+
     }
 
     @Override
@@ -71,7 +72,7 @@ public class Manejo implements Controlador {
 
     @Override
     public void addParticular(String text) {
-
+    modelo.creaEmpresa()
     }
 
 

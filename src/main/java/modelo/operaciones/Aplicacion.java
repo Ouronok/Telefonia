@@ -23,9 +23,9 @@ public class Aplicacion implements Serializable, CambioModelo, InterrogaModelo {
 
 
 
-    public boolean creaEmpresa(String nombre, String nif, String email, String[] dir, Double precio) {
+    public void creaEmpresa(String nombre, String nif, String email, String[] dir, Double precio) {
         Empresa cliente = fcli.creaEmpresa(nombre, nif, email, crearDir(dir), fact, fta.creaTarifa(precio));
-        return addCliente(cliente);
+        addCliente(cliente);
     }
 
 
