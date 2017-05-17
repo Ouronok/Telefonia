@@ -23,7 +23,7 @@ public interface Controlador {
 
     void seleccionaCliente(String text);
 
-    void addEmpresa(String text);
+    void addEmpresa(String nombre, String nif, String email, String[] dir, Double precio);
 
-    void addParticular(String text);
+    void addParticular(String nombre, String nif, String apellidos, String[] dir , Double precio);
 }

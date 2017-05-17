@@ -11,7 +11,6 @@ public class Manejo implements Controlador {
     private CambioModelo modelo;
 
 
-
     public void setModelo(CambioModelo modelo) {
         this.modelo = modelo;
     }
@@ -21,13 +20,13 @@ public class Manejo implements Controlador {
         this.vista = vista;
     }
 
-    public void abreMostrar(){
+    public void abreMostrar() {
         vista.abreMostrar();
     }
 
     @Override
     public void buscaCliente(String dni) {
-            vista.muestraCliente(modelo.getCliente(dni));
+        vista.muestraCliente(modelo.getCliente(dni));
 
     }
 
@@ -67,13 +66,11 @@ public class Manejo implements Controlador {
     }
 
     @Override
-    public void addEmpresa(String text) {
+    public void addEmpresa(String nombre, String nif, String email, String[] dir, Double precio) {
     }
 
     @Override
-    public void addParticular(String text) {
-    modelo.creaEmpresa()
+    public void addParticular(String nombre, String nif, String apellidos, String[] dir, Double precio) {
+
     }
-
-
 }

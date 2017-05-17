@@ -29,9 +29,9 @@ public class Aplicacion implements Serializable, CambioModelo, InterrogaModelo {
     }
 
 
-    public boolean creaParticular(String nombre, String apellidos, String nif, String email, String[] dir, Double precio) {
+    public void creaParticular(String nombre, String apellidos, String nif, String email, String[] dir, Double precio) {
         Particular cliente = fcli.creaParticular(nombre, apellidos, nif, email, crearDir(dir), fact, fta.creaTarifa(precio));
-        return addCliente(cliente);
+        addCliente(cliente);
     }
 
     public boolean addCliente(Cliente cliente) {

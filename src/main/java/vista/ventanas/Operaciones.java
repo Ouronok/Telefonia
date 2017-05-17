@@ -18,6 +18,7 @@ public class Operaciones extends Ventana {
     private JCheckBox empresa;
     private JTextField direccion;
     private JTextField email;
+    private JTextField precio;
 
     @Override
     public void crea() {
@@ -28,6 +29,11 @@ public class Operaciones extends Ventana {
         pack();
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
+
+    }
+
+    @Override
+    public void selecciona(Cliente cliente) {
 
     }
 
@@ -118,9 +124,9 @@ public class Operaciones extends Ventana {
                     break;
                 case("Añadir"):
                     if (empresa.isSelected())
-                        super.controlador.addEmpresa(nif.getText() + nombre.getText() + direccion.getText() + email.getText());
+                        super.controlador.addEmpresa(nif.getText(),nombre.getText(),email.getText(),direccion.getText(),precio.getText());
                     else
-                        super.controlador.addParticular(nif.getText() + nombre.getText() + apellidos.getText() + direccion.getText() + email.getText());
+                        super.controlador.addParticular(nombre.getText(),nif.getText(),apellidos.getText(), direccion.getText() + email.getText());
 
             }
 
