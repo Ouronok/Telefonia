@@ -22,6 +22,7 @@ public class Aplicacion implements Serializable, CambioModelo, InterrogaModelo {
 
 
 
+
     public boolean creaEmpresa(String nombre, String nif, String email, String[] dir, Double precio) {
         Empresa cliente = fcli.creaEmpresa(nombre, nif, email, crearDir(dir), fact, fta.creaTarifa(precio));
         return addCliente(cliente);
@@ -75,6 +76,7 @@ public class Aplicacion implements Serializable, CambioModelo, InterrogaModelo {
     }
 
     public void getClientes() {
+        clientes.add(new Empresa("Pepe","20","naranyes",new Direccion("oeoe","jdjd","jdhd"),LocalDateTime.now(),new TarifaBasica(20)));
         vista.getClientes(clientes);
     }
 

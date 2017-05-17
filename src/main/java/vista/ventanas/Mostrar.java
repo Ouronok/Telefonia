@@ -19,9 +19,11 @@ public class Mostrar extends Ventana {
 
     private JButton muestra;
     private JButton atras;
+    private JButton limpia;
     private JList moscli;
     private Container contenedor;
     private JButton dnibut;
+    private DefaultListModel<String> model = new DefaultListModel<>();
 
     public void crea() {
         super.setTitle("Muestra clientes");
@@ -35,11 +37,13 @@ public class Mostrar extends Ventana {
 
 
     public void error() {
-        JOptionPane.showMessageDialog(this,"No se puede completar la busqueda");
+        JOptionPane.showMessageDialog(this,"No existe dicho cliente");
     }
 
 
     private void rellena() {
+        limpia = new JButton("Limpia");
+        limpia.addActionListener(super.escuchador);
         JLabel dnie = new JLabel("DNI:");
         dni = new JTextField(8);
         atras = new JButton("Atras");
@@ -56,27 +60,37 @@ public class Mostrar extends Ventana {
         contenedor.add(upanel, BorderLayout.NORTH);
         moscli = new JList();
         contenedor.add(moscli, BorderLayout.CENTER);
-        contenedor.add(atras,BorderLayout.SOUTH);
+        JPanel spanel = new JPanel();
+        spanel.add(limpia);
+        spanel.add(atras);
+        contenedor.add(spanel,BorderLayout.SOUTH);
+
 
 
     }
 
     public void mostrarClientes(LinkedList<Cliente> clientes) {
-        DefaultListModel<Cliente> model = new DefaultListModel<>();
+        limpia();
         for(Cliente cac: clientes){
-            model.addElement(cac);
+            model.addElement(cac.toString());
         }
         moscli.setModel(model);
         pack();
-        System.out.println("Holas");
-
     }
 
     public void muestraCliente(Cliente cliente){
-        moscli = new JList(new String[]{cliente.toString()});
-        System.out.println("Pitos");
+        model.addElement(cliente.toString());
+        moscli.setModel(model);
+        pack();
 
     }
+    private void limpia() {
+        model.removeAllElements();
+        moscli.setModel(model);
+        pack();
+
+    }
+
 
 
     private class EscMos extends Escuchador {
@@ -94,8 +108,12 @@ public class Mostrar extends Ventana {
                     break;
                 case("Atras"):
                     super.controlador.goPrincipal();
+                case("Limpia"):
+                    limpia();
             }
 
         }
     }
+
+
 }
