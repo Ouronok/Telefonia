@@ -8,9 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.LinkedList;
 
-/**
- * Created by ouronok on 2/05/17.
- */
+
 public class Mostrar extends Ventana {
 
 
