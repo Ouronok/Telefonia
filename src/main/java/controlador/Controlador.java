@@ -18,4 +18,6 @@ public interface Controlador {
     void abreCliente();
 
     void atrasOpCli();
+
+    void atrasOp();
 }

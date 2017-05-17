@@ -55,5 +55,10 @@ public class Manejo implements Controlador {
         vista.cierraOpCli();
     }
 
+    @Override
+    public void atrasOp() {
+        vista.cierraOp();
+    }
+
 
 }

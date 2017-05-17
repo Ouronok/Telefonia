@@ -98,7 +98,7 @@ public class Operaciones extends Ventana {
             String texto = boton.getText();
             switch (texto) {
                 case ("Atras"):
-                    super.controlador.atrasOpCli();
+                    super.controlador.atrasOp();
             }
 
         }
