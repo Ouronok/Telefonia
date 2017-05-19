@@ -26,4 +26,10 @@ public interface Controlador {
     void addEmpresa(String nombre, String nif, String email, String[] dir, Double precio);
 
     void addParticular(String nombre, String nif, String apellidos, String[] dir , Double precio);
+
+    void setBasica();
+
+    void setTardes();
+
+    void setDomingos();
 }

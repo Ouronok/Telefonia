@@ -66,24 +66,27 @@ public class OpCli extends Ventana {
 
     private class PanelTarifas extends JPanel{
         public PanelTarifas() {
-            setLayout(new GridLayout(20,2));
-            JLabel etiqueta_Nif = new JLabel("NIF: ");
-            JTextField nif = new JTextField(8);
-            JLabel etiqueta_nombre = new JLabel("Nombre: ");
-            JTextField nombre = new JTextField(25);
+            JPanel down = new JPanel();
+            JButton basica = new JButton("Basica");
+            basica.addActionListener(escuchador);
+            JButton tardes = new JButton("Tardes");
+            tardes.addActionListener(escuchador);
+            JButton domingos = new JButton("Domingos");
+            domingos.addActionListener(escuchador);
+            JLabel indtar = new JLabel("Cambiar tarifa: ");
+            JLabel txtprecio = new JLabel("Nuevo precio basica: ");
+            JTextField precio = new JTextField(4);
+            JPanel up = new JPanel();
+            up.add(txtprecio,BorderLayout.NORTH);
+            up.add(precio,BorderLayout.NORTH);
+            add(up,BorderLayout.NORTH);
+            down.add(indtar,BorderLayout.NORTH);
+            down.add(basica,BorderLayout.SOUTH);
+            down.add(tardes,BorderLayout.SOUTH);
+            down.add(domingos,BorderLayout.SOUTH);
+            add(down,BorderLayout.SOUTH);
 
-            JTextField apellidos = new JTextField(20);
-            JCheckBox empresa = new JCheckBox();
-            JTextField direccion = new JTextField(30);
-            JTextField email = new JTextField(20);
-            add(etiqueta_Nif);
-            add(nif);
-            add(etiqueta_nombre);
-            add(nombre);
-            add(apellidos);
-            add(empresa);
-            add(direccion);
-            add(email);
+
 
 
         }
@@ -109,15 +112,34 @@ public class OpCli extends Ventana {
         public void actionPerformed(ActionEvent e) {
             JButton boton = (JButton) e.getSource();
             String texto = boton.getText();
-            switch(texto){
-                case("Atras"):
+            switch(texto) {
+                case ("Atras"):
                     super.controlador.atrasOpCli();
                     break;
-                case ("Selecciona"):
+                case ("Seleccionar"):
                     super.controlador.seleccionaCliente(cact.getText());
-
+                    break;
+                case ("Basica"):
+                    if (seleccionado != null) {
+                        super.controlador.setBasica();
+                    } else {
+                        noSel();
+                    }
+                case ("Tardes"):
+                    if (seleccionado != null) {
+                        super.controlador.setTardes();
+                    } else {
+                        noSel();
+                    }
+                    break;
+                case ("Domingos"):
+                    if (seleccionado != null) {
+                        super.controlador.setDomingos();
+                    } else {
+                        noSel();
+                    }
+                    break;
             }
-
         }
     }
 }

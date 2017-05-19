@@ -38,6 +38,7 @@ public class Mostrar extends Ventana {
 
 
     private void rellena() {
+
         limpia = new JButton("Limpia");
         limpia.addActionListener(super.escuchador);
         JLabel dnie = new JLabel("DNI:");
@@ -57,7 +58,8 @@ public class Mostrar extends Ventana {
         moscli = new JList();
         model = new DefaultListModel<>();
         moscli.setModel(model);
-        contenedor.add(moscli, BorderLayout.CENTER);
+        JScrollPane barra = new JScrollPane(moscli);
+        contenedor.add(barra, BorderLayout.CENTER);
         JPanel spanel = new JPanel();
         spanel.add(limpia);
         spanel.add(atras);

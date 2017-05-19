@@ -81,4 +81,19 @@ public class Manejo implements Controlador {
     public void addParticular(String nombre, String nif, String apellidos, String[] dir, Double precio) {
 
     }
+
+    @Override
+    public void setBasica() {
+
+    }
+
+    @Override
+    public void setTardes() {
+
+    }
+
+    @Override
+    public void setDomingos() {
+
+    }
 }

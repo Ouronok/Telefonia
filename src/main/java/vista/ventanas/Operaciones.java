@@ -118,10 +118,10 @@ public class Operaciones extends Ventana {
                     super.controlador.atrasOp();
                     break;
                 case("Añadir"):
-                    if (empresa.isSelected())
-                        super.controlador.addEmpresa(nif.getText(),nombre.getText(),email.getText(),direccion.getText(),precio.getText());
-                    else
-                        super.controlador.addParticular(nombre.getText(),nif.getText(),apellidos.getText(), direccion.getText() + email.getText());
+                    if (empresa.isSelected());
+                     //   super.controlador.addEmpresa(nif.getText(),nombre.getText(),email.getText(),direccion.getText(),precio.getText());
+                   // else
+                       // super.controlador.addParticular(nombre.getText(),nif.getText(),apellidos.getText(), direccion.getText() + email.getText());
 
             }
 
