@@ -103,4 +103,9 @@ public class Manejo implements Controlador {
     public void swpPrecio(Cliente seleccionado, double valor) {
         modelo.swpPrecio(seleccionado,valor);
     }
+
+    @Override
+    public void listFac(Cliente seleccionado) {
+        modelo.getFacturas(seleccionado);
+    }
 }

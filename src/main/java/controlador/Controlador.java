@@ -36,4 +36,6 @@ public interface Controlador {
     void setDomingos(Cliente seleccionado);
 
     void swpPrecio(Cliente seleccionado, double valor);
+
+    void listFac(Cliente seleccionado);
 }

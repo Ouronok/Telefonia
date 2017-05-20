@@ -5,6 +5,7 @@ import modelo.clientes.Cliente;
 import vista.escuchadores.Escuchador;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.text.NumberFormatter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -19,6 +20,7 @@ public class OpCli extends Ventana {
     private Cliente seleccionado;
     private JTextField cact;
     private JFormattedTextField precio;
+    private JList mosfac;
 
     @Override
     public void crea() {
@@ -55,6 +57,7 @@ public class OpCli extends Ventana {
         down.add(cactext);
         down.add(busca);
         JTabbedPane pestanyas = new JTabbedPane();
+
         pestanyas.add("Tarifas",new PanelTarifas());
         pestanyas.add("Facturas",new PanelFacturas());
         pestanyas.add("Llamadas",new PanelLlamadas());
@@ -107,7 +110,7 @@ public class OpCli extends Ventana {
             down.add(basica);
             down.add(tardes);
             down.add(domingos);
-            add(down,BorderLayout.SOUTH);
+            add(down,BorderLayout.CENTER);
 
 
 
@@ -117,7 +120,23 @@ public class OpCli extends Ventana {
     }
 
     private class PanelFacturas extends JPanel{
-
+        public PanelFacturas(){
+            setLayout(new BorderLayout());
+            JPanel up = new JPanel();
+            JButton adfac = new JButton("Añadir factura");
+            adfac.addActionListener(escuchador);
+            JButton tofac = new JButton("Mostrar facturas");
+            tofac.addActionListener(escuchador);
+            up.add(tofac);
+            up.add(adfac);
+            add(up, BorderLayout.NORTH);
+            mosfac = new JList();
+            DefaultListModel fac = new DefaultListModel();
+            mosfac.setModel(fac);
+            JScrollPane barra = new JScrollPane(mosfac);
+            barra.setSize(100,50);
+            add(barra, BorderLayout.CENTER);
+        }
     }
 
     private class PanelLlamadas extends JPanel {
@@ -167,6 +186,12 @@ public class OpCli extends Ventana {
                     } else {
                         noVal();
                     }
+                    break;
+                case("Añadir factura"):
+
+                    break;
+                case("Mostrar facturas"):
+                    super.controlador.listFac(seleccionado);
             }
         }
 
