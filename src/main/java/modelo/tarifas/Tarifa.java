@@ -21,4 +21,8 @@ public abstract class Tarifa implements Serializable {
         return precio + "€";
     }
 
+    public void swpPrecio(double precio) {
+        this.precio=precio;
+    }
+
 }

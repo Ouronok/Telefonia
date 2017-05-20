@@ -35,5 +35,5 @@ public interface Controlador {
 
     void setDomingos(Cliente seleccionado);
 
-    void swpPrecio(Object value);
+    void swpPrecio(Cliente seleccionado, double valor);
 }

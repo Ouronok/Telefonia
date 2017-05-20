@@ -100,7 +100,7 @@ public class Manejo implements Controlador {
     }
 
     @Override
-    public void swpPrecio(Object value) {
-
+    public void swpPrecio(Cliente seleccionado, double valor) {
+        modelo.swpPrecio(seleccionado,valor);
     }
 }

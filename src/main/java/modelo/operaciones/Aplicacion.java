@@ -75,14 +75,9 @@ public class Aplicacion implements Serializable, CambioModelo, InterrogaModelo {
         return new Direccion(dir[0],dir[1],dir[2]);
     }
 
-    public boolean swpPrecio(Cliente cliente, double precio) {
-        if (clientes.contains(cliente)) {
-            if(cliente.getTarifa() instanceof TarifaBasica){
-                ((TarifaBasica) cliente.getTarifa()).swpPrecio(precio);
-                return true;
-            }
-        }
-        return false;
+    public void swpPrecio(Cliente cliente, double precio) {
+       cliente.getTarifa().swpPrecio(precio);
+       vista.tarifaCambiada();
     }
 
     public Cliente getCliente(String nif) throws NotContained {

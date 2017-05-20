@@ -1,5 +1,6 @@
 package vista.ventanas;
 
+import modelo.InterrogaModelo;
 import modelo.clientes.Cliente;
 import vista.escuchadores.Escuchador;
 
@@ -40,6 +41,7 @@ public class OpCli extends Ventana {
         seleccionado = cliente;
     }
 
+
     private void rellena(){
         JLabel act = new JLabel("Elegir cliente: ");
         cact = new JTextField(20);
@@ -64,16 +66,24 @@ public class OpCli extends Ventana {
     }
 
     public void noSel() {
-        JOptionPane.showMessageDialog(this,"No existe dicho cliente");
+        JOptionPane.showMessageDialog(this,"No se ha seleccionado ningun cliente");
     }
+
+    private void noVal() {
+        JOptionPane.showMessageDialog(this,"Introduce un entero valido");
+    }
+
 
     public void exitoTarifa() {
         JOptionPane.showMessageDialog(this,"Tarifa cambiada con exito");
     }
-
-
     private class PanelTarifas extends JPanel{
+
+
+
+
         public PanelTarifas() {
+            setLayout(new BorderLayout());
             JPanel down = new JPanel();
             JButton cambiaprecio = new JButton("Cambiar precio");
             cambiaprecio.addActionListener(escuchador);
@@ -84,16 +94,10 @@ public class OpCli extends Ventana {
             JButton domingos = new JButton("Domingos");
             domingos.addActionListener(escuchador);
             JLabel indtar = new JLabel("Cambiar tarifa: ");
-            JLabel txtprecio = new JLabel("Nuevo precio basica: ");
-            NumberFormat format = NumberFormat.getInstance();
-            NumberFormatter formatter = new NumberFormatter(format);
-            formatter.setValueClass(Integer.class);
-            formatter.setMinimum(1);
-            formatter.setMaximum(Integer.MAX_VALUE);
-            formatter.setAllowsInvalid(false);
-            formatter.setCommitsOnValidEdit(true);
-            precio = new JFormattedTextField(formatter);
-            precio.setSize(100,100);
+            JLabel txtprecio = new JLabel("Nuevo precio tarifa actual: ");
+
+            precio = new JFormattedTextField(15);
+
             JPanel up = new JPanel();
             up.add(txtprecio);
             up.add(precio);
@@ -110,9 +114,6 @@ public class OpCli extends Ventana {
 
         }
 
-
-
-
     }
 
     private class PanelFacturas extends JPanel{
@@ -121,12 +122,11 @@ public class OpCli extends Ventana {
 
     private class PanelLlamadas extends JPanel {
 
+
+
     }
 
-
-
     private class CliEsc extends Escuchador {
-
         @Override
         public void actionPerformed(ActionEvent e) {
             JButton boton = (JButton) e.getSource();
@@ -159,11 +159,17 @@ public class OpCli extends Ventana {
                     }
                     break;
                 case("Cambiar precio"):
-                    if(precio!=null){
-                        super.controlador.swpPrecio(precio.getValue());
+                    if(seleccionado==null) {
+                        noSel();
+                        break;
+                    }else if(precio.getValue() instanceof Double || precio.getValue() instanceof Integer && (int) precio.getValue()*1.>0){
+                        super.controlador.swpPrecio(seleccionado, (int) precio.getValue() * 1.);
+                    } else {
+                        noVal();
                     }
             }
         }
+
     }
 }
 

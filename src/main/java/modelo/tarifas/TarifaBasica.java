@@ -20,7 +20,5 @@ public class TarifaBasica extends Tarifa {
     }
 
 
-    public void swpPrecio(double precio) {
-        super.precio=precio;
-    }
+
 }
