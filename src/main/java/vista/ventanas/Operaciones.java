@@ -20,7 +20,6 @@ public class Operaciones extends Ventana {
     private JTextField provincia;
     private JTextField cp;
     private JTextField email;
-    private JFormattedTextField precio;
 
     @Override
     public void crea() {
@@ -42,7 +41,7 @@ public class Operaciones extends Ventana {
     private void rellena() {
 
         JTabbedPane pestanyas = new JTabbedPane();
-        añadir = new JButton("Añadir");
+        añadir = new JButton("Anyadir");
         JButton atras = new JButton("Atras");
         atras.addActionListener(super.escuchador);
         pestanyas.add("Añadir Cliente", new PannelAnyadir());
@@ -75,7 +74,7 @@ public class Operaciones extends Ventana {
             JLabel etiqueta_cp = new JLabel("Codigo postal: ");
             cp = new JTextField(40);
             JLabel etiqueta_Email = new JLabel("Email: ");
-            JTextField email = new JTextField(20);
+            email = new JTextField(20);
 
             //AÑADE EN EL PANEL
             add(etiqueta_Nif);
@@ -128,13 +127,12 @@ public class Operaciones extends Ventana {
 
                     super.controlador.atrasOp();
                     break;
-                case ("Añadir"):
-
-                  if (empresa.isSelected() && (precio.getValue() instanceof Double || precio.getValue() instanceof Integer && (int) precio.getValue() * 1. > 0))
-                        super.controlador.addEmpresa(nombre.getText(), nif.getText() , email.getText(), cp.getText(), provincia.getText(), poblacion.getText(), (int) precio.getValue() * 1.);
-                    else if (precio.getValue() instanceof Double || precio.getValue() instanceof Integer && (int) precio.getValue() * 1. > 0)
-                        super.controlador.addParticular(nombre.getText(), nif.getText() , email.getText(), email.getText(), cp.getText(), provincia.getText(), poblacion.getText()
-                                , (int) precio.getValue() * 1.);
+                case ("Anyadir"):
+                    System.out.println("hola");
+                  if (empresa.isSelected())
+                        super.controlador.addEmpresa(nombre.getText(), nif.getText() , email.getText(), cp.getText(), provincia.getText(), poblacion.getText());
+                    else
+                        super.controlador.addParticular(nombre.getText(), nif.getText() , email.getText(), email.getText(), cp.getText(), provincia.getText(), poblacion.getText());
 
             }
 

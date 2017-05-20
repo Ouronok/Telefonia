@@ -19,17 +19,18 @@ public class Aplicacion implements Serializable, CambioModelo, InterrogaModelo {
     private FactoriaTarifas fta = new FactoriaTarifas();
     private LinkedList<Cliente> clientes = new LinkedList<>();
     private InformaVista vista;
+    private Double precio =  15.0; //Por defecto
 
 
 
 
-    public void creaEmpresa(String nombre, String nif, String email, String cp, String provincia, String poblacion, Double precio) {
-        Empresa cliente = fcli.creaEmpresa(nombre, nif, email, new Direccion(cp,provincia,poblacion), fact, fta.creaTarifa(precio));
+    public void creaEmpresa(String nombre, String nif, String email, String cp, String provincia, String poblacion) {
+        Empresa cliente = fcli.creaEmpresa(nombre, nif, email, new Direccion(cp,provincia,poblacion), fact, fta.creaTarifa((precio)));
         addCliente(cliente);
     }
 
 
-    public void creaParticular(String nombre, String apellidos, String nif, String email, String cp, String provincia, String poblacion, Double precio) {
+    public void creaParticular(String nombre, String apellidos, String nif, String email, String cp, String provincia, String poblacion) {
         Particular cliente = fcli.creaParticular(nombre, apellidos, nif, email, new Direccion(cp,provincia,poblacion), fact, fta.creaTarifa(precio));
         addCliente(cliente);
     }

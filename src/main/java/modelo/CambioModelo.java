@@ -11,9 +11,9 @@ public interface CambioModelo {
 
     void getClientes();
 
-    void creaEmpresa(String nombre, String nif, String email,  String cp, String provincia, String poblacion, Double precio);
+    void creaEmpresa(String nombre, String nif, String email,  String cp, String provincia, String poblacion);
 
-    void creaParticular(String nombre, String apellidos, String nif, String email,  String cp, String provincia, String poblacion, Double precio);
+    void creaParticular(String nombre, String apellidos, String nif, String email,  String cp, String provincia, String poblacion);
 
     void swpTarifa(int i, Cliente seleccionado);
 
