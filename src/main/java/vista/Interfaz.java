@@ -4,6 +4,7 @@ import controlador.Controlador;
 import controlador.Manejo;
 import modelo.InterrogaModelo;
 import modelo.clientes.Cliente;
+import modelo.datos.Factura;
 import vista.ventanas.Mostrar;
 import vista.ventanas.OpCli;
 import vista.ventanas.Operaciones;
@@ -104,6 +105,11 @@ public class Interfaz implements InterrogaVista,InformaVista {
     @Override
     public void noEnc() {
         mostrar.error();
+    }
+
+    @Override
+    public void mostrarFacturas(LinkedList<Factura> facturas) {
+        clientes.mostrarFacturas(facturas);
     }
 
     @Override

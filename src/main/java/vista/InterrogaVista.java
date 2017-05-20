@@ -29,6 +29,8 @@ public interface InterrogaVista {
 
     void noEnc();
 
+    void mostrarFacturas(LinkedList<Factura> facturas);
+
   /*  boolean creaParticular();
     boolean creaEmpresa();
     boolean addCliente();

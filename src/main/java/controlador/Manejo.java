@@ -110,6 +110,6 @@ public class Manejo implements Controlador {
 
     @Override
     public void listFac(Cliente seleccionado) {
-        modelo.getFacturas(seleccionado);
+        vista.mostrarFacturas(modelo.getFacturas(seleccionado));
     }
 }
