@@ -124,6 +124,8 @@ public class Operaciones extends Ventana {
             String texto = boton.getText();
             switch (texto) {
                 case ("Atras"):
+                    System.out.println("hola");
+
                     super.controlador.atrasOp();
                     break;
                 case ("Añadir"):
