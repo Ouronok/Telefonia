@@ -25,4 +25,5 @@ public abstract class Ventana extends JFrame implements Ventanas {
     }
 
 
+
 }

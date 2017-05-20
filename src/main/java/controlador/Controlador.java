@@ -1,5 +1,7 @@
 package controlador;
 
+import modelo.clientes.Cliente;
+
 /**
  * Created by ouron on 01/05/2017.
  */
@@ -27,9 +29,11 @@ public interface Controlador {
 
     void addParticular(String nombre, String nif, String apellidos, String[] dir , Double precio);
 
-    void setBasica();
+    void setBasica(Cliente seleccionado);
 
-    void setTardes();
+    void setTardes(Cliente seleccionado);
 
-    void setDomingos();
+    void setDomingos(Cliente seleccionado);
+
+    void swpPrecio(Object value);
 }

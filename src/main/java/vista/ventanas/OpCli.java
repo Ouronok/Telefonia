@@ -4,8 +4,10 @@ import modelo.clientes.Cliente;
 import vista.escuchadores.Escuchador;
 
 import javax.swing.*;
+import javax.swing.text.NumberFormatter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.text.NumberFormat;
 
 /**
  * Created by ouron on 17/05/2017.
@@ -15,6 +17,7 @@ public class OpCli extends Ventana {
     private JLabel cactext;
     private Cliente seleccionado;
     private JTextField cact;
+    private JFormattedTextField precio;
 
     @Override
     public void crea() {
@@ -40,6 +43,7 @@ public class OpCli extends Ventana {
     private void rellena(){
         JLabel act = new JLabel("Elegir cliente: ");
         cact = new JTextField(20);
+
         JButton busca = new JButton("Seleccionar");
         busca.addActionListener(escuchador);
         JPanel down = new JPanel();
@@ -63,10 +67,16 @@ public class OpCli extends Ventana {
         JOptionPane.showMessageDialog(this,"No existe dicho cliente");
     }
 
+    public void exitoTarifa() {
+        JOptionPane.showMessageDialog(this,"Tarifa cambiada con exito");
+    }
+
 
     private class PanelTarifas extends JPanel{
         public PanelTarifas() {
             JPanel down = new JPanel();
+            JButton cambiaprecio = new JButton("Cambiar precio");
+            cambiaprecio.addActionListener(escuchador);
             JButton basica = new JButton("Basica");
             basica.addActionListener(escuchador);
             JButton tardes = new JButton("Tardes");
@@ -75,15 +85,24 @@ public class OpCli extends Ventana {
             domingos.addActionListener(escuchador);
             JLabel indtar = new JLabel("Cambiar tarifa: ");
             JLabel txtprecio = new JLabel("Nuevo precio basica: ");
-            JTextField precio = new JTextField(4);
+            NumberFormat format = NumberFormat.getInstance();
+            NumberFormatter formatter = new NumberFormatter(format);
+            formatter.setValueClass(Integer.class);
+            formatter.setMinimum(1);
+            formatter.setMaximum(Integer.MAX_VALUE);
+            formatter.setAllowsInvalid(false);
+            formatter.setCommitsOnValidEdit(true);
+            precio = new JFormattedTextField(formatter);
+            precio.setSize(100,100);
             JPanel up = new JPanel();
-            up.add(txtprecio,BorderLayout.NORTH);
-            up.add(precio,BorderLayout.NORTH);
+            up.add(txtprecio);
+            up.add(precio);
+            up.add(cambiaprecio);
             add(up,BorderLayout.NORTH);
-            down.add(indtar,BorderLayout.NORTH);
-            down.add(basica,BorderLayout.SOUTH);
-            down.add(tardes,BorderLayout.SOUTH);
-            down.add(domingos,BorderLayout.SOUTH);
+            down.add(indtar);
+            down.add(basica);
+            down.add(tardes);
+            down.add(domingos);
             add(down,BorderLayout.SOUTH);
 
 
@@ -121,24 +140,28 @@ public class OpCli extends Ventana {
                     break;
                 case ("Basica"):
                     if (seleccionado != null) {
-                        super.controlador.setBasica();
+                        super.controlador.setBasica(seleccionado);
                     } else {
                         noSel();
                     }
                 case ("Tardes"):
                     if (seleccionado != null) {
-                        super.controlador.setTardes();
+                        super.controlador.setTardes(seleccionado);
                     } else {
                         noSel();
                     }
                     break;
                 case ("Domingos"):
                     if (seleccionado != null) {
-                        super.controlador.setDomingos();
+                        super.controlador.setDomingos(seleccionado);
                     } else {
                         noSel();
                     }
                     break;
+                case("Cambiar precio"):
+                    if(precio!=null){
+                        super.controlador.swpPrecio(precio.getValue());
+                    }
             }
         }
     }

@@ -44,6 +44,25 @@ public class Aplicacion implements Serializable, CambioModelo, InterrogaModelo {
         return true;
     }
 
+    public void swpTarifa(int op,Cliente cliente) {
+        switch(op){
+            case(1):
+                cliente.swpTarifa(FactoriaTarifas.creaDomingo(cliente.getTarifa()));
+                vista.tarifaCambiada();
+                return;
+            case(2):
+                cliente.swpTarifa(FactoriaTarifas.creaTardes(cliente.getTarifa()));
+                vista.tarifaCambiada();
+                return;
+            case(3):
+                cliente.swpTarifa(FactoriaTarifas.creaTarifa(20.));
+                vista.tarifaCambiada();
+
+
+
+        }
+    }
+
     public boolean delCliente(Cliente cliente) {
         if (clientes.contains(cliente)) {
             clientes.remove(cliente);
@@ -145,20 +164,6 @@ public class Aplicacion implements Serializable, CambioModelo, InterrogaModelo {
     }
 
 
-    public boolean swpTarifa(int op,Cliente cliente) {
-        switch(op){
-            case(1):
-                cliente.swpTarifa(FactoriaTarifas.creaDomingo(cliente.getTarifa()));
-                return true;
-            case(2):
-                cliente.swpTarifa(FactoriaTarifas.creaTardes(cliente.getTarifa()));
-                return true;
-            default:
-                System.out.println("Opcion invalida");
-                return false;
-
-        }
-    }
 
     public void setVista(InformaVista vista) {
         this.vista = vista;

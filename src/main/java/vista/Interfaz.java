@@ -116,4 +116,9 @@ public class Interfaz implements InterrogaVista,InformaVista {
         mostrar.mostrarClientes(clientes);
     }
 
+    @Override
+    public void tarifaCambiada() {
+        clientes.exitoTarifa();
+    }
+
 }

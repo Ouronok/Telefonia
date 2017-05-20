@@ -1,6 +1,7 @@
 package controlador;
 
 import modelo.CambioModelo;
+import modelo.clientes.Cliente;
 import modelo.excepciones.NotContained;
 import vista.InterrogaVista;
 
@@ -83,17 +84,23 @@ public class Manejo implements Controlador {
     }
 
     @Override
-    public void setBasica() {
+    public void setBasica(Cliente seleccionado) {
+        modelo.swpTarifa(3,seleccionado);
+    }
+
+    @Override
+    public void setTardes(Cliente seleccionado) {
+        modelo.swpTarifa(2,seleccionado);
 
     }
 
     @Override
-    public void setTardes() {
-
+    public void setDomingos(Cliente seleccionado) {
+        modelo.swpTarifa(1,seleccionado);
     }
 
     @Override
-    public void setDomingos() {
+    public void swpPrecio(Object value) {
 
     }
 }
