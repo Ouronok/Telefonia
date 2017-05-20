@@ -130,4 +130,9 @@ public class Manejo implements Controlador {
     public void buscaFac(int id) {
         vista.muestraFactura(modelo.getFactura(id));
     }
+
+    @Override
+    public void borraFac(Cliente seleccionado, String text) {
+
+    }
 }

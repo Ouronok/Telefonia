@@ -35,14 +35,17 @@ public class Aplicacion implements Serializable, CambioModelo, InterrogaModelo {
         addCliente(cliente);
     }
 
-    public boolean addCliente(Cliente cliente) {
+    public void addCliente(Cliente cliente) {
         for (Cliente cliac : clientes) {
             if (cliac.getNif().equals(cliente.getNif())) {
-                return false;
+                vista.clienteNoAnyadido();
+                return;
             }
         }
         clientes.add(cliente);
-        return true;
+        System.out.println("hola");
+        vista.clienteAnyadido();
+        return;
     }
 
     public void swpTarifa(int op,Cliente cliente) {
