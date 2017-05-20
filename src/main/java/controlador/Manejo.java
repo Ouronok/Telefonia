@@ -2,6 +2,7 @@ package controlador;
 
 import modelo.CambioModelo;
 import modelo.clientes.Cliente;
+import modelo.datos.Direccion;
 import modelo.excepciones.NotContained;
 import vista.InterrogaVista;
 
@@ -75,11 +76,14 @@ public class Manejo implements Controlador {
     }
 
     @Override
-    public void addEmpresa(String nombre, String nif, String email, String[] dir, Double precio) {
+    public void addEmpresa(String nombre, String nif, String email, String cp, String provincia, String poblacion, Double precio) {
+        Direccion direccion = new Direccion(cp,provincia,poblacion);
+
     }
 
     @Override
-    public void addParticular(String nombre, String nif, String apellidos, String[] dir, Double precio) {
+    public void addParticular(String nombre,String apellidos, String nif, String email, String cp, String provincia, String poblacion, Double precio) {
+        Direccion direccion = new Direccion(cp,provincia,poblacion);
 
     }
 
