@@ -77,13 +77,13 @@ public class Manejo implements Controlador {
 
     @Override
     public void addEmpresa(String nombre, String nif, String email, String cp, String provincia, String poblacion, Double precio) {
-        Direccion direccion = new Direccion(cp,provincia,poblacion);
+        modelo.creaEmpresa(nombre,nif,email,cp,provincia,poblacion,precio);
 
     }
 
     @Override
     public void addParticular(String nombre,String apellidos, String nif, String email, String cp, String provincia, String poblacion, Double precio) {
-        Direccion direccion = new Direccion(cp,provincia,poblacion);
+        modelo.creaParticular(nombre,nif,apellidos,email,cp,provincia,poblacion,precio);
 
     }
 
