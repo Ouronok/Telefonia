@@ -15,4 +15,6 @@ public interface InformaVista {
     void  getClientes(LinkedList<Cliente> clientes);
 
     void tarifaCambiada();
+
+    void facan();
 }

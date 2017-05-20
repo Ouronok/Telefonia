@@ -6,6 +6,8 @@ import modelo.datos.Direccion;
 import modelo.excepciones.NotContained;
 import vista.InterrogaVista;
 
+import java.time.LocalDateTime;
+
 
 public class Manejo implements Controlador {
 
@@ -111,5 +113,10 @@ public class Manejo implements Controlador {
     @Override
     public void listFac(Cliente seleccionado) {
         vista.mostrarFacturas(modelo.getFacturas(seleccionado));
+    }
+
+    @Override
+    public void addFac(Cliente seleccionado, LocalDateTime now) {
+        modelo.emitirFactura(seleccionado,new LocalDateTime[]{now,now.plusMonths(1)});
     }
 }

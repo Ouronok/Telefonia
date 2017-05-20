@@ -11,6 +11,7 @@ import javax.swing.text.NumberFormatter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.text.NumberFormat;
+import java.time.LocalDateTime;
 import java.util.LinkedList;
 
 /**
@@ -23,6 +24,7 @@ public class OpCli extends Ventana {
     private JTextField cact;
     private JFormattedTextField precio;
     private DefaultListModel fac;
+    private JTextField idfac;
 
     @Override
     public void crea() {
@@ -89,6 +91,10 @@ public class OpCli extends Ventana {
         }
     }
 
+    public void facan() {
+        JOptionPane.showMessageDialog(this,"Factura añadida con exito");
+    }
+
     private class PanelTarifas extends JPanel{
 
 
@@ -132,13 +138,21 @@ public class OpCli extends Ventana {
         public PanelFacturas(){
             setLayout(new BorderLayout());
             JPanel up = new JPanel();
+            idfac = new JTextField(3);
+            JLabel idtxt = new JLabel("ID factura: ");
+            JButton busfac = new JButton("Buscar factura");
+            JButton delfac = new JButton("Borra factura");
             JButton adfac = new JButton("Añadir factura");
             adfac.addActionListener(escuchador);
             JButton tofac = new JButton("Mostrar facturas");
             tofac.addActionListener(escuchador);
+            up.add(idtxt);
+            up.add(idfac);
+            up.add(busfac);
+            up.add(delfac);
             up.add(tofac);
             up.add(adfac);
-            add(up, BorderLayout.NORTH);
+            add(up,BorderLayout.NORTH);
             JList mosfac = new JList();
             fac = new DefaultListModel();
             mosfac.setModel(fac);
@@ -198,7 +212,7 @@ public class OpCli extends Ventana {
                     break;
                 case("Añadir factura"):
                     if(seleccionado!=null) {
-                        super.controlador.listFac(seleccionado);
+                        super.controlador.addFac(seleccionado, LocalDateTime.now());
                     }else{
                         noSel();
                     }
@@ -206,6 +220,20 @@ public class OpCli extends Ventana {
                 case("Mostrar facturas"):
                     if(seleccionado!=null) {
                         super.controlador.listFac(seleccionado);
+                    }else {
+                        noSel();
+                    }
+                    break;
+                case("Buscar factura"):
+                    if(seleccionado!=null) {
+                        super.controlador.listFac(seleccionado);
+                    }else{
+                        noSel();
+                    }
+                    break;
+                case("Borra factura"):
+                    if(seleccionado!=null) {
+                        super.controlador.borraFac(seleccionado,idfac.getText());
                     }else{
                         noSel();
                     }

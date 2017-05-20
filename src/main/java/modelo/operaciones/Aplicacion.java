@@ -109,16 +109,10 @@ public class Aplicacion implements Serializable, CambioModelo, InterrogaModelo {
         return null;
     }
 
-    public boolean emitirFactura(Cliente cliente, LocalDateTime[] intervalo) throws BadPeriod, NotContained {
-        if (intervalo[0].isAfter(intervalo[1])) {
-            throw new BadPeriod();
-        }
-
-        if (!clientes.contains(cliente)) {
-            throw new NotContained();
-        }
+    public void emitirFactura(Cliente cliente, LocalDateTime[] intervalo)  {
         double importe = calcImp(cliente, intervalo);
-        return cliente.addFactura(new Factura(fact, intervalo[0],intervalo[1], importe, cliente.getTarifa()));
+        cliente.addFactura(new Factura(fact, intervalo[0],intervalo[1], importe, cliente.getTarifa()));
+        vista.facan();
     }
 
     private double calcImp(Cliente cliente, LocalDateTime[] intervalo) {

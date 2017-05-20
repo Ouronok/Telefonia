@@ -127,4 +127,9 @@ public class Interfaz implements InterrogaVista,InformaVista {
         clientes.exitoTarifa();
     }
 
+    @Override
+    public void facan() {
+        clientes.facan();
+    }
+
 }

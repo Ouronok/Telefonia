@@ -4,6 +4,7 @@ import modelo.clientes.Cliente;
 import modelo.excepciones.NotContained;
 import modelo.datos.Factura;
 
+import java.time.LocalDateTime;
 import java.util.LinkedList;
 
 public interface CambioModelo {
@@ -20,5 +21,7 @@ public interface CambioModelo {
     void swpPrecio(Cliente cliente, double precio);
 
     LinkedList<Factura> getFacturas(Cliente seleccionado);
+
+    void emitirFactura(Cliente cliente, LocalDateTime[] intervalo);
 }
 

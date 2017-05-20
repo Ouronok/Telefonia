@@ -2,6 +2,8 @@ package controlador;
 
 import modelo.clientes.Cliente;
 
+import java.time.LocalDateTime;
+
 /**
  * Created by ouron on 01/05/2017.
  */
@@ -38,4 +40,8 @@ public interface Controlador {
     void swpPrecio(Cliente seleccionado, double valor);
 
     void listFac(Cliente seleccionado);
+
+    void addFac(Cliente seleccionado, LocalDateTime now);
+
+    void borraFac(Cliente seleccionado, String text);
 }
