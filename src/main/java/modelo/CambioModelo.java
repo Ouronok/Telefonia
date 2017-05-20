@@ -23,5 +23,7 @@ public interface CambioModelo {
     LinkedList<Factura> getFacturas(Cliente seleccionado);
 
     void emitirFactura(Cliente cliente, LocalDateTime[] intervalo);
+
+    Factura getFactura(int id);
 }
 

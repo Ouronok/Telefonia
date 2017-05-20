@@ -14,6 +14,8 @@ import java.text.NumberFormat;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 
+import static java.lang.Integer.parseInt;
+
 /**
  * Created by ouron on 17/05/2017.
  */
@@ -86,6 +88,7 @@ public class OpCli extends Ventana {
     }
 
     public void mostrarFacturas(LinkedList<Factura> facturas) {
+        fac.removeAllElements();
         for(Factura faca:facturas){
             fac.addElement(faca);
         }
@@ -93,6 +96,14 @@ public class OpCli extends Ventana {
 
     public void facan() {
         JOptionPane.showMessageDialog(this,"Factura añadida con exito");
+    }
+
+    public void noFac() {
+        JOptionPane.showMessageDialog(this,"No existe dicha factura");
+    }
+
+    public void muestraFactura(Factura factura) {
+        fac.addElement(factura);
     }
 
     private class PanelTarifas extends JPanel{
@@ -226,14 +237,14 @@ public class OpCli extends Ventana {
                     break;
                 case("Buscar factura"):
                     if(seleccionado!=null) {
-                        super.controlador.listFac(seleccionado);
+                        super.controlador.buscaFac(parseInt(idfac.getText()));
                     }else{
                         noSel();
                     }
                     break;
                 case("Borra factura"):
                     if(seleccionado!=null) {
-                        super.controlador.borraFac(seleccionado,idfac.getText());
+                        super.controlador.borraFac(parseInt(idfac.getText()));
                     }else{
                         noSel();
                     }

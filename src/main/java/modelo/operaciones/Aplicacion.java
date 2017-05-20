@@ -122,7 +122,7 @@ public class Aplicacion implements Serializable, CambioModelo, InterrogaModelo {
         return importe;
     }
 
-    public Factura getFactura(int cod) throws NotCreated {
+    public Factura getFactura(int cod){
         for (Cliente cliac : clientes) {
             for (Factura faac : cliac.getListafac()) {
                 if (faac.getFID() == cod) {
@@ -130,7 +130,7 @@ public class Aplicacion implements Serializable, CambioModelo, InterrogaModelo {
                 }
             }
         }
-        throw new NotCreated();
+        return null;
     }
 
     public LinkedList<Factura> getFacturas(Cliente cliente) {

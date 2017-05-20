@@ -118,5 +118,16 @@ public class Manejo implements Controlador {
     @Override
     public void addFac(Cliente seleccionado, LocalDateTime now) {
         modelo.emitirFactura(seleccionado,new LocalDateTime[]{now,now.plusMonths(1)});
+
+    }
+
+    @Override
+    public void borraFac(int id) {
+
+    }
+
+    @Override
+    public void buscaFac(int id) {
+        vista.muestraFactura(modelo.getFactura(id));
     }
 }

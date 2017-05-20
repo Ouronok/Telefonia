@@ -31,6 +31,8 @@ public interface InterrogaVista {
 
     void mostrarFacturas(LinkedList<Factura> facturas);
 
+    void muestraFactura(Factura facutra);
+
   /*  boolean creaParticular();
     boolean creaEmpresa();
     boolean addCliente();

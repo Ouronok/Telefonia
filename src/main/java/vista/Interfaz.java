@@ -113,6 +113,15 @@ public class Interfaz implements InterrogaVista,InformaVista {
     }
 
     @Override
+    public void muestraFactura(Factura factura) {
+        if(factura==null){
+            clientes.noFac();
+        } else{
+            clientes.muestraFactura(factura);
+        }
+    }
+
+    @Override
     public void noCli() {
         mostrar.error();
     }

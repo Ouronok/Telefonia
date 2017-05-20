@@ -43,5 +43,7 @@ public interface Controlador {
 
     void addFac(Cliente seleccionado, LocalDateTime now);
 
-    void borraFac(Cliente seleccionado, String text);
+    void borraFac(int id);
+
+    void buscaFac(int id);
 }
