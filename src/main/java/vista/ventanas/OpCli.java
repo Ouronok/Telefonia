@@ -2,6 +2,7 @@ package vista.ventanas;
 
 import modelo.InterrogaModelo;
 import modelo.clientes.Cliente;
+import modelo.datos.Factura;
 import vista.escuchadores.Escuchador;
 
 import javax.swing.*;
@@ -10,6 +11,7 @@ import javax.swing.text.NumberFormatter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.text.NumberFormat;
+import java.util.LinkedList;
 
 /**
  * Created by ouron on 17/05/2017.
@@ -20,7 +22,7 @@ public class OpCli extends Ventana {
     private Cliente seleccionado;
     private JTextField cact;
     private JFormattedTextField precio;
-    private JList mosfac;
+    private DefaultListModel fac;
 
     @Override
     public void crea() {
@@ -80,6 +82,13 @@ public class OpCli extends Ventana {
     public void exitoTarifa() {
         JOptionPane.showMessageDialog(this,"Tarifa cambiada con exito");
     }
+
+    public void mostrarFacturas(LinkedList<Factura> facturas) {
+        for(Factura faca:facturas){
+            fac.addElement(faca);
+        }
+    }
+
     private class PanelTarifas extends JPanel{
 
 
@@ -130,8 +139,8 @@ public class OpCli extends Ventana {
             up.add(tofac);
             up.add(adfac);
             add(up, BorderLayout.NORTH);
-            mosfac = new JList();
-            DefaultListModel fac = new DefaultListModel();
+            JList mosfac = new JList();
+            fac = new DefaultListModel();
             mosfac.setModel(fac);
             JScrollPane barra = new JScrollPane(mosfac);
             barra.setSize(100,50);
@@ -188,10 +197,18 @@ public class OpCli extends Ventana {
                     }
                     break;
                 case("Añadir factura"):
-
+                    if(seleccionado!=null) {
+                        super.controlador.listFac(seleccionado);
+                    }else{
+                        noSel();
+                    }
                     break;
                 case("Mostrar facturas"):
-                    super.controlador.listFac(seleccionado);
+                    if(seleccionado!=null) {
+                        super.controlador.listFac(seleccionado);
+                    }else{
+                        noSel();
+                    }
             }
         }
 
