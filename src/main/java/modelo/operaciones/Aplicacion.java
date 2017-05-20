@@ -58,9 +58,6 @@ public class Aplicacion implements Serializable, CambioModelo, InterrogaModelo {
             case(3):
                 cliente.swpTarifa(FactoriaTarifas.creaTarifa(20.));
                 vista.tarifaCambiada();
-
-
-
         }
     }
 
