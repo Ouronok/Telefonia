@@ -126,6 +126,18 @@ public class Interfaz implements InterrogaVista,InformaVista {
     public void tarifaCambiada() {
         clientes.exitoTarifa();
     }
+    @Override
+    public void clienteAnyadido(){
+
+        operaciones.exitoanyadido();
+    }
+    @Override
+    public void clienteNoAnyadido(){
+
+        operaciones.erroranyadido();
+    }
+
+
 
     @Override
     public void facan() {

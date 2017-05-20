@@ -16,5 +16,9 @@ public interface InformaVista {
 
     void tarifaCambiada();
 
+    void clienteAnyadido();
+
+    void clienteNoAnyadido();
+
     void facan();
 }

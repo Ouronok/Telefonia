@@ -119,4 +119,9 @@ public class Manejo implements Controlador {
     public void addFac(Cliente seleccionado, LocalDateTime now) {
         modelo.emitirFactura(seleccionado,new LocalDateTime[]{now,now.plusMonths(1)});
     }
+
+    @Override
+    public void borraFac(Cliente seleccionado, String text) {
+
+    }
 }

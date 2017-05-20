@@ -33,17 +33,18 @@ public class Operaciones extends Ventana {
 
     }
 
-
-    public void error() {
+    public void exitoanyadido() {
+        JOptionPane.showMessageDialog(this,"Cliente añadido con exito");
+    }
+    public void erroranyadido() {
         JOptionPane.showMessageDialog(this, "Este cliente ya existe");
     }
 
     private void rellena() {
 
         JTabbedPane pestanyas = new JTabbedPane();
-        añadir = new JButton("Anyadir");
-        JButton atras = new JButton("Atras");
-        atras.addActionListener(super.escuchador);
+        JButton atras = new JButton("atras");
+        atras.addActionListener(escuchador);
         pestanyas.add("Añadir Cliente", new PannelAnyadir());
         pestanyas.add("Borrar Cliente", new PannelBorrar());
         contenedor.add(pestanyas, BorderLayout.CENTER);
@@ -54,7 +55,7 @@ public class Operaciones extends Ventana {
 
 
     private class PannelAnyadir extends JPanel {
-        private PannelAnyadir() {
+        public PannelAnyadir() {
 
             setLayout(new GridLayout(30, 1));
 
@@ -75,6 +76,9 @@ public class Operaciones extends Ventana {
             cp = new JTextField(40);
             JLabel etiqueta_Email = new JLabel("Email: ");
             email = new JTextField(20);
+            añadir = new JButton("Añadir");
+            añadir.addActionListener(escuchador);
+
 
             //AÑADE EN EL PANEL
             add(etiqueta_Nif);
@@ -93,7 +97,9 @@ public class Operaciones extends Ventana {
             add(cp);
             add(etiqueta_Email);
             add(email);
-            add(añadir, BorderLayout.SOUTH);
+            add(añadir);
+
+
         }
 
 
@@ -122,18 +128,16 @@ public class Operaciones extends Ventana {
             JButton boton = (JButton) e.getSource();
             String texto = boton.getText();
             switch (texto) {
-                case ("Atras"):
+                case ("atras"):
                     System.out.println("hola");
-
                     super.controlador.atrasOp();
                     break;
-                case ("Anyadir"):
+                case ("Añadir"):
                     System.out.println("hola");
                   if (empresa.isSelected())
                         super.controlador.addEmpresa(nombre.getText(), nif.getText() , email.getText(), cp.getText(), provincia.getText(), poblacion.getText());
                     else
                         super.controlador.addParticular(nombre.getText(), nif.getText() , email.getText(), email.getText(), cp.getText(), provincia.getText(), poblacion.getText());
-
             }
 
         }
