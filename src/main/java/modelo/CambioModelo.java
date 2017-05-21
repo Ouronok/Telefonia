@@ -9,12 +9,12 @@ import java.util.LinkedList;
 
 public interface CambioModelo {
     Cliente getCliente(String nif) throws NotContained;
+
     void getClientes();
 
-    void creaEmpresa(String nif, String nombre , String email,  String cp, String provincia, String poblacion);
+    void creaEmpresa(String nif, String nombre, String email, String cp, String provincia, String poblacion);
 
-    void creaParticular( String nif,String nombre, String apellidos, String email,  String cp, String provincia, String poblacion);
-
+    void creaParticular(String nif, String nombre, String apellidos, String email, String cp, String provincia, String poblacion);
 
     void swpTarifa(int i, Cliente seleccionado);
 
@@ -27,5 +27,6 @@ public interface CambioModelo {
     Factura getFactura(int id);
 
     boolean delFac(int id);
-}
 
+    Cliente delCliente(String nif) throws NotContained;
+}

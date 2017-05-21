@@ -89,8 +89,12 @@ public class Manejo implements Controlador {
     }
 
     @Override
-    public void delCliente(String nif){
-
+    public void delCliente(String nif) {
+        try {
+            vista.borraCliente(modelo.delCliente(nif));
+        } catch (NotContained notContained){
+            vista.noEnc();
+        }
     }
 
     @Override

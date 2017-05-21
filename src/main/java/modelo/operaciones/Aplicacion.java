@@ -64,10 +64,12 @@ public class Aplicacion implements Serializable, CambioModelo, InterrogaModelo {
         }
     }
 
-    public void delCliente(Cliente cliente) throws NotContained  {
-        if (clientes.contains(cliente)) {
-            clientes.remove(cliente);
-            vista.clienteBorrado();
+    public Cliente delCliente(String dni) throws NotContained {
+        for (Cliente cliact: clientes) {
+            if (cliact.getNif().equals(dni)) {
+                clientes.remove(cliact);
+                return cliact;
+            }
         }
         throw new NotContained();
     }

@@ -35,6 +35,8 @@ public interface InterrogaVista {
 
     void borraFac(boolean b);
 
+    void borraCliente(Cliente cliente);
+
   /*  boolean creaParticular();
     boolean creaEmpresa();
     boolean addCliente();

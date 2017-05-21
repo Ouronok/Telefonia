@@ -1,6 +1,5 @@
 package vista.ventanas;
 
-import modelo.clientes.Cliente;
 import vista.escuchadores.Escuchador;
 
 import javax.swing.*;
@@ -11,7 +10,8 @@ import java.awt.event.ActionEvent;
 public class Operaciones extends Ventana {
 
     private Container contenedor;
-    private JTextField nif;
+    private JTextField nif1;
+    private JTextField nif2;
     private JTextField nombre;
     private JTextField apellidos;
     private JCheckBox empresa;
@@ -32,17 +32,21 @@ public class Operaciones extends Ventana {
 
     }
 
-    public void exitoanyadido() {
+    public void exitoAnyadido() {
         JOptionPane.showMessageDialog(this,"Cliente añadido con exito");
     }
-    public void erroranyadido() {
+    public void errorAnyadido() {
         JOptionPane.showMessageDialog(this, "Este cliente ya existe");
     }
+    public void clienteBorrado() {
+        JOptionPane.showMessageDialog(this, "El cliente ha sido borrado");
+    }
+
 
     private void rellena() {
 
         JTabbedPane pestanyas = new JTabbedPane();
-        JButton atras = new JButton("atras");
+        JButton atras = new JButton("Atras");
         atras.addActionListener(escuchador);
         pestanyas.add("Añadir Cliente", new PannelAnyadir());
         pestanyas.add("Borrar Cliente", new PannelBorrar());
@@ -53,6 +57,8 @@ public class Operaciones extends Ventana {
     }
 
 
+
+
     private class PannelAnyadir extends JPanel {
         public PannelAnyadir() {
 
@@ -60,7 +66,7 @@ public class Operaciones extends Ventana {
 
             //FIELDS
             JLabel etiqueta_Nif = new JLabel("NIF: ");
-            nif = new JTextField(8);
+            nif1 = new JTextField(8);
             JLabel etiqueta_Nombre = new JLabel("Nombre: ");
             nombre = new JTextField(25);
             JLabel etiqueta_Apellido = new JLabel("Apellidos: ");
@@ -81,7 +87,7 @@ public class Operaciones extends Ventana {
 
             //AÑADE EN EL PANEL
             add(etiqueta_Nif);
-            add(nif);
+            add(nif1);
             add(etiqueta_Nombre);
             add(nombre);
             add(etiqueta_Apellido);
@@ -108,17 +114,17 @@ public class Operaciones extends Ventana {
 
         private PannelBorrar() {
             //FIELDS
-           /* setLayout(new GridLayout(20, 2));
+            setLayout(new GridLayout(20, 2));
             JLabel etiqueta_Nif = new JLabel("NIF: ");
-            nif = new JTextField(8);
+            nif2 = new JTextField(8);
 
             //AÑADE EN EL PANEL
-            add(etiqueta_Nif);
-            add(nif);
-            JButton borrar = new JButton("Borrar" +
-                    "");
+
+            JButton borrar = new JButton("Borrar");
             borrar.addActionListener(escuchador);
-*/
+            add(etiqueta_Nif);
+            add(nif2);
+            add(borrar);
         }
 
     }
@@ -130,17 +136,17 @@ public class Operaciones extends Ventana {
             JButton boton = (JButton) e.getSource();
             String texto = boton.getText();
             switch (texto) {
-                case ("atras"):
+                case ("Atras"):
                     super.controlador.atrasOp();
                     break;
                 case ("Añadir"):
                   if (empresa.isSelected())
-                        super.controlador.addEmpresa(nif.getText() , nombre.getText(),  email.getText(), cp.getText(), provincia.getText(), poblacion.getText());
+                        super.controlador.addEmpresa(nif1.getText() , nombre.getText(),  email.getText(), cp.getText(), provincia.getText(), poblacion.getText());
                     else
-                        super.controlador.addParticular(nif.getText(), nombre.getText(), apellidos.getText() , email.getText(), cp.getText(), provincia.getText(), poblacion.getText());
-
+                        super.controlador.addParticular(nif1.getText(), nombre.getText(), apellidos.getText() , email.getText(), cp.getText(), provincia.getText(), poblacion.getText());
+                    break;
                 case ("Borrar"):
-                    super.controlador.seleccionaCliente(nif.getText());
+                    super.controlador.delCliente(nif2.getText());
             }
 
         }

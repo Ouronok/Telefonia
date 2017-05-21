@@ -127,6 +127,11 @@ public class Interfaz implements InterrogaVista, InformaVista {
     }
 
     @Override
+    public void borraCliente(Cliente cliente) {
+        operaciones.clienteBorrado();
+    }
+
+    @Override
     public void noCli() {
         mostrar.error();
     }
@@ -144,22 +149,17 @@ public class Interfaz implements InterrogaVista, InformaVista {
     @Override
     public void clienteAnyadido() {
 
-        operaciones.exitoanyadido();
+        operaciones.exitoAnyadido();
     }
 
     @Override
     public void clienteNoAnyadido() {
 
-        operaciones.erroranyadido();
+        operaciones.errorAnyadido();
     }
 
 
     public void facan() {
-
-    }
-
-    @Override
-    public void clienteBorrado() {
 
     }
 

@@ -31,7 +31,7 @@ public interface Controlador {
 
     void addParticular(String nif, String nombre, String apellidos  , String email, String cp, String provincia, String poblacion);
 
-    void delCliente(String nif);
+    void delCliente(String nif );
 
     void setBasica(Cliente seleccionado);
 

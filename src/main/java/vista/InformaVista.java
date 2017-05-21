@@ -12,7 +12,7 @@ public interface InformaVista {
 
     void noCli();
 
-    void  getClientes(LinkedList<Cliente> clientes);
+    void getClientes(LinkedList<Cliente> clientes);
 
     void tarifaCambiada();
 
@@ -22,5 +22,4 @@ public interface InformaVista {
 
     void facan();
 
-    void clienteBorrado();
 }
