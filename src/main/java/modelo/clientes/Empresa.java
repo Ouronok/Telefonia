@@ -8,8 +8,8 @@ import java.time.LocalDateTime;
 
 public class Empresa extends Cliente {
 
-    public Empresa(String nombre, String nif, String email, Direccion dir, LocalDateTime fecha, Tarifa tarifa) {
-        super(nombre, nif, email, dir, fecha, tarifa);
+    public Empresa(String nif, String nombre , String email, Direccion dir, LocalDateTime fecha, Tarifa tarifa) {
+        super(nif, nombre , email, dir, fecha, tarifa);
     }
 
 }

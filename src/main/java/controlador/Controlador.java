@@ -27,9 +27,11 @@ public interface Controlador {
 
     void seleccionaCliente(String text);
 
-    void addEmpresa(String nombre, String nif, String email, String cp, String provincia, String poblacion);
+    void addEmpresa(String nif , String nombre , String email, String cp, String provincia, String poblacion);
 
-    void addParticular(String nombre, String apellidos, String nif , String email, String cp, String provincia, String poblacion);
+    void addParticular(String nif, String nombre, String apellidos  , String email, String cp, String provincia, String poblacion);
+
+    void delCliente(String nif);
 
     void setBasica(Cliente seleccionado);
 

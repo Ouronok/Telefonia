@@ -24,14 +24,14 @@ public class Aplicacion implements Serializable, CambioModelo, InterrogaModelo {
 
 
 
-    public void creaEmpresa(String nombre, String nif, String email, String cp, String provincia, String poblacion) {
-        Empresa cliente = fcli.creaEmpresa(nombre, nif, email, new Direccion(cp,provincia,poblacion), fact, fta.creaTarifa((precio)));
+    public void creaEmpresa(String nif, String nombre , String email, String cp, String provincia, String poblacion) {
+        Empresa cliente = fcli.creaEmpresa( nif, nombre, email, new Direccion(cp,provincia,poblacion), fact, fta.creaTarifa((precio)));
         addCliente(cliente);
     }
 
 
-    public void creaParticular(String nombre, String apellidos, String nif, String email, String cp, String provincia, String poblacion) {
-        Particular cliente = fcli.creaParticular(nombre, apellidos, nif, email, new Direccion(cp,provincia,poblacion), fact, fta.creaTarifa(precio));
+    public void creaParticular(String nif,String nombre, String apellidos,  String email, String cp, String provincia, String poblacion) {
+        Particular cliente = fcli.creaParticular(nif, nombre, apellidos, email, new Direccion(cp,provincia,poblacion), fact, fta.creaTarifa(precio));
         addCliente(cliente);
     }
 
@@ -64,12 +64,12 @@ public class Aplicacion implements Serializable, CambioModelo, InterrogaModelo {
         }
     }
 
-    public boolean delCliente(Cliente cliente) {
+    public void delCliente(Cliente cliente) throws NotContained  {
         if (clientes.contains(cliente)) {
             clientes.remove(cliente);
-            return true;
+            vista.clienteBorrado();
         }
-        return false;
+        throw new NotContained();
     }
 
     private Direccion crearDir(String[] dir) {
@@ -90,8 +90,10 @@ public class Aplicacion implements Serializable, CambioModelo, InterrogaModelo {
         throw new NotContained();
     }
 
+
+
     public void getClientes() {
-        clientes.add(new Empresa("Pepe","20","naranyes",new Direccion("oeoe","jdjd","jdhd"),LocalDateTime.now(),new TarifaBasica(20)));
+        clientes.add(new Empresa("20","Pepe","Naranyes",new Direccion("12006","cs","cs"),LocalDateTime.now(),new TarifaBasica(20)));
         vista.getClientes(clientes);
     }
 

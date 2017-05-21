@@ -10,7 +10,7 @@ import java.awt.event.ActionEvent;
 /**
  * Created by ouronok on 2/05/17.
  */
-public class Principal extends Ventana {
+public class  Principal extends Ventana {
 
     public void crea() {
         super.setTitle("Menu principal");

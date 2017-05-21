@@ -13,7 +13,7 @@ import vista.ventanas.Principal;
 import java.util.LinkedList;
 
 
-public class Interfaz implements InterrogaVista,InformaVista {
+public class Interfaz implements InterrogaVista, InformaVista {
 
     private Controlador controlador;
     private InterrogaModelo modelo;
@@ -114,9 +114,9 @@ public class Interfaz implements InterrogaVista,InformaVista {
 
     @Override
     public void muestraFactura(Factura factura) {
-        if(factura==null){
+        if (factura == null) {
             clientes.noFac();
-        } else{
+        } else {
             clientes.muestraFactura(factura);
         }
     }
@@ -140,22 +140,27 @@ public class Interfaz implements InterrogaVista,InformaVista {
     public void tarifaCambiada() {
         clientes.exitoTarifa();
     }
+
     @Override
-    public void clienteAnyadido(){
+    public void clienteAnyadido() {
 
         operaciones.exitoanyadido();
     }
+
     @Override
-    public void clienteNoAnyadido(){
+    public void clienteNoAnyadido() {
 
         operaciones.erroranyadido();
     }
 
 
+    public void facan() {
+
+    }
 
     @Override
-    public void facan() {
-        clientes.facan();
+    public void clienteBorrado() {
+
     }
 
 }

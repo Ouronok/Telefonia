@@ -21,10 +21,10 @@ public abstract class Cliente implements Dato, Serializable {
     private LinkedList<Llamada> listall;
     private LinkedList<Factura> listafac;
 
-    public Cliente(String nombre, String nif, String email, Direccion dir, LocalDateTime fecha, Tarifa tarifa) {
+    public Cliente(String nif, String nombre , String email, Direccion dir, LocalDateTime fecha, Tarifa tarifa) {
+        this.nif = nif;
         this.nombre = nombre;
         this.email = email;
-        this.nif = nif;
         this.dir = dir;
         this.fecha = fecha;
         this.tarifa = tarifa;
@@ -80,8 +80,7 @@ public abstract class Cliente implements Dato, Serializable {
 
     @Override
     public String toString() {
-        return "Nombre: " + nombre + "\n" + "NIF: " + nif + "\n" + "Email: "
-        + email + "\n" +  "Direccion: " + dir.toString() + "\n" + "Fecha" + fecha.toString() + "\n" + "Tarifa" +
+        return "NIF: " + nif+ "     Nombre: " + nombre +  "     Email: " + email + "     "+ dir.toString() +  "     Fecha: " + fecha.toString()  + "    Tarifa: " +
                 tarifa.toString();
     }
 

@@ -77,14 +77,19 @@ public class Manejo implements Controlador {
     }
 
     @Override
-    public void addEmpresa(String nombre, String nif, String email, String cp, String provincia, String poblacion) {
-        modelo.creaEmpresa(nombre,nif,email,cp,provincia,poblacion);
+    public void addEmpresa(String nif, String nombre , String email, String cp, String provincia, String poblacion) {
+        modelo.creaEmpresa(nif,nombre,email,cp,provincia,poblacion);
 
     }
 
     @Override
-    public void addParticular(String nombre,String apellidos, String nif, String email, String cp, String provincia, String poblacion) {
-        modelo.creaParticular(nombre,nif,apellidos,email,cp,provincia,poblacion);
+    public void addParticular(String nif,String nombre,String apellidos,  String email, String cp, String provincia, String poblacion) {
+        modelo.creaParticular(nif,nombre,apellidos,email,cp,provincia,poblacion);
+
+    }
+
+    @Override
+    public void delCliente(String nif){
 
     }
 

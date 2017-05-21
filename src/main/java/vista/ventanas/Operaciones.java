@@ -11,7 +11,6 @@ import java.awt.event.ActionEvent;
 public class Operaciones extends Ventana {
 
     private Container contenedor;
-    private JButton añadir;
     private JTextField nif;
     private JTextField nombre;
     private JTextField apellidos;
@@ -76,7 +75,7 @@ public class Operaciones extends Ventana {
             cp = new JTextField(40);
             JLabel etiqueta_Email = new JLabel("Email: ");
             email = new JTextField(20);
-            añadir = new JButton("Añadir");
+            JButton añadir = new JButton("Añadir");
             añadir.addActionListener(escuchador);
 
 
@@ -109,14 +108,17 @@ public class Operaciones extends Ventana {
 
         private PannelBorrar() {
             //FIELDS
-            setLayout(new GridLayout(20, 2));
+           /* setLayout(new GridLayout(20, 2));
             JLabel etiqueta_Nif = new JLabel("NIF: ");
             nif = new JTextField(8);
 
             //AÑADE EN EL PANEL
             add(etiqueta_Nif);
             add(nif);
-
+            JButton borrar = new JButton("Borrar" +
+                    "");
+            borrar.addActionListener(escuchador);
+*/
         }
 
     }
@@ -129,15 +131,16 @@ public class Operaciones extends Ventana {
             String texto = boton.getText();
             switch (texto) {
                 case ("atras"):
-                    System.out.println("hola");
                     super.controlador.atrasOp();
                     break;
                 case ("Añadir"):
-                    System.out.println("hola");
                   if (empresa.isSelected())
-                        super.controlador.addEmpresa(nombre.getText(), nif.getText() , email.getText(), cp.getText(), provincia.getText(), poblacion.getText());
+                        super.controlador.addEmpresa(nif.getText() , nombre.getText(),  email.getText(), cp.getText(), provincia.getText(), poblacion.getText());
                     else
-                        super.controlador.addParticular(nombre.getText(), nif.getText() , email.getText(), email.getText(), cp.getText(), provincia.getText(), poblacion.getText());
+                        super.controlador.addParticular(nif.getText(), nombre.getText(), apellidos.getText() , email.getText(), cp.getText(), provincia.getText(), poblacion.getText());
+
+                case ("Borrar"):
+                    super.controlador.seleccionaCliente(nif.getText());
             }
 
         }

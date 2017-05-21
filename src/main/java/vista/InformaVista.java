@@ -21,4 +21,6 @@ public interface InformaVista {
     void clienteNoAnyadido();
 
     void facan();
+
+    void clienteBorrado();
 }
