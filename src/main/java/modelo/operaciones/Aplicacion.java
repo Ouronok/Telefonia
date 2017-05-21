@@ -136,6 +136,18 @@ public class Aplicacion implements Serializable, CambioModelo, InterrogaModelo {
         return null;
     }
 
+    public boolean delFac(int cod){
+        for (Cliente cliac : clientes) {
+            for (Factura faac : cliac.getListafac()) {
+                if (faac.getFID() == cod) {
+                    cliac.delFac(faac);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public LinkedList<Factura> getFacturas(Cliente cliente) {
         return cliente.getListafac();
     }

@@ -122,6 +122,11 @@ public class Interfaz implements InterrogaVista,InformaVista {
     }
 
     @Override
+    public void borraFac(boolean b) {
+        clientes.facBorrada(b);
+    }
+
+    @Override
     public void noCli() {
         mostrar.error();
     }

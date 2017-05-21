@@ -33,6 +33,8 @@ public interface InterrogaVista {
 
     void muestraFactura(Factura facutra);
 
+    void borraFac(boolean b);
+
   /*  boolean creaParticular();
     boolean creaEmpresa();
     boolean addCliente();

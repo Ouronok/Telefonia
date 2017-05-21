@@ -25,5 +25,7 @@ public interface CambioModelo {
     void emitirFactura(Cliente cliente, LocalDateTime[] intervalo);
 
     Factura getFactura(int id);
+
+    boolean delFac(int id);
 }
 

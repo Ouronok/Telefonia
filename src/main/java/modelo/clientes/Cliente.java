@@ -93,5 +93,9 @@ public abstract class Cliente implements Dato, Serializable {
     public String getNombre() {
         return nombre;
     }
+
+    public void delFac(Factura factura) {
+        listafac.remove(factura);
+    }
 }
 

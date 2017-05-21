@@ -123,7 +123,7 @@ public class Manejo implements Controlador {
 
     @Override
     public void borraFac(int id) {
-
+        vista.borraFac(modelo.delFac(id));
     }
 
     @Override
@@ -131,8 +131,4 @@ public class Manejo implements Controlador {
         vista.muestraFactura(modelo.getFactura(id));
     }
 
-    @Override
-    public void borraFac(Cliente seleccionado, String text) {
-
-    }
 }

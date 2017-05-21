@@ -1,16 +1,12 @@
 package vista.ventanas;
 
-import modelo.InterrogaModelo;
 import modelo.clientes.Cliente;
 import modelo.datos.Factura;
 import vista.escuchadores.Escuchador;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.text.NumberFormatter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.text.NumberFormat;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 
@@ -38,9 +34,6 @@ public class OpCli extends Ventana {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 
-
-
-
     }
 
 
@@ -50,7 +43,7 @@ public class OpCli extends Ventana {
     }
 
 
-    private void rellena(){
+    private void rellena() {
         JLabel act = new JLabel("Elegir cliente: ");
         cact = new JTextField(20);
 
@@ -64,52 +57,62 @@ public class OpCli extends Ventana {
         down.add(busca);
         JTabbedPane pestanyas = new JTabbedPane();
 
-        pestanyas.add("Tarifas",new PanelTarifas());
-        pestanyas.add("Facturas",new PanelFacturas());
-        pestanyas.add("Llamadas",new PanelLlamadas());
+        pestanyas.add("Tarifas", new PanelTarifas());
+        pestanyas.add("Facturas", new PanelFacturas());
+        pestanyas.add("Llamadas", new PanelLlamadas());
         JButton atras = new JButton("Atras");
         atras.addActionListener(escuchador);
-        contenedor.add(pestanyas,BorderLayout.CENTER);
-        contenedor.add(atras,BorderLayout.SOUTH);
-        contenedor.add(down,BorderLayout.NORTH);
+        contenedor.add(pestanyas, BorderLayout.CENTER);
+        contenedor.add(atras, BorderLayout.SOUTH);
+        contenedor.add(down, BorderLayout.NORTH);
     }
 
     public void noSel() {
-        JOptionPane.showMessageDialog(this,"No se ha seleccionado ningun cliente");
+        JOptionPane.showMessageDialog(this, "No se ha seleccionado ningun cliente");
     }
+
+    private void invalidID() {
+        JOptionPane.showMessageDialog(this, "Escribe un id valido");
+    }
+
 
     private void noVal() {
-        JOptionPane.showMessageDialog(this,"Introduce un entero valido");
+        JOptionPane.showMessageDialog(this, "Introduce un entero valido");
     }
 
-
     public void exitoTarifa() {
-        JOptionPane.showMessageDialog(this,"Tarifa cambiada con exito");
+        JOptionPane.showMessageDialog(this, "Tarifa cambiada con exito");
     }
 
     public void mostrarFacturas(LinkedList<Factura> facturas) {
         fac.removeAllElements();
-        for(Factura faca:facturas){
+        for (Factura faca : facturas) {
             fac.addElement(faca);
         }
     }
 
     public void facan() {
-        JOptionPane.showMessageDialog(this,"Factura añadida con exito");
+        JOptionPane.showMessageDialog(this, "Factura añadida con exito");
     }
 
     public void noFac() {
-        JOptionPane.showMessageDialog(this,"No existe dicha factura");
+        JOptionPane.showMessageDialog(this, "No existe dicha factura");
     }
 
     public void muestraFactura(Factura factura) {
         fac.addElement(factura);
     }
 
-    private class PanelTarifas extends JPanel{
+    public void facBorrada(boolean b) {
+        if (b) {
+            JOptionPane.showMessageDialog(this, "Factura borrada con exito");
+        } else {
+            JOptionPane.showMessageDialog(this, "No se ha podido borrar la factura");
+        }
+    }
 
 
-
+    private class PanelTarifas extends JPanel {
 
         public PanelTarifas() {
             setLayout(new BorderLayout());
@@ -131,28 +134,27 @@ public class OpCli extends Ventana {
             up.add(txtprecio);
             up.add(precio);
             up.add(cambiaprecio);
-            add(up,BorderLayout.NORTH);
+            add(up, BorderLayout.NORTH);
             down.add(indtar);
             down.add(basica);
             down.add(tardes);
             down.add(domingos);
-            add(down,BorderLayout.CENTER);
-
-
+            add(down, BorderLayout.CENTER);
 
 
         }
 
     }
-
-    private class PanelFacturas extends JPanel{
-        public PanelFacturas(){
+    private class PanelFacturas extends JPanel {
+        public PanelFacturas() {
             setLayout(new BorderLayout());
             JPanel up = new JPanel();
             idfac = new JTextField(3);
             JLabel idtxt = new JLabel("ID factura: ");
             JButton busfac = new JButton("Buscar factura");
+            busfac.addActionListener(escuchador);
             JButton delfac = new JButton("Borra factura");
+            delfac.addActionListener(escuchador);
             JButton adfac = new JButton("Añadir factura");
             adfac.addActionListener(escuchador);
             JButton tofac = new JButton("Mostrar facturas");
@@ -163,28 +165,28 @@ public class OpCli extends Ventana {
             up.add(delfac);
             up.add(tofac);
             up.add(adfac);
-            add(up,BorderLayout.NORTH);
+            add(up, BorderLayout.NORTH);
             JList mosfac = new JList();
             fac = new DefaultListModel();
             mosfac.setModel(fac);
             JScrollPane barra = new JScrollPane(mosfac);
-            barra.setSize(100,50);
+            barra.setSize(100, 50);
             add(barra, BorderLayout.CENTER);
         }
+
     }
+
 
     private class PanelLlamadas extends JPanel {
 
-
-
     }
-
     private class CliEsc extends Escuchador {
+
         @Override
         public void actionPerformed(ActionEvent e) {
             JButton boton = (JButton) e.getSource();
             String texto = boton.getText();
-            switch(texto) {
+            switch (texto) {
                 case ("Atras"):
                     super.controlador.atrasOpCli();
                     break;
@@ -211,41 +213,49 @@ public class OpCli extends Ventana {
                         noSel();
                     }
                     break;
-                case("Cambiar precio"):
-                    if(seleccionado==null) {
+                case ("Cambiar precio"):
+                    if (seleccionado == null) {
                         noSel();
                         break;
-                    }else if(precio.getValue() instanceof Double || precio.getValue() instanceof Integer && (int) precio.getValue()*1.>0){
+                    } else if (precio.getValue() instanceof Double || precio.getValue() instanceof Integer && (int) precio.getValue() * 1. > 0) {
                         super.controlador.swpPrecio(seleccionado, (int) precio.getValue() * 1.);
                     } else {
                         noVal();
                     }
                     break;
-                case("Añadir factura"):
-                    if(seleccionado!=null) {
+                case ("Añadir factura"):
+                    if (seleccionado != null) {
                         super.controlador.addFac(seleccionado, LocalDateTime.now());
-                    }else{
+                    } else {
                         noSel();
                     }
                     break;
-                case("Mostrar facturas"):
-                    if(seleccionado!=null) {
+                case ("Mostrar facturas"):
+                    if (seleccionado != null) {
                         super.controlador.listFac(seleccionado);
-                    }else {
+                    } else {
                         noSel();
                     }
                     break;
-                case("Buscar factura"):
-                    if(seleccionado!=null) {
-                        super.controlador.buscaFac(parseInt(idfac.getText()));
-                    }else{
+                case ("Buscar factura"):
+                    if (seleccionado != null) {
+                        try {
+                            super.controlador.buscaFac(parseInt(idfac.getText()));
+                        } catch (Exception exc) {
+                            invalidID();
+                        }
+                    } else {
                         noSel();
                     }
                     break;
-                case("Borra factura"):
-                    if(seleccionado!=null) {
-                        super.controlador.borraFac(parseInt(idfac.getText()));
-                    }else{
+                case ("Borra factura"):
+                    if (seleccionado != null) {
+                        try {
+                            super.controlador.borraFac(parseInt(idfac.getText()));
+                        } catch (Exception exc) {
+                            invalidID();
+                        }
+                    } else {
                         noSel();
                     }
             }
