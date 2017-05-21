@@ -80,7 +80,7 @@ public abstract class Cliente implements Dato, Serializable {
 
     @Override
     public String toString() {
-        return "NIF: " + nif+ "     Nombre: " + nombre +  "     Email: " + email + "     "+ dir.toString() +  "     Fecha: " + fecha.toString()  + "    Tarifa: " +
+        return "Nombre: " + nombre + "     NIF: " + nif +  "     Email: " + email + "     "+ dir.toString() +  "     Fecha: " + fecha.toString()  + "    Tarifa: " +
                 tarifa.toString();
     }
 

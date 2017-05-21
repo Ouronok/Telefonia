@@ -93,7 +93,6 @@ public class Aplicacion implements Serializable, CambioModelo, InterrogaModelo {
 
 
     public void getClientes() {
-        clientes.add(new Empresa("20","Pepe","Naranyes",new Direccion("12006","cs","cs"),LocalDateTime.now(),new TarifaBasica(20)));
         vista.getClientes(clientes);
     }
 

@@ -71,10 +71,12 @@ public class Mostrar extends Ventana {
         for(Cliente cac: clientes){
             model.addElement(cac.toString());
         }
+
         pack();
     }
 
     public void muestraCliente(Cliente cliente){
+        limpia();
         model.addElement(cliente.toString());
         pack();
 
