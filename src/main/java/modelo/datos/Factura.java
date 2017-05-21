@@ -11,16 +11,19 @@ public class Factura implements Dato, Serializable {
     private LocalDateTime ffac;
     private LocalDateTime[] periodo = new LocalDateTime[2];
     private double importe;
-    private int globalFID = 0;
+    private static int globalFID = 0;
 
     public Factura(LocalDateTime ffac, LocalDateTime f1, LocalDateTime f2, Double importe, Tarifa tact) {
-        globalFID++;
-        fid = globalFID;
+        fid = createID();
         this.ffac = ffac;
         this.periodo[0] = f1;
         this.periodo[1] = f2;
         this.tact = tact;
         this.importe = importe;
+    }
+
+    private static synchronized int createID() {
+        return globalFID++;
     }
 
     public LocalDateTime getFecha() {
