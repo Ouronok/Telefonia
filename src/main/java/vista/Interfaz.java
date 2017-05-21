@@ -5,6 +5,7 @@ import controlador.Manejo;
 import modelo.InterrogaModelo;
 import modelo.clientes.Cliente;
 import modelo.datos.Factura;
+import modelo.datos.Llamada;
 import vista.ventanas.Mostrar;
 import vista.ventanas.OpCli;
 import vista.ventanas.Operaciones;
@@ -129,6 +130,12 @@ public class Interfaz implements InterrogaVista, InformaVista {
     @Override
     public void borraCliente(Cliente cliente) {
         operaciones.clienteBorrado();
+    }
+
+    @Override
+    public void mostrarLlamadas(LinkedList<Llamada> llamadas) {
+        clientes.mostrarLlamadas(llamadas);
+
     }
 
     @Override

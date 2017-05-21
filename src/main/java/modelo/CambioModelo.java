@@ -1,6 +1,7 @@
 package modelo;
 
 import modelo.clientes.Cliente;
+import modelo.datos.Llamada;
 import modelo.excepciones.NotContained;
 import modelo.datos.Factura;
 
@@ -29,4 +30,8 @@ public interface CambioModelo {
     boolean delFac(int id);
 
     Cliente delCliente(String nif) throws NotContained;
+
+    LinkedList<Llamada> getLlamadas(Cliente seleccionado);
+
+    void emitirLlamada(Cliente seleccionado, String tlf, int duracion, LocalDateTime fecha);
 }

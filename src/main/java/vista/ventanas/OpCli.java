@@ -2,6 +2,7 @@ package vista.ventanas;
 
 import modelo.clientes.Cliente;
 import modelo.datos.Factura;
+import modelo.datos.Llamada;
 import vista.escuchadores.Escuchador;
 
 import javax.swing.*;
@@ -22,7 +23,11 @@ public class OpCli extends Ventana {
     private JTextField cact;
     private JFormattedTextField precio;
     private DefaultListModel fac;
+    private DefaultListModel llam;
     private JTextField idfac;
+    private JTextField tlf;
+    private JFormattedTextField duracion;
+
 
     @Override
     public void crea() {
@@ -86,8 +91,8 @@ public class OpCli extends Ventana {
 
     public void mostrarFacturas(LinkedList<Factura> facturas) {
         fac.removeAllElements();
-        for (Factura faca : facturas) {
-            fac.addElement(faca);
+        for (Factura facA : facturas) {
+            fac.addElement(facA);
         }
     }
 
@@ -108,6 +113,13 @@ public class OpCli extends Ventana {
             JOptionPane.showMessageDialog(this, "Factura borrada con exito");
         } else {
             JOptionPane.showMessageDialog(this, "No se ha podido borrar la factura");
+        }
+    }
+
+    public void mostrarLlamadas(LinkedList<Llamada> llamadas) {
+        llam.removeAllElements();
+        for (Llamada llamA : llamadas) {
+            llam.addElement(llamA);
         }
     }
 
@@ -145,6 +157,7 @@ public class OpCli extends Ventana {
         }
 
     }
+
     private class PanelFacturas extends JPanel {
         public PanelFacturas() {
             setLayout(new BorderLayout());
@@ -178,8 +191,38 @@ public class OpCli extends Ventana {
 
 
     private class PanelLlamadas extends JPanel {
+        public PanelLlamadas() {
+            setLayout(new BorderLayout());
+            JPanel up = new JPanel();
+
+            JButton añadirLLam = new JButton("Añadir llamadas");
+            añadirLLam.addActionListener(escuchador);
+            JButton mostrarLlam = new JButton("Mostrar llamadas");
+            mostrarLlam.addActionListener(escuchador);
+            JLabel etiqueta_Tlf = new JLabel("Tlf: ");
+            tlf = new JTextField(9);
+            JLabel etiqueta_Dur = new JLabel("Duración: ");
+            duracion = new JFormattedTextField(9);
+            up.add(mostrarLlam);
+            up.add(añadirLLam);
+            up.add(etiqueta_Tlf);
+            up.add(tlf);
+            up.add(etiqueta_Dur);
+            up.add(duracion);
+            add(up, BorderLayout.NORTH);
+            JList mosllam = new JList();
+            llam = new DefaultListModel();
+            mosllam.setModel(llam);
+            JScrollPane barra = new JScrollPane(mosllam);
+            barra.setSize(100, 50);
+            add(barra, BorderLayout.CENTER);
+
+
+        }
+
 
     }
+
     private class CliEsc extends Escuchador {
 
         @Override
@@ -258,9 +301,26 @@ public class OpCli extends Ventana {
                     } else {
                         noSel();
                     }
-            }
-        }
+                    break;
+                case ("Mostrar llamadas"):
+                    if (seleccionado != null) {
+                        super.controlador.listLlam(seleccionado);
+                    } else {
+                        noSel();
+                    }
+                    break;
+                case ("Añadir llamadas"):
+                    if (seleccionado != null) {
+                        super.controlador.addLLam(seleccionado,tlf.getText(), (int) duracion.getValue() * 1 ,LocalDateTime.now());
+                    } else {
+                        noSel();
+                    }
+                    break;
 
+            }
+
+        }
     }
 }
+
 

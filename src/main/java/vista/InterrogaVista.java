@@ -2,6 +2,7 @@ package vista;
 
 import modelo.clientes.Cliente;
 import modelo.datos.Factura;
+import modelo.datos.Llamada;
 
 import java.util.LinkedList;
 
@@ -36,6 +37,8 @@ public interface InterrogaVista {
     void borraFac(boolean b);
 
     void borraCliente(Cliente cliente);
+
+    void mostrarLlamadas(LinkedList<Llamada> llamadas);
 
   /*  boolean creaParticular();
     boolean creaEmpresa();

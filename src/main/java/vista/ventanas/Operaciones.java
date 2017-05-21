@@ -60,7 +60,7 @@ public class Operaciones extends Ventana {
 
 
     private class PannelAnyadir extends JPanel {
-        public PannelAnyadir() {
+        PannelAnyadir() {
 
             setLayout(new GridLayout(30, 1));
 

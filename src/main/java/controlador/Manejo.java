@@ -124,8 +124,20 @@ public class Manejo implements Controlador {
     }
 
     @Override
+    public void listLlam(Cliente seleccionado) { vista.mostrarLlamadas(modelo.getLlamadas(seleccionado));
+
+    }
+
+    @Override
     public void addFac(Cliente seleccionado, LocalDateTime now) {
         modelo.emitirFactura(seleccionado,new LocalDateTime[]{now,now.plusMonths(1)});
+
+    }
+
+    @Override
+    public void addLLam(Cliente seleccionado, String tlf, int duracion,  LocalDateTime fecha) {
+        modelo.emitirLlamada(seleccionado,tlf,duracion, fecha = LocalDateTime.now());
+
 
     }
 

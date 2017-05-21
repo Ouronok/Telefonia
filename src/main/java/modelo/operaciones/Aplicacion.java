@@ -74,6 +74,16 @@ public class Aplicacion implements Serializable, CambioModelo, InterrogaModelo {
         throw new NotContained();
     }
 
+
+    public LinkedList<Llamada> getLlamadas(Cliente cliente) {
+        return cliente.getListall();
+    }
+
+    @Override
+    public void emitirLlamada(Cliente cliente, String tlf, int duracion, LocalDateTime fecha) {
+        cliente.addLlamada(new Llamada(tlf, duracion, fecha,cliente.getTarifa()));
+    }
+
     private Direccion crearDir(String[] dir) {
         return new Direccion(dir[0],dir[1],dir[2]);
     }
@@ -98,19 +108,14 @@ public class Aplicacion implements Serializable, CambioModelo, InterrogaModelo {
         vista.getClientes(clientes);
     }
 
-    public boolean addLlamada(String tlf, int duracion, LocalDateTime fecha, Cliente cliente) {
 
-        return clientes.contains(cliente) && cliente.addLlamada(new Llamada(tlf, duracion, fecha,cliente.getTarifa()));
-    }
-
-
-
-    public LinkedList<Llamada> getLlamadas(Cliente cliente) {
+    /*public LinkedList<Llamada> getLlamadas(Cliente cliente) {
         if (clientes.contains(cliente)) {
             return cliente.getListall();
         }
         return null;
     }
+    */
 
     public void emitirFactura(Cliente cliente, LocalDateTime[] intervalo)  {
         double importe = calcImp(cliente, intervalo);
