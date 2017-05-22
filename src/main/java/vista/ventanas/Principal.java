@@ -4,6 +4,7 @@ import modelo.clientes.Cliente;
 import vista.escuchadores.Escuchador;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
@@ -28,12 +29,28 @@ public class  Principal extends Ventana {
         JButton boton1 = new JButton("Mostrar");
         JButton boton2 = new JButton("Operaciones");
         JButton boton3 = new JButton("Cliente");
+        JButton guarda = new JButton("Guardar");
+        guarda.addActionListener(escuchador);
         boton1.addActionListener(escuchador);
         boton2.addActionListener(escuchador);
         boton3.addActionListener(escuchador);
-        panel.add(boton1);
-        panel.add(boton2);
-        panel.add(boton3);
+        panel.setLayout(new BorderLayout());
+        JPanel up = new JPanel();
+        up.add(boton1);
+        up.add(boton2);
+        up.add(boton3);
+        panel.add(up,BorderLayout.NORTH);
+        JPanel down = new JPanel();
+        down.add(guarda);
+        panel.add(down,BorderLayout.SOUTH);
+    }
+
+    public void saveSuccesful() {
+        JOptionPane.showMessageDialog(this, "Guardado con exito");
+    }
+
+    public void saveError() {
+        JOptionPane.showMessageDialog(this, "Error al guardar");
     }
 
     private class EscPrin extends Escuchador {
@@ -51,6 +68,9 @@ public class  Principal extends Ventana {
                     break;
                 case ("Cliente"):
                     super.controlador.abreCliente();
+                    break;
+                case("Guardar"):
+                    super.controlador.save();
             }
         }
     }

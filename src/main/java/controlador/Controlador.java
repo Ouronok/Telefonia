@@ -46,11 +46,12 @@ public interface Controlador {
     void listLlam(Cliente seleccionado);
 
     void addFac(Cliente seleccionado, LocalDateTime now);
+
     void addLLam(Cliente seleccionado, String tlf, int duracion,  LocalDateTime fecha);
 
     void borraFac(int id);
 
     void buscaFac(int id);
 
-
+    void save();
 }

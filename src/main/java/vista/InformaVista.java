@@ -22,4 +22,7 @@ public interface InformaVista {
 
     void facan();
 
+    void saveError();
+
+    void saveSuccesful();
 }

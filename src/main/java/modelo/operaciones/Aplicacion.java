@@ -5,10 +5,10 @@ import modelo.InterrogaModelo;
 import modelo.clientes.*;
 import modelo.datos.*;
 import modelo.excepciones.*;
-import modelo.tarifas.TarifaBasica;
+
 import vista.InformaVista;
 
-import java.io.Serializable;
+import java.io.*;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 
@@ -43,9 +43,7 @@ public class Aplicacion implements Serializable, CambioModelo, InterrogaModelo {
             }
         }
         clientes.add(cliente);
-        System.out.println("hola");
         vista.clienteAnyadido();
-        return;
     }
 
     public void swpTarifa(int op,Cliente cliente) {
@@ -82,6 +80,21 @@ public class Aplicacion implements Serializable, CambioModelo, InterrogaModelo {
     @Override
     public void emitirLlamada(Cliente cliente, String tlf, int duracion, LocalDateTime fecha) {
         cliente.addLlamada(new Llamada(tlf, duracion, fecha,cliente.getTarifa()));
+    }
+
+    @Override
+    public void save() {
+        try{
+            PrintWriter writer = new PrintWriter("app.bin", "UTF-8");
+            FileOutputStream fos = new FileOutputStream("app.bin");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(this);
+            oos.close();
+            writer.close();
+            vista.saveSuccesful();
+        } catch (IOException e) {
+            vista.saveError();
+        }
     }
 
     private Direccion crearDir(String[] dir) {

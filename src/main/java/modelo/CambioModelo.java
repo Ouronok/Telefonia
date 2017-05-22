@@ -34,4 +34,6 @@ public interface CambioModelo {
     LinkedList<Llamada> getLlamadas(Cliente seleccionado);
 
     void emitirLlamada(Cliente seleccionado, String tlf, int duracion, LocalDateTime fecha);
+
+    void save();
 }

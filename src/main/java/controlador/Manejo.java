@@ -151,4 +151,9 @@ public class Manejo implements Controlador {
         vista.muestraFactura(modelo.getFactura(id));
     }
 
+    @Override
+    public void save() {
+        modelo.save();
+    }
+
 }

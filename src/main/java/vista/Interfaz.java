@@ -170,4 +170,14 @@ public class Interfaz implements InterrogaVista, InformaVista {
 
     }
 
+    @Override
+    public void saveError() {
+        principal.saveError();
+    }
+
+    @Override
+    public void saveSuccesful() {
+        principal.saveSuccesful();
+    }
+
 }
