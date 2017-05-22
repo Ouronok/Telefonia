@@ -268,7 +268,7 @@ public class OpCli extends Ventana {
                     break;
                 case ("Añadir factura"):
                     if (seleccionado != null) {
-                        super.controlador.addFac(seleccionado, LocalDateTime.now());
+                        super.controlador.addFac(seleccionado, LocalDateTime.now().minusDays(1));
                     } else {
                         noSel();
                     }
