@@ -218,7 +218,6 @@ public class OpCli extends Ventana {
     }
 
     private class CliEsc extends Escuchador {
-
         @Override
         public void actionPerformed(ActionEvent e) {
             JButton boton = (JButton) e.getSource();
