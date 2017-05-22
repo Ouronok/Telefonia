@@ -180,6 +180,4 @@ public class Interfaz implements InterrogaVista, InformaVista, Serializable {
     public void saveSuccesful() {
         principal.saveSuccesful();
     }
-
-
 }
