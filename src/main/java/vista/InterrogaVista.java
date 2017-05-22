@@ -6,9 +6,7 @@ import modelo.datos.Llamada;
 
 import java.util.LinkedList;
 
-/**
- * Created by ouronok on 25/04/17.
- */
+
 public interface InterrogaVista {
     void abreMostrar();
 

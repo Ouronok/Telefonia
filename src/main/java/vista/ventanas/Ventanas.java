@@ -5,9 +5,7 @@ import vista.escuchadores.Escuchador;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 
-/**
- * Created by ouronok on 2/05/17.
- */
+
 public interface Ventanas {
 
     Escuchador getListener();

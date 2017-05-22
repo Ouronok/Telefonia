@@ -17,16 +17,15 @@ import java.util.LinkedList;
 
 public class Interfaz implements InterrogaVista, InformaVista, Serializable {
 
-    private Controlador controlador;
-    private InterrogaModelo modelo;
-    Principal principal;
-    Mostrar mostrar;
-    Operaciones operaciones;
-    OpCli clientes;
+    private Principal principal;
+    private Mostrar mostrar;
+    private Operaciones operaciones;
+
+    private OpCli clientes;
 
 
     public void setControlador(Manejo controlador) {
-        this.controlador = controlador;
+        Controlador controlador1 = controlador;
         inicializa(controlador);
 
 
@@ -46,7 +45,7 @@ public class Interfaz implements InterrogaVista, InformaVista, Serializable {
     }
 
     public void setModelo(InterrogaModelo modelo) {
-        this.modelo = modelo;
+        InterrogaModelo modelo1 = modelo;
     }
 
     @Override

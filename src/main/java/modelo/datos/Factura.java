@@ -38,7 +38,7 @@ public class Factura implements Dato, Serializable {
 
     @Override
     public String toString() {
-        return "ID: " + fid + "\n" + "Tarifa: " + tact + "\n" + "Importe: " + importe + "€" + "\n" + "Fecha facturación: " +
-                ffac + "\n" + "Periodo: " + periodo[0] + "  ---  " + periodo[1] + "\n";
+        return "ID: " + fid + "     Tarifa: " + tact + "        Importe: " + importe + " €" + "     Fecha facturación: " +
+                ffac  + "       Periodo: " + periodo[0] + "  ---  " + periodo[1];
     }
 }

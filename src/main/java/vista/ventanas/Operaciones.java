@@ -33,13 +33,19 @@ public class Operaciones extends Ventana {
     }
 
     public void exitoAnyadido() {
-        JOptionPane.showMessageDialog(this,"Cliente añadido con exito");
+        JOptionPane.showMessageDialog(this, "Cliente añadido con exito");
     }
+
     public void errorAnyadido() {
         JOptionPane.showMessageDialog(this, "Este cliente ya existe");
     }
+
     public void clienteBorrado() {
         JOptionPane.showMessageDialog(this, "El cliente ha sido borrado");
+    }
+
+    private void noSel() {
+        JOptionPane.showMessageDialog(this, "Introduce un NIF");
     }
 
 
@@ -55,8 +61,6 @@ public class Operaciones extends Ventana {
         spanel.add(atras);
         contenedor.add(spanel, BorderLayout.SOUTH);
     }
-
-
 
 
     private class PannelAnyadir extends JPanel {
@@ -140,15 +144,24 @@ public class Operaciones extends Ventana {
                     super.controlador.atrasOp();
                     break;
                 case ("Añadir"):
-                  if (empresa.isSelected())
-                        super.controlador.addEmpresa(nif1.getText() , nombre.getText(),  email.getText(), cp.getText(), provincia.getText(), poblacion.getText());
+
+                    if (nif1.getText().equals(""))
+                        noSel();
+
+                    else if (empresa.isSelected())
+                        super.controlador.addEmpresa(nif1.getText(), nombre.getText(), email.getText(), cp.getText(), provincia.getText(), poblacion.getText());
                     else
-                        super.controlador.addParticular(nif1.getText(), nombre.getText(), apellidos.getText() , email.getText(), cp.getText(), provincia.getText(), poblacion.getText());
+                        super.controlador.addParticular(nif1.getText(), nombre.getText(), apellidos.getText(), email.getText(), cp.getText(), provincia.getText(), poblacion.getText());
+
                     break;
                 case ("Borrar"):
                     super.controlador.delCliente(nif2.getText());
-            }
 
+
+            }
         }
     }
 }
+
+
+

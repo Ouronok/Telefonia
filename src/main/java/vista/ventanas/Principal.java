@@ -1,16 +1,11 @@
 package vista.ventanas;
 
-import modelo.clientes.Cliente;
 import vista.escuchadores.Escuchador;
-
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
-/**
- * Created by ouronok on 2/05/17.
- */
+
 public class  Principal extends Ventana {
 
     public void crea() {
@@ -21,7 +16,7 @@ public class  Principal extends Ventana {
         botones(panel);
         contenedor.add(panel);
         pack();
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
 

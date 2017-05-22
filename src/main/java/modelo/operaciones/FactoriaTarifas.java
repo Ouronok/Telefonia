@@ -14,17 +14,17 @@ public class FactoriaTarifas implements Serializable {
 
 
     @NotNull
-    public static TarifaBasica creaTarifa(Double precio) {
+    static TarifaBasica creaTarifa(Double precio) {
         return new TarifaBasica(precio);
     }
 
     @NotNull
-    public static TarifaDomingo creaDomingo(Tarifa tarifa) {
+    static TarifaDomingo creaDomingo(Tarifa tarifa) {
         return new TarifaDomingo(tarifa);
     }
 
     @NotNull
-    public static TarifaTardes creaTardes(Tarifa tarifa) {
+    static TarifaTardes creaTardes(Tarifa tarifa) {
         return new TarifaTardes(tarifa, (double) 10);
     }
 }

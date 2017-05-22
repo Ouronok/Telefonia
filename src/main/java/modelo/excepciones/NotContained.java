@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 public class NotContained extends Exception implements Serializable {
 
-    InformaVista vista;
+    private InformaVista vista;
 
     public NotContained(){
         super("No existe dicho cliente");

@@ -4,10 +4,11 @@ import modelo.clientes.Cliente;
 
 import java.util.LinkedList;
 
-/**
- * Created by ouron on 01/05/2017.
- */
+
+
 public interface InformaVista {
+
+    void noCli();
 
     void getClientes(LinkedList<Cliente> clientes);
 
@@ -23,5 +24,4 @@ public interface InformaVista {
 
     void saveSuccesful();
 
-    void noCli();
 }

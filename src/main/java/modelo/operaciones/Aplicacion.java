@@ -35,7 +35,7 @@ public class Aplicacion implements Serializable, CambioModelo, InterrogaModelo {
         addCliente(cliente);
     }
 
-    public void addCliente(Cliente cliente) {
+    private void addCliente(Cliente cliente) {
         for (Cliente cliac : clientes) {
             if (cliac.getNif().equals(cliente.getNif())) {
                 vista.clienteNoAnyadido();
@@ -79,7 +79,7 @@ public class Aplicacion implements Serializable, CambioModelo, InterrogaModelo {
 
     @Override
     public void emitirLlamada(Cliente cliente, String tlf, int duracion, LocalDateTime fecha) {
-        cliente.addLlamada(new Llamada(tlf, duracion, fecha,cliente.getTarifa()));
+        cliente.addLlamada(new Llamada(tlf, duracion, fecha));
     }
 
     @Override

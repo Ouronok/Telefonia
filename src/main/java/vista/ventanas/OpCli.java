@@ -13,9 +13,7 @@ import java.util.LinkedList;
 
 import static java.lang.Integer.parseInt;
 
-/**
- * Created by ouron on 17/05/2017.
- */
+
 public class OpCli extends Ventana {
     private Container contenedor;
     private JLabel cactext;
@@ -29,7 +27,7 @@ public class OpCli extends Ventana {
     private JFormattedTextField duracion;
 
 
-    @Override
+
     public void crea() {
         super.setTitle("Operaciones con clientes");
         super.escuchador = new CliEsc();
@@ -94,18 +92,12 @@ public class OpCli extends Ventana {
         for (Factura facA : facturas) fac.addElement(facA);
     }
 
-    public void facan() {
-        JOptionPane.showMessageDialog(this, "Factura añadida con exito");
-    }
 
     public void noFac() {
         JOptionPane.showMessageDialog(this, "No existe dicha factura");
     }
 
-    public void noTel() {JOptionPane.showMessageDialog(this, "Introduce un teléfono válido");
-    }
-    public void muestraFactura(Factura factura) {
-        fac.addElement(factura);
+    private void noTel() {JOptionPane.showMessageDialog(this, "Introduce un teléfono válido");
     }
 
     public void facBorrada(boolean b) {
@@ -115,6 +107,11 @@ public class OpCli extends Ventana {
             JOptionPane.showMessageDialog(this, "No se ha podido borrar la factura");
         }
     }
+
+    public void muestraFactura(Factura factura) {
+        fac.addElement(factura);
+    }
+
 
     public void mostrarLlamadas(LinkedList<Llamada> llamadas) {
         llam.removeAllElements();
@@ -139,9 +136,7 @@ public class OpCli extends Ventana {
             domingos.addActionListener(escuchador);
             JLabel indtar = new JLabel("Cambiar tarifa: ");
             JLabel txtprecio = new JLabel("Nuevo precio tarifa actual: ");
-
             precio = new JFormattedTextField(15);
-
             JPanel up = new JPanel();
             up.add(txtprecio);
             up.add(precio);
@@ -188,7 +183,6 @@ public class OpCli extends Ventana {
         }
 
     }
-
 
     private class PanelLlamadas extends JPanel {
         PanelLlamadas() {
@@ -312,9 +306,10 @@ public class OpCli extends Ventana {
                     break;
                 case ("Añadir llamadas"):
                     if (seleccionado != null) {
-                        if(tlf.getText() != (null))
+                        if(tlf.getText().equals(""))
                             noTel();
-                        super.controlador.addLLam(seleccionado,tlf.getText(), (int) duracion.getValue(),LocalDateTime.now());
+
+                        else super.controlador.addLLam(seleccionado,tlf.getText(), (int) duracion.getValue());
                     } else {
                         noSel();
                     }

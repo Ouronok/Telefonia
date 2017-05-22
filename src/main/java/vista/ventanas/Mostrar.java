@@ -17,6 +17,8 @@ public class Mostrar extends Ventana {
     private Container contenedor;
     private DefaultListModel<String> model;
 
+
+
     public void crea() {
         super.setTitle("Muestra clientes");
         super.escuchador = new EscMos();
@@ -26,6 +28,7 @@ public class Mostrar extends Ventana {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
     }
+
 
     public void error() {
         JOptionPane.showMessageDialog(this,"No existe dicho cliente");
@@ -75,6 +78,7 @@ public class Mostrar extends Ventana {
         pack();
 
     }
+
     private void limpia() {
         model.removeAllElements();
         pack();

@@ -1,6 +1,5 @@
 package modelo.datos;
 
-import modelo.tarifas.Tarifa;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -11,13 +10,11 @@ public class Llamada implements Dato, Serializable {
     private String tlf;
     private LocalDateTime fecha;
     private int duracion;
-    private double precio;
 
-    public Llamada(String tlf, int duracion, LocalDateTime fecha, Tarifa tarifa) {
+    public Llamada(String tlf, int duracion, LocalDateTime fecha) {
         this.tlf = tlf;
         this.duracion = duracion;
         this.fecha = fecha;
-        this.precio = tarifa.getPrecio()*duracion;
     }
     @Override
     public LocalDateTime getFecha() {
@@ -33,7 +30,5 @@ public class Llamada implements Dato, Serializable {
         return "Telefono llamado: " + tlf + "\n Duracion: " + duracion + "\n Fecha: " + fecha.toString();
     }
 
-    public double getPrecio(){
-        return precio;
-    }
+
 }
