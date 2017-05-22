@@ -136,8 +136,8 @@ public class Manejo implements Controlador, Serializable {
     }
 
     @Override
-    public void addLLam(Cliente seleccionado, String tlf, int duracion,  LocalDateTime fecha) {
-        modelo.emitirLlamada(seleccionado,tlf,duracion, fecha = LocalDateTime.now());
+    public void addLLam(Cliente seleccionado, String tlf, int duracion) {
+        modelo.emitirLlamada(seleccionado,tlf,duracion, LocalDateTime.now());
 
 
     }

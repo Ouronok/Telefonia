@@ -47,7 +47,7 @@ public interface Controlador {
 
     void addFac(Cliente seleccionado, LocalDateTime now);
 
-    void addLLam(Cliente seleccionado, String tlf, int duracion,  LocalDateTime fecha);
+    void addLLam(Cliente seleccionado, String tlf, int duracion);
 
     void borraFac(int id);
 

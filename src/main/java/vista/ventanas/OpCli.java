@@ -311,7 +311,7 @@ public class OpCli extends Ventana {
                     break;
                 case ("Añadir llamadas"):
                     if (seleccionado != null) {
-                        super.controlador.addLLam(seleccionado,tlf.getText(), (int) duracion.getValue(),LocalDateTime.now());
+                        super.controlador.addLLam(seleccionado,tlf.getText(), (int) duracion.getValue());
                     } else {
                         noSel();
                     }

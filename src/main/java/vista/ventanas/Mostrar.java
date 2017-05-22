@@ -71,7 +71,6 @@ public class Mostrar extends Ventana {
         for(Cliente cac: clientes){
             model.addElement(cac.toString());
         }
-
         pack();
     }
 
