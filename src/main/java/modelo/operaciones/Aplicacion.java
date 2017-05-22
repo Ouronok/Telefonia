@@ -85,20 +85,17 @@ public class Aplicacion implements Serializable, CambioModelo, InterrogaModelo {
     @Override
     public void save() {
         try{
-            PrintWriter writer = new PrintWriter("app.bin", "UTF-8");
-            FileOutputStream fos = new FileOutputStream("app.bin");
+            File fichero = new File("app.bin");
+            FileOutputStream fos = new FileOutputStream(fichero);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(this);
             oos.close();
-            writer.close();
+
             vista.saveSuccesful();
         } catch (IOException e) {
+             System.out.println(e.getMessage());
             vista.saveError();
         }
-    }
-
-    private Direccion crearDir(String[] dir) {
-        return new Direccion(dir[0],dir[1],dir[2]);
     }
 
     public void swpPrecio(Cliente cliente, double precio) {
@@ -121,14 +118,6 @@ public class Aplicacion implements Serializable, CambioModelo, InterrogaModelo {
         vista.getClientes(clientes);
     }
 
-
-    /*public LinkedList<Llamada> getLlamadas(Cliente cliente) {
-        if (clientes.contains(cliente)) {
-            return cliente.getListall();
-        }
-        return null;
-    }
-    */
 
     public void emitirFactura(Cliente cliente, LocalDateTime[] intervalo)  {
         double importe = calcImp(cliente, intervalo);
