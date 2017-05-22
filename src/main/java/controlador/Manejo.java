@@ -5,10 +5,11 @@ import modelo.clientes.Cliente;
 import modelo.excepciones.NotContained;
 import vista.InterrogaVista;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 
-public class Manejo implements Controlador {
+public class Manejo implements Controlador, Serializable {
 
     private InterrogaVista vista;
     private CambioModelo modelo;

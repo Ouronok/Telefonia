@@ -11,10 +11,11 @@ import vista.ventanas.OpCli;
 import vista.ventanas.Operaciones;
 import vista.ventanas.Principal;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 
 
-public class Interfaz implements InterrogaVista, InformaVista {
+public class Interfaz implements InterrogaVista, InformaVista, Serializable {
 
     private Controlador controlador;
     private InterrogaModelo modelo;

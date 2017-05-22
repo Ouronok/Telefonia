@@ -7,8 +7,10 @@ import modelo.tarifas.TarifaDomingo;
 import modelo.tarifas.TarifaTardes;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.Serializable;
 
-public class FactoriaTarifas {
+
+public class FactoriaTarifas implements Serializable {
 
 
     @NotNull
