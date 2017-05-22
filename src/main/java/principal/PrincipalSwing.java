@@ -11,13 +11,14 @@ import java.io.*;
 public class PrincipalSwing {
 
     private static Aplicacion modelo;
+    private static Interfaz vista;
 
     public static void main(String args[]) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
                 Manejo controlador = new Manejo();
-                Interfaz vista = new Interfaz();
+                vista = new Interfaz();
                 initModelo();
                 vista.setControlador(controlador);
                 vista.setModelo(modelo);
@@ -35,7 +36,6 @@ public class PrincipalSwing {
             load();
         } catch (Exception e) {
             modelo = new Aplicacion();
-            System.out.println("Se ha inicializado la aplicacion por primera vez");
         }
     }
 
@@ -44,7 +44,6 @@ public class PrincipalSwing {
         ObjectInputStream ois = new ObjectInputStream(fis);
         modelo = (Aplicacion)ois.readObject();
         ois.close();
-        System.out.println("Se ha cargado con exito el programa");
     }
 
 }

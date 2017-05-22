@@ -53,6 +53,13 @@ public class  Principal extends Ventana {
         JOptionPane.showMessageDialog(this, "Error al guardar");
     }
 
+    public void noLoaded() {
+        JOptionPane.showMessageDialog(this, "El programa se ha iniciado por primera vez");
+    }
+
+    public void loaded() {
+        JOptionPane.showMessageDialog(this, "Se ha cargado con exito");
+    }
     private class EscPrin extends Escuchador {
 
         @Override

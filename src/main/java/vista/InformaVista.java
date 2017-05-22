@@ -8,9 +8,6 @@ import java.util.LinkedList;
  * Created by ouron on 01/05/2017.
  */
 public interface InformaVista {
-    void muestraCliente(Cliente cAct);
-
-    void noCli();
 
     void getClientes(LinkedList<Cliente> clientes);
 
@@ -25,4 +22,6 @@ public interface InformaVista {
     void saveError();
 
     void saveSuccesful();
+
+    void noCli();
 }

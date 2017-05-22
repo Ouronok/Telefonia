@@ -139,7 +139,7 @@ public class Interfaz implements InterrogaVista, InformaVista, Serializable {
 
     }
 
-    @Override
+
     public void noCli() {
         mostrar.error();
     }
@@ -180,5 +180,4 @@ public class Interfaz implements InterrogaVista, InformaVista, Serializable {
     public void saveSuccesful() {
         principal.saveSuccesful();
     }
-
 }

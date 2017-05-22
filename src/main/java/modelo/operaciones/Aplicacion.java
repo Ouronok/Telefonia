@@ -109,7 +109,7 @@ public class Aplicacion implements Serializable, CambioModelo, InterrogaModelo {
                 return cAct;
             }
         }
-        throw new NotContained();
+        throw new NotContained(vista);
     }
 
 

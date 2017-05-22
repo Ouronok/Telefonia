@@ -40,19 +40,5 @@ public interface InterrogaVista {
 
     void mostrarLlamadas(LinkedList<Llamada> llamadas);
 
-  /*  boolean creaParticular();
-    boolean creaEmpresa();
-    boolean addCliente();
-    boolean delCliente();
-    boolean crearDir();
-    boolean swpPrecio();
-    Cliente getCliente();
-    LinkedList getClientes();
-    boolean emitirFactura();
-    double calcImp();
-    Factura getFatura();
-    LinkedList getList();
-    boolean swpTarifa();
 
-*/
 }
