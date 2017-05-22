@@ -4,9 +4,7 @@ import modelo.clientes.Cliente;
 
 import java.time.LocalDateTime;
 
-/**
- * Created by ouron on 01/05/2017.
- */
+
 public interface Controlador {
 
     void abreMostrar();
