@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 import java.util.LinkedList;
 
 public interface CambioModelo {
+
     Cliente getCliente(String nif) throws NotContained;
 
     void getClientes();

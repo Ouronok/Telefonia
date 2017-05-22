@@ -14,12 +14,7 @@ public class Mostrar extends Ventana {
 
 
     private JTextField dni;
-    private JButton muestra;
-    private JButton atras;
-    private JButton limpia;
-    private JList moscli;
     private Container contenedor;
-    private JButton dnibut;
     private DefaultListModel<String> model;
 
     public void crea() {
@@ -28,7 +23,7 @@ public class Mostrar extends Ventana {
         contenedor = getContentPane();
         rellena();
         pack();
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
     }
 
@@ -39,15 +34,15 @@ public class Mostrar extends Ventana {
 
     private void rellena() {
 
-        limpia = new JButton("Limpia");
+        JButton limpia = new JButton("Limpia");
         limpia.addActionListener(super.escuchador);
         JLabel dnie = new JLabel("DNI:");
         dni = new JTextField(8);
-        atras = new JButton("Atras");
+        JButton atras = new JButton("Atras");
         atras.addActionListener(super.escuchador);
-        dnibut = new JButton("DNI");
+        JButton dnibut = new JButton("DNI");
         dnibut.addActionListener(super.escuchador);
-        muestra = new JButton("Muestra");
+        JButton muestra = new JButton("Muestra");
         muestra.addActionListener(super.escuchador);
         JPanel upanel = new JPanel();
         upanel.add(dnie);
@@ -55,7 +50,7 @@ public class Mostrar extends Ventana {
         upanel.add(dnibut);
         upanel.add(muestra);
         contenedor.add(upanel, BorderLayout.NORTH);
-        moscli = new JList();
+        JList moscli = new JList();
         model = new DefaultListModel<>();
         moscli.setModel(model);
         JScrollPane barra = new JScrollPane(moscli);
@@ -96,7 +91,6 @@ public class Mostrar extends Ventana {
             String texto = boton.getText();
             switch(texto){
                 case("DNI"):
-                    System.out.println("Le pasamos: "+ dni.getText());
                     super.controlador.buscaCliente(dni.getText());
                     break;
                 case("Muestra"):

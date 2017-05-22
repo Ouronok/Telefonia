@@ -36,7 +36,7 @@ public class OpCli extends Ventana {
         contenedor = getContentPane();
         rellena();
         pack();
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
 
     }
@@ -91,9 +91,7 @@ public class OpCli extends Ventana {
 
     public void mostrarFacturas(LinkedList<Factura> facturas) {
         fac.removeAllElements();
-        for (Factura facA : facturas) {
-            fac.addElement(facA);
-        }
+        for (Factura facA : facturas) fac.addElement(facA);
     }
 
     public void facan() {
@@ -104,6 +102,8 @@ public class OpCli extends Ventana {
         JOptionPane.showMessageDialog(this, "No existe dicha factura");
     }
 
+    public void noTel() {JOptionPane.showMessageDialog(this, "Introduce un teléfono válido");
+    }
     public void muestraFactura(Factura factura) {
         fac.addElement(factura);
     }
@@ -126,7 +126,7 @@ public class OpCli extends Ventana {
 
     private class PanelTarifas extends JPanel {
 
-        public PanelTarifas() {
+        PanelTarifas() {
             setLayout(new BorderLayout());
             JPanel down = new JPanel();
             JButton cambiaprecio = new JButton("Cambiar precio");
@@ -159,7 +159,7 @@ public class OpCli extends Ventana {
     }
 
     private class PanelFacturas extends JPanel {
-        public PanelFacturas() {
+        PanelFacturas() {
             setLayout(new BorderLayout());
             JPanel up = new JPanel();
             idfac = new JTextField(3);
@@ -191,7 +191,7 @@ public class OpCli extends Ventana {
 
 
     private class PanelLlamadas extends JPanel {
-        public PanelLlamadas() {
+        PanelLlamadas() {
             setLayout(new BorderLayout());
             JPanel up = new JPanel();
 
@@ -242,6 +242,7 @@ public class OpCli extends Ventana {
                     } else {
                         noSel();
                     }
+                    break;
                 case ("Tardes"):
                     if (seleccionado != null) {
                         super.controlador.setTardes(seleccionado);
@@ -311,7 +312,9 @@ public class OpCli extends Ventana {
                     break;
                 case ("Añadir llamadas"):
                     if (seleccionado != null) {
-                        super.controlador.addLLam(seleccionado,tlf.getText(), (int) duracion.getValue() * 1 ,LocalDateTime.now());
+                        if(tlf.getText() != (null))
+                            noTel();
+                        super.controlador.addLLam(seleccionado,tlf.getText(), (int) duracion.getValue(),LocalDateTime.now());
                     } else {
                         noSel();
                     }
